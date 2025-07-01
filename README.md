@@ -1,5 +1,8 @@
 # 🏥 HealthMate Kabarak — Clinic Appointment & Record System
 
+> [!NOTE]
+> This is just a draft of how the project will flow.
+
 A web-based clinic system that allows **students** to book medical appointments, **doctors** to manage private health records, and **admins** to moderate users and content. Built using **HTML**, **PHP**, **JavaScript**, **TailwindCSS**, **Google Fonts**, and **Google Icons**.
 
 ---
@@ -17,17 +20,11 @@ A web-based clinic system that allows **students** to book medical appointments,
 
 ## 🧭 System Flow
 
-Login/Register
-↓
-Dashboard
-↓
-┌────────────┬─────────────┬─────────────┐
-│ Student    │ Doctor      │ Admin       │
-├────────────┼─────────────┼─────────────┤
-│ Book Appt  │ View Appts  │ View Users  │
-│ View Hist  │ Add Notes   │ Moderate    │
-│ Notify     │ View Hist   │ Manage Roles│
-└────────────┴─────────────┴─────────────┘
+| Student      | Doctor       | Admin         |
+|--------------|--------------|---------------|
+| Book Appt    | View Appts   | View Users    |
+| View History | Add Notes    | Moderates     |
+| Notify       | View History | Manage Roles  |
 
 
 ---
