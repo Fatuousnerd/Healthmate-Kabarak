@@ -3,7 +3,7 @@ var loader = document.getElementById("loader"),
     themeicon = document.getElementById("themeicon"),
     load = document.getElementById("load");
 
-    //End of Variable Declaration
+//End of Variable Declaration
 
 //Loading Animation Begin
 window.addEventListener("load", () => {
@@ -14,31 +14,29 @@ window.addEventListener("load", () => {
 
 //Theme Toggle Begin
 window.addEventListener('load', () => {
-    const userPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const storedTheme = localStorage.getItem("theme");
 
     if (!storedTheme) {
-        if (userPrefersDark == true) {
-            localStorage.setItem('theme', 'dark');
-        } else {
-            localStorage.setItem('theme', 'light');
-        }
-    } else {
-        document.body.className = storedTheme;
+        const userPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        storedTheme = userPrefersDark ? 'dark' : 'light';
+        localStorage.setItem('theme', storedTheme);
+        themeicon.textContent = storedTheme == 'dark' ? "light_mode" : "dark_mode";
     }
 
+    document.body.classList.add(storedTheme);
+
     window.toggleTheme = function () {
-        if (storedTheme == 'dark') {
-            localStorage.setItem('theme', 'light');
-            document.body.classList.toggle("light");
-            document.body.classList.toggle("dark");
-            document.alert("Was Dark")
-        } else if (storedTheme == 'light') {
-            localStorage.setItem('theme', 'dark');
-            document.body.classList.toggle("dark");
-            document.body.classList.toggle("light");
-            document.alert("Was Light")
-        };
+        let currentTheme = localStorage.getItem('theme');
+        let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        localStorage.setItem('theme', newTheme);
+
+        document.body.classList.remove(currentTheme);
+        document.body.classList.add(newTheme);
+
+        if (themeicon) {
+            themeicon.textContent = newTheme === 'dark' ? "dark_mode" : "light_mode";
+        }
     };
 });
 //Theme Toggle End
