@@ -25,6 +25,7 @@ window.addEventListener('load', () => {
         } else {
             localStorage.setItem('theme', 'light')
         }
+        logo.src = userPrefersDark ? "/assets/logo1.png" : "/assets/logo2.png";
         themeicon.textContent = storedTheme == 'dark' ? "light_mode" : "dark_mode";
     }
 
@@ -64,7 +65,7 @@ const hours = String(now.getHours()).padStart(2,'0');
 const mins = String(now.getMinutes()).padStart(2,'0');
 const timeNow = `${hours}:${mins}`
 
-//Writes Date
+//Writes date anywhere it's called
 window.addEventListener('load', ()=>{
     dateText.innerHTML = TDate
 })

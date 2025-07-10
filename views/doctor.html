@@ -47,7 +47,7 @@
 
             <!--Topbar Start-->
             <div class="topbar-doctor">
-                <h1>Dashboard</h1>
+                <h1>Doctor Dashboard</h1>
                 <div class="topbar-doctor-right">
                     <button class="themetoggle" id="themetoggle" onclick="toggleTheme()"><i id="themeicon"
                             class="material-symbols-outlined">brightness_4</i></button>
@@ -65,9 +65,67 @@
                 <img src="../assets/stethoscope.png" alt="">
             </div>
             <!--Welcome Info End-->
-            
+
             <!--Appointments Start-->
-            <div class="appointments-holder"></div>
+            <div class="appointments-holder">
+                <h2>Today's Appointments</h2>
+                <div class="appointments-wrapper">
+
+                    <!--Appointment Container Start-->
+                    <div class="appointment-container">
+                        <img src="../assets/logo1.jpeg" alt="">
+                        <div class="appointment-center">
+                            <p class="patient-name">Augustine Watts</p>
+                            <p class="patient-reason">Consultion</p>
+                        </div>
+                        <div class="appointment-right">
+                            <i class="material-symbols-outlined check">check_circle</i>
+                            <p class="appointment-time">14:00</p>
+                        </div>
+                    </div>
+                    <!--Appointment Container End-->
+                    <!--Appointment Container Start-->
+                    <div class="appointment-container">
+                        <img src="../assets/logo1.jpeg" alt="">
+                        <div class="appointment-center">
+                            <p class="patient-name">Augustine Watts</p>
+                            <p class="patient-reason">Consultion</p>
+                        </div>
+                        <div class="appointment-right">
+                            <i class="material-symbols-outlined cancel">cancel</i>
+                            <p class="appointment-time">14:00</p>
+                        </div>
+                    </div>
+                    <!--Appointment Container End-->
+                    <!--Appointment Container Start-->
+                    <div class="appointment-container">
+                        <img src="../assets/logo1.jpeg" alt="">
+                        <div class="appointment-center">
+                            <p class="patient-name">Augustine Watts</p>
+                            <p class="patient-reason">Consultion</p>
+                        </div>
+                        <div class="appointment-right">
+                            <i class="material-symbols-outlined check">check_circle</i>
+                            <p class="appointment-time">14:00</p>
+                        </div>
+                    </div>
+                    <!--Appointment Container End-->
+                    <!--Appointment Container Start-->
+                    <div class="appointment-container">
+                        <img src="../assets/logo1.jpeg" alt="">
+                        <div class="appointment-center">
+                            <p class="patient-name">Augustine Watts</p>
+                            <p class="patient-reason">Consultion</p>
+                        </div>
+                        <div class="appointment-right">
+                            <i class="material-symbols-outlined cancel">cancel</i>
+                            <p class="appointment-time">14:00</p>
+                        </div>
+                    </div>
+                    <!--Appointment Container End-->
+
+                </div>
+            </div>
             <!--Appointments End-->
 
 
@@ -75,7 +133,59 @@
         <!--Main Section End-->
 
         <!--Profile Start-->
-        <div class="profile-doctor"></div>
+        <div class="profile-doctor">
+            <h2 style="padding-left: 25px; padding-top: 25px;">Profile</h2>
+
+            <!--Profile Top Start-->
+            <div class="profile-top">
+                <img src="../assets/logo1.jpeg" alt="">
+                <div class="profile-name">Dr. Mary Grey</div>
+                <div class="profile-role"></div>
+            </div>
+            <!--Profile Top End-->
+
+            <!--Profile Top Start-->
+            <div class="profile-notifications">
+                <h2 style="padding-left: 25px;">Notifications</h2>
+                <div class="profile-notifications-wrapper">
+
+                    <!--Notification Container Start-->
+                    <div class="notification-container">
+                        <!-- <img src="../assets/logo1.jpeg" alt=""> -->
+                        <div class="notification-center">
+                            <p class="notification-reason">Cancelled Appointment</p>
+                            <p class="notification-name">Augustine Watts has cancelled her appointment scheduled for 14:00</p>
+                        </div>
+                        <p class="notification-time">30 Mins</p>
+                    </div>
+                    <!--Appointment Container End-->
+                    <!--Notification Container Start-->
+                    <div class="notification-container">
+                        <!-- <img src="../assets/logo1.jpeg" alt=""> -->
+                        <div class="notification-center">
+                            <p class="notification-reason">Rescheduled Appointment</p>
+                            <p class="notification-name">John Doe has rescheduled his appointment scheduled for 14:00 to 15:00</p>
+                        </div>
+                        <p class="notification-time">1 Hr</p>
+                    </div>
+                    <!--Appointment Container End-->
+                    <!--Notification Container Start-->
+                    <div class="notification-container">
+                        <!-- <img src="../assets/logo1.jpeg" alt=""> -->
+                        <div class="notification-center">
+                            <p class="notification-reason">New Appointment</p>
+                            <p class="notification-name">Jane Doe has booked a new appointment scheduled for 14:00</p>
+                        </div>
+                        <p class="notification-time">2 Hrs</p>
+                    </div>
+                    <!--Appointment Container End-->
+
+                </div>
+            </div>
+
+            <!--Profile Top End-->
+
+        </div>
         <!--Profile End-->
     </div>
 
@@ -90,7 +200,7 @@
         }
 
         .sidebar-doctor {
-            width: 350px;
+            width: 300px;
             height: 100%;
             padding: 25px;
             padding-bottom: 50px;
@@ -139,7 +249,7 @@
         }
 
         .main-doctor {
-            width: calc(100vw - 600px);
+            width: calc(100vw - 500px);
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -164,18 +274,6 @@
             gap: 25px;
         }
 
-        .themetoggle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--SecBg);
-            color: var(--mainText);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
         .welcome-info {
             display: flex;
             align-items: center;
@@ -196,6 +294,7 @@
             font-size: 5rem;
             font-weight: 800;
         }
+
         .welcome-text p {
             font-size: 1.5rem;
             font-weight: 400;
@@ -206,18 +305,178 @@
             object-fit: contain;
         }
 
-        .appointments-holder{
+        .appointments-holder {
             flex: 4;
             background: var(--SecBg);
             width: 95%;
-            /* height: 500px; */
+            max-height: 500px;
             border-radius: 10px;
+            padding: 30px;
+            overflow-y: hidden;
         }
-        
+
+        .appointments-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            /* background: red; */
+            padding: 15px;
+            gap: 25px;
+            overflow-y: scroll;
+        }
+
+        .appointments-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .appointment-container {
+            background: var(--MainBg);
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 30px;
+            border-radius: 20px;
+        }
+
+        .appointment-container img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--Highlight);
+        }
+
+        .appointment-center {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .patient-name {
+            font-size: 2rem;
+            font-weight: 850;
+        }
+
+        .patient-reason {
+            font-size: 1.2rem;
+            font-weight: 250;
+            text-transform: uppercase;
+        }
+
+        .appointment-right {
+            display: flex;
+            gap: 25px;
+        }
+
+        .appointment-time {
+            font-size: 1.2rem;
+        }
+
+        .check {
+            color: green;
+        }
+
+        .cancel {
+            color: red;
+        }
+
         .profile-doctor {
-            width: 250px;
+            width: 400px;
             height: 100%;
             background: var(--SecBg);
+        }
+
+        .profile-top {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            gap: 25px;
+            padding: 15px;
+        }
+
+        .profile-top img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--MainText);
+        }
+
+        .profile-name {
+            font-size: 2.2rem;
+            font-weight: 850;
+            text-transform: capitalize;
+        }
+
+        .profile-notifications {
+            flex: 4;
+            background: var(--SecBg);
+            width: 100%;
+            max-height: 500px;
+            border-radius: 10px;
+            /* padding: 30px; */
+            overflow-y: hidden;
+        }
+
+        .profile-notifications-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            /* background: red; */
+            padding: 10px;
+            gap: 15px;
+            overflow-y: scroll;
+        }
+
+        .profile-notifications-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .notification-container {
+            background: var(--MainBg);
+            width: 100%;
+            min-height: 100px;
+            display: flex;
+            /* flex-direction: column; */
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-radius: 10px;
+            gap: 15px;
+        }
+
+        .notification-container img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--Highlight);
+        }
+
+        .notification-center {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .notification-name {
+            /* font-size: 1.5rem; */
+            font-weight: 250;
+        }
+
+        .notification-reason {
+            font-size: 1.2rem;
+            font-weight: 850;
+            text-transform: uppercase;
+        }
+
+        .notification-time {
+            font-size: 1rem;
         }
     </style>
 </body>
