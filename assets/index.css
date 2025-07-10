@@ -2,35 +2,49 @@
 
  :root {
      --darkMainBg: #00001C;
-     --darkSecBg: #053C5E;
+     --darkSecBg: #00002C;
+     /* --darkSecBg: #053C5E; */
      --darkMainText: #f5f5f5;
      --darkHighlight: #DB222A;
 
      --lightMainBg: #f5f5f5;
+     --lightSecBg: #ffffff;
      --lightSecText: #053C5E;
      --lightMainText: #00001C;
      --lightHighlight: #DB222A;
+ }
+
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
  }
 
  body {
      width: 100vw;
      min-height: 100vh;
      font-family: 'Sansation', sans-serif;
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
      transition: all ease-in-out .75s;
      overflow-x: hidden;
+     background: var(--MainBg);
+     color: var(--MainText);
  }
 
  .light {
-     background: var(--lightMainBg);
-     color: var(--lightMainText);
+     --MainBg: var(--lightMainBg);
+     --SecBg: var(--lightSecBg);
+     --SecText: var(--lightSecText);
+     --MainText: var(--lightMainText);
+     --Highlight: var(--lightHighlight);
  }
 
  .dark {
-     background: var(--darkMainBg);
-     color: var(--darkMainText);
+     --MainBg: var(--darkMainBg);
+     --SecBg: var(--darkSecBg);
+     --SecText: var(--darkSecText);
+     --MainText: var(--darkMainText);
+     --Highlight: var(--darkHighlight);
+
  }
 
  .loader {

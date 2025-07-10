@@ -1,7 +1,9 @@
 var loader = document.getElementById("loader"),
+load = document.getElementById("load"),
     themetoggle = document.getElementById("themetoggle"),
     themeicon = document.getElementById("themeicon"),
-    load = document.getElementById("load");
+    dateText = document.getElementById("dateText"),
+    logo = document.getElementById("logo");
 
 //End of Variable Declaration
 
@@ -18,8 +20,11 @@ window.addEventListener('load', () => {
 
     if (!storedTheme) {
         const userPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        storedTheme = userPrefersDark ? 'dark' : 'light';
-        localStorage.setItem('theme', storedTheme);
+        if (userPrefersDark == true) {
+            localStorage.setItem('theme', 'dark')
+        } else {
+            localStorage.setItem('theme', 'light')
+        }
         themeicon.textContent = storedTheme == 'dark' ? "light_mode" : "dark_mode";
     }
 
@@ -37,6 +42,31 @@ window.addEventListener('load', () => {
         if (themeicon) {
             themeicon.textContent = newTheme === 'dark' ? "dark_mode" : "light_mode";
         }
+
+        if( logo ) {
+            logo.src = newTheme === 'dark' ? "/assets/logo1.png" : "/assets/logo2.png";
+        }
     };
 });
 //Theme Toggle End
+
+//Date Date
+const now = new Date()
+const options = {
+    weekday:'short',
+    month:'short',
+    day:'2-digit',
+    year:'numeric',
+}
+const TDate = now.toLocaleDateString('en-US', options);
+
+const hours = String(now.getHours()).padStart(2,'0');
+const mins = String(now.getMinutes()).padStart(2,'0');
+const timeNow = `${hours}:${mins}`
+
+//Writes Date
+window.addEventListener('load', ()=>{
+    dateText.innerHTML = TDate
+})
+
+// Date End
