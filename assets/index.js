@@ -1,9 +1,10 @@
 var loader = document.getElementById("loader"),
-load = document.getElementById("load"),
+    load = document.getElementById("load"),
     themetoggle = document.getElementById("themetoggle"),
     themeicon = document.getElementById("themeicon"),
+    logo = document.getElementById("logo"),
     dateText = document.getElementById("dateText"),
-    logo = document.getElementById("logo");
+    timeText = document.getElementById("timeText");
 
 //End of Variable Declaration
 
@@ -25,7 +26,7 @@ window.addEventListener('load', () => {
         } else {
             localStorage.setItem('theme', 'light')
         }
-        logo.src = userPrefersDark ? "/assets/logo1.png" : "/assets/logo2.png";
+        logo.src = userPrefersDark ? "../assets/logo1.png" : "/assets/logo2.png";
         themeicon.textContent = storedTheme == 'dark' ? "light_mode" : "dark_mode";
     }
 
@@ -44,7 +45,7 @@ window.addEventListener('load', () => {
             themeicon.textContent = newTheme === 'dark' ? "dark_mode" : "light_mode";
         }
 
-        if( logo ) {
+        if (logo) {
             logo.src = newTheme === 'dark' ? "/assets/logo1.png" : "/assets/logo2.png";
         }
     };
@@ -54,20 +55,33 @@ window.addEventListener('load', () => {
 //Date Date
 const now = new Date()
 const options = {
-    weekday:'short',
-    month:'short',
-    day:'2-digit',
-    year:'numeric',
+    weekday: 'short',
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
 }
 const TDate = now.toLocaleDateString('en-US', options);
 
-const hours = String(now.getHours()).padStart(2,'0');
-const mins = String(now.getMinutes()).padStart(2,'0');
-const timeNow = `${hours}:${mins}`
 
 //Writes date anywhere it's called
-window.addEventListener('load', ()=>{
-    dateText.innerHTML = TDate
+window.addEventListener('load', () => {
+    if (dateText) {
+        dateText.textContent = TDate
+    }
 })
+
+//Writes time anywhere it's called
+function updateTime() {
+    const nowTime = new Date();
+    const hours = String(nowTime.getHours()).padStart(2, '0');
+    const mins = String(nowTime.getMinutes()).padStart(2, '0');
+    const secs = String(nowTime.getSeconds()).padStart(2, '0');
+    const timeNow = `${hours}:${mins}:${secs}`
+    if (timeText) {
+        timeText.textContent = timeNow
+    }
+}
+updateTime();
+setInterval(updateTime, 1000);
 
 // Date End
