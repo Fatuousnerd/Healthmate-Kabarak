@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,26 +27,75 @@
         body {
             font-family: 'Poppins', sans-serif;
         }
+        
+        /* Custom scrollbar for better UX */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #8B4513;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2F4F2F;
+        }
+        
+        /* Smooth transitions for all interactive elements */
+        * {
+            transition: all 0.2s ease-in-out;
+        }
+        
+        /* Enhanced focus states */
+        input:focus, select:focus, button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(47, 79, 47, 0.1);
+        }
+        
+        /* Custom button animations */
+        .btn-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-hover:active {
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body class="bg-beige min-h-screen">
+<body class="bg-beige min-h-screen bg-gradient-to-br from-beige via-white to-beige">
     <!-- Fixed Top Navbar -->
-    <nav class="fixed top-0 left-0 right-0 bg-dark-green text-white shadow-lg z-50">
+    <nav class="fixed top-0 left-0 right-0 bg-gradient-to-r from-dark-green to-nut-brown text-white shadow-xl z-50 border-b-2 border-nude">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-white">HealthMate</h1>
+                    <div class="bg-white bg-opacity-20 p-2 rounded-lg mr-3">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h1 class="text-2xl font-bold text-white font-poppins">HealthMate</h1>
                 </div>
                 
                 <!-- Welcome Message -->
                 <div class="hidden md:block">
-                    <p class="text-lg font-medium">Welcome, Student!</p>
+                    <p class="text-lg font-medium text-white font-poppins">Welcome, Student!</p>
                 </div>
                 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <button class="text-white hover:text-nude focus:outline-none">
+                    <button class="text-white hover:text-nude focus:outline-none p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-all duration-300">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -57,36 +106,39 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="pt-20 pb-8">
+    <main class="pt-16 sm:pt-20 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Welcome Section -->
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold text-dark-green mb-2">Student Dashboard</h2>
-                <p class="text-nut-brown text-lg">Manage your health appointments and records</p>
+            <div class="mb-6 sm:mb-8 text-center">
+                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl border border-nude border-opacity-30">
+                    <h2 class="text-2xl sm:text-4xl font-bold text-dark-green mb-3 font-poppins">Student Dashboard</h2>
+                    <p class="text-base sm:text-lg text-nut-brown font-poppins">Manage your health appointments and records</p>
+                    <div class="w-24 h-1 bg-gradient-to-r from-dark-green to-nut-brown mx-auto mt-4 rounded-full"></div>
+                </div>
             </div>
 
             <!-- Dashboard Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
                 <!-- Appointment Booking Section -->
-                <div class="bg-nude rounded-lg shadow-lg p-6 border-l-4 border-dark-green">
-                    <div class="flex items-center mb-6">
-                        <div class="bg-dark-green p-3 rounded-full mr-4">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-gradient-to-br from-nude to-white rounded-2xl shadow-2xl p-4 sm:p-6 border-l-4 border-dark-green hover:shadow-3xl transition-all duration-500">
+                    <div class="flex flex-col sm:flex-row sm:items-center mb-4 sm:mb-6">
+                        <div class="bg-gradient-to-r from-dark-green to-nut-brown p-2 sm:p-3 rounded-full w-12 h-12 sm:w-auto sm:h-auto mr-0 sm:mr-4 mb-3 sm:mb-0 flex items-center justify-center shadow-lg">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-semibold text-dark-green">Book Appointment</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold text-dark-green font-poppins">Book Appointment</h3>
                     </div>
                     
-                    <div class="space-y-4">
+                    <div class="space-y-3 sm:space-y-4">
                         <div>
-                            <label class="block text-sm font-medium text-dark-green mb-2">Student Name</label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dark-green focus:border-transparent bg-white" placeholder="Enter your full name">
+                            <label class="block text-sm font-medium text-dark-green mb-1 sm:mb-2 font-poppins">Student Name</label>
+                            <input type="text" class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-dark-green focus:border-transparent bg-white text-sm sm:text-base shadow-sm hover:shadow-md transition-all duration-300 font-poppins" placeholder="Enter your full name">
                         </div>
                         
                         <div>
-                            <label class="block text-sm font-medium text-dark-green mb-2">Doctor</label>
-                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dark-green focus:border-transparent bg-white">
+                            <label class="block text-sm font-medium text-dark-green mb-1 sm:mb-2 font-poppins">Doctor</label>
+                            <select class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-dark-green focus:border-transparent bg-white text-sm sm:text-base shadow-sm hover:shadow-md transition-all duration-300 font-poppins">
                                 <option>Choose a doctor...</option>
                                 <option>Dr. John Smith - General Medicine</option>
                                 <option>Dr. Sarah Johnson - Cardiology</option>
@@ -95,52 +147,52 @@
                         </div>
                         
                         <div>
-                            <label class="block text-sm font-medium text-dark-green mb-2">Appointment Date</label>
-                            <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-dark-green focus:border-transparent bg-white">
+                            <label class="block text-sm font-medium text-dark-green mb-1 sm:mb-2 font-poppins">Appointment Date</label>
+                            <input type="date" class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-dark-green focus:border-transparent bg-white text-sm sm:text-base shadow-sm hover:shadow-md transition-all duration-300 font-poppins">
                         </div>
                         
-                        <button class="w-full bg-dark-green text-white py-3 px-6 rounded-lg font-semibold hover:bg-nut-brown transition duration-300 transform hover:scale-105 shadow-lg">
+                        <button class="w-full bg-gradient-to-r from-dark-green to-nut-brown text-white py-2 sm:py-3 px-4 sm:px-6 rounded-xl font-semibold btn-hover shadow-lg text-sm sm:text-base font-poppins">
                             Book Now
                         </button>
                     </div>
                 </div>
 
                 <!-- Past Records Section -->
-                <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-nude">
-                    <div class="flex items-center mb-6">
-                        <div class="bg-nude p-3 rounded-full mr-4">
-                            <svg class="w-6 h-6 text-nut-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-gradient-to-br from-white to-nude rounded-2xl shadow-2xl p-4 sm:p-6 border-l-4 border-nut-brown hover:shadow-3xl transition-all duration-500">
+                    <div class="flex flex-col sm:flex-row sm:items-center mb-4 sm:mb-6">
+                        <div class="bg-gradient-to-r from-nut-brown to-dark-green p-2 sm:p-3 rounded-full w-12 h-12 sm:w-auto sm:h-auto mr-0 sm:mr-4 mb-3 sm:mb-0 flex items-center justify-center shadow-lg">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-semibold text-dark-green">Medical Records</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold text-dark-green font-poppins">Medical Records</h3>
                     </div>
                     
-                    <div class="space-y-4">
+                    <div class="space-y-3 sm:space-y-4">
                         <!-- Recent Appointment -->
-                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300">
-                            <div class="flex justify-between items-start mb-2">
-                                <h4 class="font-semibold text-dark-green">General Checkup</h4>
-                                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Completed</span>
+                        <div class="bg-white border border-gray-200 rounded-xl p-3 sm:p-4 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                                <h4 class="font-semibold text-dark-green text-sm sm:text-base font-poppins">General Checkup</h4>
+                                <span class="bg-gradient-to-r from-green-400 to-green-600 text-white text-xs font-medium px-3 py-1 rounded-full mt-1 sm:mt-0 self-start shadow-sm">Completed</span>
                             </div>
-                            <p class="text-sm text-nut-brown mb-2">Dr. John Smith</p>
-                            <p class="text-sm text-gray-600">December 15, 2023 • 10:00 AM</p>
-                            <p class="text-sm text-gray-700 mt-2">Routine health checkup. All vitals normal. Recommended follow-up in 6 months.</p>
+                            <p class="text-xs sm:text-sm text-nut-brown mb-1 sm:mb-2 font-poppins">Dr. John Smith</p>
+                            <p class="text-xs sm:text-sm text-gray-600 font-poppins">December 15, 2023 • 10:00 AM</p>
+                            <p class="text-xs sm:text-sm text-gray-700 mt-2 font-poppins">Routine health checkup. All vitals normal. Recommended follow-up in 6 months.</p>
                         </div>
                         
                         <!-- Another Appointment -->
-                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition duration-300">
-                            <div class="flex justify-between items-start mb-2">
-                                <h4 class="font-semibold text-dark-green">Blood Test</h4>
-                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Scheduled</span>
+                        <div class="bg-white border border-gray-200 rounded-xl p-3 sm:p-4 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                                <h4 class="font-semibold text-dark-green text-sm sm:text-base font-poppins">Blood Test</h4>
+                                <span class="bg-gradient-to-r from-blue-400 to-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full mt-1 sm:mt-0 self-start shadow-sm">Scheduled</span>
                             </div>
-                            <p class="text-sm text-nut-brown mb-2">Dr. Sarah Johnson</p>
-                            <p class="text-sm text-gray-600">January 20, 2024 • 02:00 PM</p>
-                            <p class="text-sm text-gray-700 mt-2">Annual blood work and cholesterol screening.</p>
+                            <p class="text-xs sm:text-sm text-nut-brown mb-1 sm:mb-2 font-poppins">Dr. Sarah Johnson</p>
+                            <p class="text-xs sm:text-sm text-gray-600 font-poppins">January 20, 2024 • 02:00 PM</p>
+                            <p class="text-xs sm:text-sm text-gray-700 mt-2 font-poppins">Annual blood work and cholesterol screening.</p>
                         </div>
                         
                         <!-- View All Records Button -->
-                        <button class="w-full bg-nude text-nut-brown py-3 px-6 rounded-lg font-semibold hover:bg-dark-green hover:text-white transition duration-300 transform hover:scale-105">
+                        <button class="w-full bg-gradient-to-r from-nut-brown to-dark-green text-white py-2 sm:py-3 px-4 sm:px-6 rounded-xl font-semibold btn-hover shadow-lg text-sm sm:text-base font-poppins">
                             View All Records
                         </button>
                     </div>
@@ -148,92 +200,47 @@
             </div>
 
             <!-- Previous Appointments Table -->
-            <div class="mt-8 bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="px-6 py-4 border-b border-gray-200">
-                    <h3 class="text-xl font-semibold text-dark-green">Previous Appointments</h3>
+            <div class="mb-8 sm:mb-12 bg-white rounded-2xl shadow-2xl overflow-hidden border border-nude border-opacity-30">
+                <div class="px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-200 bg-gradient-to-r from-dark-green to-nut-brown">
+                    <h3 class="text-lg sm:text-xl font-semibold text-white font-poppins">Previous Appointments</h3>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full">
-                        <thead class="bg-nut-brown text-white">
+                    <table class="w-full min-w-full">
+                        <thead class="bg-gradient-to-r from-nut-brown to-dark-green text-white">
                             <tr>
-                                <th class="px-6 py-4 text-left font-semibold">Doctor Name</th>
-                                <th class="px-6 py-4 text-left font-semibold">Appointment Date</th>
-                                <th class="px-6 py-4 text-left font-semibold">Status</th>
+                                <th class="px-3 sm:px-6 py-3 sm:py-4 text-left font-semibold text-xs sm:text-sm font-poppins">Doctor Name</th>
+                                <th class="px-3 sm:px-6 py-3 sm:py-4 text-left font-semibold text-xs sm:text-sm font-poppins">Appointment Date</th>
+                                <th class="px-3 sm:px-6 py-3 sm:py-4 text-left font-semibold text-xs sm:text-sm font-poppins">Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white hover:bg-gray-50 transition duration-200">
-                                <td class="px-6 py-4 text-dark-green font-medium">Dr. John Smith</td>
-                                <td class="px-6 py-4 text-gray-700">December 15, 2023</td>
-                                <td class="px-6 py-4">
-                                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full">Completed</span>
+                            <tr class="bg-white hover:bg-gray-50 transition-all duration-300">
+                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-dark-green font-medium text-xs sm:text-sm font-poppins">Dr. John Smith</td>
+                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-gray-700 text-xs sm:text-sm font-poppins">December 15, 2023</td>
+                                <td class="px-3 sm:px-6 py-3 sm:py-4">
+                                    <span class="bg-gradient-to-r from-green-400 to-green-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">Completed</span>
                                 </td>
                             </tr>
-                            <tr class="bg-beige hover:bg-gray-50 transition duration-200">
-                                <td class="px-6 py-4 text-dark-green font-medium">Dr. Sarah Johnson</td>
-                                <td class="px-6 py-4 text-gray-700">November 28, 2023</td>
-                                <td class="px-6 py-4">
-                                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full">Completed</span>
+                            <tr class="bg-beige hover:bg-gray-50 transition-all duration-300">
+                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-dark-green font-medium text-xs sm:text-sm font-poppins">Dr. Sarah Johnson</td>
+                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-gray-700 text-xs sm:text-sm font-poppins">November 28, 2023</td>
+                                <td class="px-3 sm:px-6 py-3 sm:py-4">
+                                    <span class="bg-gradient-to-r from-green-400 to-green-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">Completed</span>
                                 </td>
                             </tr>
-                            <tr class="bg-white hover:bg-gray-50 transition duration-200">
-                                <td class="px-6 py-4 text-dark-green font-medium">Dr. Michael Brown</td>
-                                <td class="px-6 py-4 text-gray-700">October 12, 2023</td>
-                                <td class="px-6 py-4">
-                                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full">Completed</span>
+                            <tr class="bg-white hover:bg-gray-50 transition-all duration-300">
+                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-dark-green font-medium text-xs sm:text-sm font-poppins">Dr. Michael Brown</td>
+                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-gray-700 text-xs sm:text-sm font-poppins">October 12, 2023</td>
+                                <td class="px-3 sm:px-6 py-3 sm:py-4">
+                                    <span class="bg-gradient-to-r from-green-400 to-green-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">Completed</span>
                                 </td>
                             </tr>
-                            <tr class="bg-beige hover:bg-gray-50 transition duration-200">
-                                <td class="px-6 py-4 text-dark-green font-medium">Dr. John Smith</td>
-                                <td class="px-6 py-4 text-gray-700">September 5, 2023</td>
-                                <td class="px-6 py-4">
-                                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full">Completed</span>
+                            <tr class="bg-beige hover:bg-gray-50 transition-all duration-300">
+                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-dark-green font-medium text-xs sm:text-sm font-poppins">Dr. John Smith</td>
+                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-gray-700 text-xs sm:text-sm font-poppins">September 5, 2023</td>
+                                <td class="px-3 sm:px-6 py-3 sm:py-4">
+                                    <span class="bg-gradient-to-r from-green-400 to-green-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">Completed</span>
                                 </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Medical Records Table -->
-            <div class="mt-8 bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="px-6 py-4 border-b border-gray-200">
-                    <h3 class="text-xl font-semibold text-dark-green">Medical Records</h3>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full">
-                        <thead class="bg-gray-50 border-b border-gray-200">
-                            <tr>
-                                <th class="px-6 py-4 text-left font-semibold text-gray-700">Date</th>
-                                <th class="px-6 py-4 text-left font-semibold text-gray-700">Doctor</th>
-                                <th class="px-6 py-4 text-left font-semibold text-gray-700">Diagnosis</th>
-                                <th class="px-6 py-4 text-left font-semibold text-gray-700">Prescription</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white">
-                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition duration-200">
-                                <td class="px-6 py-4 text-sm text-gray-600">Dec 15, 2023</td>
-                                <td class="px-6 py-4 text-sm font-medium text-dark-green">Dr. John Smith</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">Upper respiratory infection</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">Amoxicillin 500mg, 3x daily for 7 days</td>
-                            </tr>
-                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition duration-200 bg-gray-50">
-                                <td class="px-6 py-4 text-sm text-gray-600">Nov 28, 2023</td>
-                                <td class="px-6 py-4 text-sm font-medium text-dark-green">Dr. Sarah Johnson</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">Hypertension - Stage 1</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">Lisinopril 10mg, 1x daily</td>
-                            </tr>
-                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition duration-200">
-                                <td class="px-6 py-4 text-sm text-sm text-gray-600">Oct 12, 2023</td>
-                                <td class="px-6 py-4 text-sm font-medium text-dark-green">Dr. Michael Brown</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">Seasonal allergies</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">Cetirizine 10mg, 1x daily as needed</td>
-                            </tr>
-                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition duration-200 bg-gray-50">
-                                <td class="px-6 py-4 text-sm text-gray-600">Sep 5, 2023</td>
-                                <td class="px-6 py-4 text-sm font-medium text-dark-green">Dr. John Smith</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">Routine checkup - Healthy</td>
-                                <td class="px-6 py-4 text-sm text-gray-700">No medication required</td>
                             </tr>
                         </tbody>
                     </table>
@@ -241,45 +248,52 @@
             </div>
 
             <!-- Quick Stats Section -->
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-                    <div class="bg-dark-green p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                <div class="bg-gradient-to-br from-white to-nude rounded-2xl shadow-2xl p-4 sm:p-6 text-center hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="bg-gradient-to-r from-dark-green to-nut-brown p-2 sm:p-3 rounded-full w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 flex items-center justify-center shadow-lg">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-dark-green">2</h3>
-                    <p class="text-nut-brown">Upcoming Appointments</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-green font-poppins">2</h3>
+                    <p class="text-nut-brown text-sm sm:text-base font-poppins">Upcoming Appointments</p>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-                    <div class="bg-nude p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-nut-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-gradient-to-br from-white to-nude rounded-2xl shadow-2xl p-4 sm:p-6 text-center hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="bg-gradient-to-r from-nut-brown to-dark-green p-2 sm:p-3 rounded-full w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 flex items-center justify-center shadow-lg">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-dark-green">15</h3>
-                    <p class="text-nut-brown">Completed Visits</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-green font-poppins">15</h3>
+                    <p class="text-nut-brown text-sm sm:text-base font-poppins">Completed Visits</p>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-                    <div class="bg-nut-brown p-3 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-gradient-to-br from-white to-nude rounded-2xl shadow-2xl p-4 sm:p-6 text-center sm:col-span-2 lg:col-span-1 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="bg-gradient-to-r from-dark-green to-nut-brown p-2 sm:p-3 rounded-full w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 flex items-center justify-center shadow-lg">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-dark-green">30</h3>
-                    <p class="text-nut-brown">Days Since Last Visit</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-dark-green font-poppins">30</h3>
+                    <p class="text-nut-brown text-sm sm:text-base font-poppins">Days Since Last Visit</p>
                 </div>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-beige
-     text-white py-6 mt-12">
+    <footer class="bg-gradient-to-r from-dark-green to-nut-brown text-white py-8 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-sm">&copy; 2024 HealthMate. All rights reserved.</p>
+            <div class="flex items-center justify-center mb-4">
+                <div class="bg-white bg-opacity-20 p-2 rounded-lg mr-3">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold font-poppins">HealthMate</h3>
+            </div>
+            <p class="text-sm font-poppins opacity-90">&copy; 2024 HealthMate. All rights reserved.</p>
         </div>
     </footer>
 </body>
