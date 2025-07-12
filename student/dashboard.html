@@ -1,6 +1,5 @@
-!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard - HealthMate</title>
@@ -14,10 +13,8 @@
                         'poppins': ['Poppins', 'sans-serif'],
                     },
                     colors: {
-                        'beige': '#F5F5DC',
-                        'dark-green': '#2F4F2F',
-                        'nude': '#E3BC9A',
-                        'nut-brown': '#8B4513',
+                        'dark-blue': '#0A0A23',
+                        'highlight-red': '#F44336',
                     }
                 }
             }
@@ -28,273 +25,377 @@
             font-family: 'Poppins', sans-serif;
         }
         
-        /* Custom scrollbar for better UX */
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
+            background: #1a1a3a;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: #8B4513;
-            border-radius: 4px;
+            background: #F44336;
+            border-radius: 3px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #2F4F2F;
+            background: #d32f2f;
         }
         
-        /* Smooth transitions for all interactive elements */
+        /* Smooth transitions */
         * {
             transition: all 0.2s ease-in-out;
         }
         
-        /* Enhanced focus states */
-        input:focus, select:focus, button:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(47, 79, 47, 0.1);
+        /* Active sidebar link */
+        .sidebar-link.active {
+            background: #F44336;
+            color: white;
         }
         
-        /* Custom button animations */
+        .sidebar-link:hover {
+            background: rgba(244, 67, 54, 0.1);
+            color: #F44336;
+        }
+        
+        /* Enhanced hover effects */
+        .sidebar-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .sidebar-link:hover {
+            transform: translateX(4px);
+            background: rgba(244, 67, 54, 0.1);
+            color: #F44336;
+        }
+        
+        .sidebar-link.active:hover {
+            transform: translateX(4px);
+            background: #F44336;
+            color: white;
+        }
+        
+        /* Button hover effects */
         .btn-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .btn-hover:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 25px rgba(244, 67, 54, 0.3);
         }
         
-        .btn-hover:active {
-            transform: translateY(0);
+        /* Card hover effects */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Mobile responsiveness improvements */
+        @media (max-width: 768px) {
+            .sidebar-link:hover {
+                transform: none;
+            }
+            
+            .sidebar-link.active:hover {
+                transform: none;
+            }
         }
     </style>
 </head>
-<body class="bg-beige min-h-screen bg-gradient-to-br from-beige via-white to-beige">
-    <!-- Fixed Top Navbar -->
-    <nav class="fixed top-0 left-0 right-0 bg-gradient-to-r from-dark-green to-nut-brown text-white shadow-xl z-50 border-b-2 border-nude">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <div class="bg-white bg-opacity-20 p-2 rounded-lg mr-3">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<body class="bg-dark-blue text-white font-poppins"><div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-dark-blue border-r border-gray-700 flex flex-col lg:block hidden">
+            <!-- Logo Section -->
+            <div class="p-6 border-b border-gray-700">
+                <div class="flex flex-col items-center">
+                    <!-- Logo Image -->
+                    <div class="w-16 h-16 bg-highlight-red rounded-xl flex items-center justify-center mb-3 shadow-lg">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                         </svg>
                     </div>
-                    <h1 class="text-2xl font-bold text-white font-poppins">HealthMate</h1>
-                </div>
-                
-                <!-- Welcome Message -->
-                <div class="hidden md:block">
-                    <p class="text-lg font-medium text-white font-poppins">Welcome, Student!</p>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button class="text-white hover:text-nude focus:outline-none p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-all duration-300">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
+                    <!-- Logo Text -->
+                    <div class="text-center">
+                        <h1 class="text-lg font-bold text-white mb-1">HealthMate</h1>
+                        <p class="text-gray-400 text-sm font-medium">Kabarak</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="pt-16 sm:pt-20 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Welcome Section -->
-            <div class="mb-6 sm:mb-8 text-center">
-                <div class="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl border border-nude border-opacity-30">
-                    <h2 class="text-2xl sm:text-4xl font-bold text-dark-green mb-3 font-poppins">Student Dashboard</h2>
-                    <p class="text-base sm:text-lg text-nut-brown font-poppins">Manage your health appointments and records</p>
-                    <div class="w-24 h-1 bg-gradient-to-r from-dark-green to-nut-brown mx-auto mt-4 rounded-full"></div>
-                </div>
-            </div>
-
-            <!-- Dashboard Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
-                <!-- Appointment Booking Section -->
-                <div class="bg-gradient-to-br from-nude to-white rounded-2xl shadow-2xl p-4 sm:p-6 border-l-4 border-dark-green hover:shadow-3xl transition-all duration-500">
-                    <div class="flex flex-col sm:flex-row sm:items-center mb-4 sm:mb-6">
-                        <div class="bg-gradient-to-r from-dark-green to-nut-brown p-2 sm:p-3 rounded-full w-12 h-12 sm:w-auto sm:h-auto mr-0 sm:mr-4 mb-3 sm:mb-0 flex items-center justify-center shadow-lg">
-                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            
+            <!-- Navigation Links -->
+            <nav class="flex-1 p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="sidebar-link active flex items-center px-4 py-3 rounded-lg text-white">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg text-gray-300 hover:text-white">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
-                        </div>
-                        <h3 class="text-xl sm:text-2xl font-semibold text-dark-green font-poppins">Book Appointment</h3>
-                    </div>
-                    
-                    <div class="space-y-3 sm:space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-dark-green mb-1 sm:mb-2 font-poppins">Student Name</label>
-                            <input type="text" class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-dark-green focus:border-transparent bg-white text-sm sm:text-base shadow-sm hover:shadow-md transition-all duration-300 font-poppins" placeholder="Enter your full name">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm font-medium text-dark-green mb-1 sm:mb-2 font-poppins">Doctor</label>
-                            <select class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-dark-green focus:border-transparent bg-white text-sm sm:text-base shadow-sm hover:shadow-md transition-all duration-300 font-poppins">
-                                <option>Choose a doctor...</option>
-                                <option>Dr. John Smith - General Medicine</option>
-                                <option>Dr. Sarah Johnson - Cardiology</option>
-                                <option>Dr. Michael Brown - Pediatrics</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm font-medium text-dark-green mb-1 sm:mb-2 font-poppins">Appointment Date</label>
-                            <input type="date" class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-dark-green focus:border-transparent bg-white text-sm sm:text-base shadow-sm hover:shadow-md transition-all duration-300 font-poppins">
-                        </div>
-                        
-                        <button class="w-full bg-gradient-to-r from-dark-green to-nut-brown text-white py-2 sm:py-3 px-4 sm:px-6 rounded-xl font-semibold btn-hover shadow-lg text-sm sm:text-base font-poppins">
-                            Book Now
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Past Records Section -->
-                <div class="bg-gradient-to-br from-white to-nude rounded-2xl shadow-2xl p-4 sm:p-6 border-l-4 border-nut-brown hover:shadow-3xl transition-all duration-500">
-                    <div class="flex flex-col sm:flex-row sm:items-center mb-4 sm:mb-6">
-                        <div class="bg-gradient-to-r from-nut-brown to-dark-green p-2 sm:p-3 rounded-full w-12 h-12 sm:w-auto sm:h-auto mr-0 sm:mr-4 mb-3 sm:mb-0 flex items-center justify-center shadow-lg">
-                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            Book Appointment
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg text-gray-300 hover:text-white">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
                             </svg>
+                            View Appointments
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg text-gray-300 hover:text-white">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM4.5 19.5a1.5 1.5 0 01-1.5-1.5V6a1.5 1.5 0 011.5-1.5h9a1.5 1.5 0 011.5 1.5v12a1.5 1.5 0 01-1.5 1.5h-9z"></path>
+                            </svg>
+                            Notifications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg text-gray-300 hover:text-white">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- Logout Section -->
+            <div class="p-4 border-t border-gray-700">
+                <a href="#" class="sidebar-link flex items-center px-4 py-3 rounded-lg text-gray-300 hover:text-white">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                    </svg>
+                    Logout
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Top Header -->
+            <header class="bg-dark-blue border-b border-gray-700 p-4 sm:p-6">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <!-- Mobile Menu Button -->
+                        <button class="lg:hidden mr-4 text-white hover:text-highlight-red p-2 rounded-lg hover:bg-gray-800 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                        <div>
+                            <h2 class="text-xl sm:text-2xl font-bold text-white font-poppins">Student Dashboard</h2>
+                            <p class="text-gray-400 mt-1 text-sm sm:text-base font-poppins">Welcome back, John Doe</p>
                         </div>
-                        <h3 class="text-xl sm:text-2xl font-semibold text-dark-green font-poppins">Medical Records</h3>
+                    </div>
+                    <div class="flex items-center space-x-2 sm:space-x-4">
+                        <div class="relative">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 hover:text-highlight-red transition-colors cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM4.5 19.5a1.5 1.5 0 01-1.5-1.5V6a1.5 1.5 0 011.5-1.5h9a1.5 1.5 0 011.5 1.5v12a1.5 1.5 0 01-1.5 1.5h-9z"></path>
+                            </svg>
+                            <span class="absolute -top-1 -right-1 bg-highlight-red text-white text-xs rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center">3</span>
+                        </div>
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-highlight-red rounded-full flex items-center justify-center hover:bg-red-600 transition-colors cursor-pointer">
+                            <span class="text-white font-semibold text-sm sm:text-base">JD</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="flex-1 overflow-y-auto p-4 sm:p-6">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                    <div class="bg-dark-blue border border-gray-700 rounded-lg p-4 sm:p-6 card-hover">
+                        <div class="flex items-center">
+                            <div class="p-2 sm:p-3 bg-highlight-red rounded-lg hover:bg-red-600 transition-colors">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-3 sm:ml-4">
+                                <p class="text-gray-400 text-xs sm:text-sm font-poppins">Upcoming Appointments</p>
+                                <p class="text-xl sm:text-2xl font-bold text-white font-poppins">3</p>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="space-y-3 sm:space-y-4">
-                        <!-- Recent Appointment -->
-                        <div class="bg-white border border-gray-200 rounded-xl p-3 sm:p-4 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                                <h4 class="font-semibold text-dark-green text-sm sm:text-base font-poppins">General Checkup</h4>
-                                <span class="bg-gradient-to-r from-green-400 to-green-600 text-white text-xs font-medium px-3 py-1 rounded-full mt-1 sm:mt-0 self-start shadow-sm">Completed</span>
+                    <div class="bg-dark-blue border border-gray-700 rounded-lg p-4 sm:p-6 card-hover">
+                        <div class="flex items-center">
+                            <div class="p-2 sm:p-3 bg-highlight-red rounded-lg hover:bg-red-600 transition-colors">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
                             </div>
-                            <p class="text-xs sm:text-sm text-nut-brown mb-1 sm:mb-2 font-poppins">Dr. John Smith</p>
-                            <p class="text-xs sm:text-sm text-gray-600 font-poppins">December 15, 2023 • 10:00 AM</p>
-                            <p class="text-xs sm:text-sm text-gray-700 mt-2 font-poppins">Routine health checkup. All vitals normal. Recommended follow-up in 6 months.</p>
+                            <div class="ml-3 sm:ml-4">
+                                <p class="text-gray-400 text-xs sm:text-sm font-poppins">Completed Visits</p>
+                                <p class="text-xl sm:text-2xl font-bold text-white font-poppins">12</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-dark-blue border border-gray-700 rounded-lg p-4 sm:p-6 card-hover sm:col-span-2 lg:col-span-1">
+                        <div class="flex items-center">
+                            <div class="p-2 sm:p-3 bg-highlight-red rounded-lg hover:bg-red-600 transition-colors">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-3 sm:ml-4">
+                                <p class="text-gray-400 text-xs sm:text-sm font-poppins">Days Since Last Visit</p>
+                                <p class="text-xl sm:text-2xl font-bold text-white font-poppins">7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appointment Booking Section -->
+                <div class="bg-dark-blue border border-gray-700 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8">
+                    <h3 class="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6 font-poppins">Book New Appointment</h3>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                        <!-- Calendar Section -->
+                        <div>
+                            <h4 class="text-base sm:text-lg font-medium text-white mb-3 sm:mb-4 font-poppins">Select Date</h4>
+                            <div class="bg-gray-800 rounded-lg p-3 sm:p-4">
+                                <!-- Calendar Header -->
+                                <div class="flex items-center justify-between mb-3 sm:mb-4">
+                                    <button class="text-gray-400 hover:text-highlight-red p-2 rounded-lg hover:bg-gray-700 transition-colors">
+                                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <h5 class="text-white font-semibold text-sm sm:text-base font-poppins">December 2024</h5>
+                                    <button class="text-gray-400 hover:text-highlight-red p-2 rounded-lg hover:bg-gray-700 transition-colors">
+                                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                
+                                <!-- Calendar Grid -->
+                                <div class="grid grid-cols-7 gap-1 mb-2">
+                                    <div class="text-center text-gray-400 text-xs sm:text-sm font-medium py-1 sm:py-2 font-poppins">Sun</div>
+                                    <div class="text-center text-gray-400 text-xs sm:text-sm font-medium py-1 sm:py-2 font-poppins">Mon</div>
+                                    <div class="text-center text-gray-400 text-xs sm:text-sm font-medium py-1 sm:py-2 font-poppins">Tue</div>
+                                    <div class="text-center text-gray-400 text-xs sm:text-sm font-medium py-1 sm:py-2 font-poppins">Wed</div>
+                                    <div class="text-center text-gray-400 text-xs sm:text-sm font-medium py-1 sm:py-2 font-poppins">Thu</div>
+                                    <div class="text-center text-gray-400 text-xs sm:text-sm font-medium py-1 sm:py-2 font-poppins">Fri</div>
+                                    <div class="text-center text-gray-400 text-xs sm:text-sm font-medium py-1 sm:py-2 font-poppins">Sat</div>
+                                </div>
+                                
+                                <div class="grid grid-cols-7 gap-1">
+                                    <div class="text-center text-gray-500 text-xs sm:text-sm py-1 sm:py-2 font-poppins">26</div>
+                                    <div class="text-center text-gray-500 text-xs sm:text-sm py-1 sm:py-2 font-poppins">27</div>
+                                    <div class="text-center text-gray-500 text-xs sm:text-sm py-1 sm:py-2 font-poppins">28</div>
+                                    <div class="text-center text-gray-500 text-xs sm:text-sm py-1 sm:py-2 font-poppins">29</div>
+                                    <div class="text-center text-gray-500 text-xs sm:text-sm py-1 sm:py-2 font-poppins">30</div>
+                                    <div class="text-center text-gray-500 text-xs sm:text-sm py-1 sm:py-2 font-poppins">31</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">1</div>
+                                    
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">2</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">3</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">4</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">5</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">6</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">7</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">8</div>
+                                    
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">9</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">10</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">11</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">12</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">13</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">14</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">15</div>
+                                    
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">16</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">17</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">18</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">19</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">20</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">21</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">22</div>
+                                    
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">23</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">24</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">25</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">26</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">27</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">28</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">29</div>
+                                    
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">30</div>
+                                    <div class="text-center text-white text-xs sm:text-sm py-1 sm:py-2 hover:bg-highlight-red hover:text-white rounded-lg cursor-pointer transition-colors font-poppins">31</div>
+                                    <div class="text-center text-gray-500 text-xs sm:text-sm py-1 sm:py-2 font-poppins">1</div>
+                                    <div class="text-center text-gray-500 text-xs sm:text-sm py-1 sm:py-2 font-poppins">2</div>
+                                    <div class="text-center text-gray-500 text-xs sm:text-sm py-1 sm:py-2 font-poppins">3</div>
+                                    <div class="text-center text-gray-500 text-xs sm:text-sm py-1 sm:py-2 font-poppins">4</div>
+                                    <div class="text-center text-gray-500 text-xs sm:text-sm py-1 sm:py-2 font-poppins">5</div>
+                                </div>
+                            </div>
                         </div>
                         
-                        <!-- Another Appointment -->
-                        <div class="bg-white border border-gray-200 rounded-xl p-3 sm:p-4 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
-                                <h4 class="font-semibold text-dark-green text-sm sm:text-base font-poppins">Blood Test</h4>
-                                <span class="bg-gradient-to-r from-blue-400 to-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full mt-1 sm:mt-0 self-start shadow-sm">Scheduled</span>
-                            </div>
-                            <p class="text-xs sm:text-sm text-nut-brown mb-1 sm:mb-2 font-poppins">Dr. Sarah Johnson</p>
-                            <p class="text-xs sm:text-sm text-gray-600 font-poppins">January 20, 2024 • 02:00 PM</p>
-                            <p class="text-xs sm:text-sm text-gray-700 mt-2 font-poppins">Annual blood work and cholesterol screening.</p>
+                        <!-- Booking Form -->
+                        <div>
+                            <h4 class="text-base sm:text-lg font-medium text-white mb-3 sm:mb-4 font-poppins">Appointment Details</h4>
+                            <form class="space-y-3 sm:space-y-4">
+                                <div>
+                                    <label class="block text-gray-400 text-xs sm:text-sm mb-1 sm:mb-2 font-poppins">Select Doctor</label>
+                                    <select class="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:border-highlight-red focus:outline-none transition-colors text-sm sm:text-base font-poppins">
+                                        <option>Choose a doctor...</option>
+                                        <option>Dr. Sarah Johnson - General Medicine</option>
+                                        <option>Dr. Michael Brown - Cardiology</option>
+                                        <option>Dr. Emily Davis - Pediatrics</option>
+                                        <option>Dr. Robert Wilson - Dermatology</option>
+                                        <option>Dr. Lisa Anderson - Gynecology</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-400 text-xs sm:text-sm mb-1 sm:mb-2 font-poppins">Preferred Time</label>
+                                    <select class="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:border-highlight-red focus:outline-none transition-colors text-sm sm:text-base font-poppins">
+                                        <option>Select time...</option>
+                                        <option>09:00 AM</option>
+                                        <option>10:00 AM</option>
+                                        <option>11:00 AM</option>
+                                        <option>02:00 PM</option>
+                                        <option>03:00 PM</option>
+                                        <option>04:00 PM</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-400 text-xs sm:text-sm mb-1 sm:mb-2 font-poppins">Reason for Visit</label>
+                                    <textarea 
+                                        class="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 sm:px-4 py-2 sm:py-3 text-white focus:border-highlight-red focus:outline-none transition-colors resize-none text-sm sm:text-base font-poppins" 
+                                        rows="4" 
+                                        placeholder="Please describe your symptoms or reason for the appointment..."
+                                    ></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full bg-highlight-red text-white py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-semibold hover:bg-red-600 transition-colors shadow-lg btn-hover text-sm sm:text-base font-poppins">
+                                    Book Appointment
+                                </button>
+                            </form>
                         </div>
-                        
-                        <!-- View All Records Button -->
-                        <button class="w-full bg-gradient-to-r from-nut-brown to-dark-green text-white py-2 sm:py-3 px-4 sm:px-6 rounded-xl font-semibold btn-hover shadow-lg text-sm sm:text-base font-poppins">
-                            View All Records
-                        </button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Previous Appointments Table -->
-            <div class="mb-8 sm:mb-12 bg-white rounded-2xl shadow-2xl overflow-hidden border border-nude border-opacity-30">
-                <div class="px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-200 bg-gradient-to-r from-dark-green to-nut-brown">
-                    <h3 class="text-lg sm:text-xl font-semibold text-white font-poppins">Previous Appointments</h3>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full min-w-full">
-                        <thead class="bg-gradient-to-r from-nut-brown to-dark-green text-white">
-                            <tr>
-                                <th class="px-3 sm:px-6 py-3 sm:py-4 text-left font-semibold text-xs sm:text-sm font-poppins">Doctor Name</th>
-                                <th class="px-3 sm:px-6 py-3 sm:py-4 text-left font-semibold text-xs sm:text-sm font-poppins">Appointment Date</th>
-                                <th class="px-3 sm:px-6 py-3 sm:py-4 text-left font-semibold text-xs sm:text-sm font-poppins">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white hover:bg-gray-50 transition-all duration-300">
-                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-dark-green font-medium text-xs sm:text-sm font-poppins">Dr. John Smith</td>
-                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-gray-700 text-xs sm:text-sm font-poppins">December 15, 2023</td>
-                                <td class="px-3 sm:px-6 py-3 sm:py-4">
-                                    <span class="bg-gradient-to-r from-green-400 to-green-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">Completed</span>
-                                </td>
-                            </tr>
-                            <tr class="bg-beige hover:bg-gray-50 transition-all duration-300">
-                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-dark-green font-medium text-xs sm:text-sm font-poppins">Dr. Sarah Johnson</td>
-                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-gray-700 text-xs sm:text-sm font-poppins">November 28, 2023</td>
-                                <td class="px-3 sm:px-6 py-3 sm:py-4">
-                                    <span class="bg-gradient-to-r from-green-400 to-green-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">Completed</span>
-                                </td>
-                            </tr>
-                            <tr class="bg-white hover:bg-gray-50 transition-all duration-300">
-                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-dark-green font-medium text-xs sm:text-sm font-poppins">Dr. Michael Brown</td>
-                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-gray-700 text-xs sm:text-sm font-poppins">October 12, 2023</td>
-                                <td class="px-3 sm:px-6 py-3 sm:py-4">
-                                    <span class="bg-gradient-to-r from-green-400 to-green-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">Completed</span>
-                                </td>
-                            </tr>
-                            <tr class="bg-beige hover:bg-gray-50 transition-all duration-300">
-                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-dark-green font-medium text-xs sm:text-sm font-poppins">Dr. John Smith</td>
-                                <td class="px-3 sm:px-6 py-3 sm:py-4 text-gray-700 text-xs sm:text-sm font-poppins">September 5, 2023</td>
-                                <td class="px-3 sm:px-6 py-3 sm:py-4">
-                                    <span class="bg-gradient-to-r from-green-400 to-green-600 text-white text-xs font-medium px-3 py-1 rounded-full shadow-sm">Completed</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Quick Stats Section -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <div class="bg-gradient-to-br from-white to-nude rounded-2xl shadow-2xl p-4 sm:p-6 text-center hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="bg-gradient-to-r from-dark-green to-nut-brown p-2 sm:p-3 rounded-full w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 flex items-center justify-center shadow-lg">
-                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl sm:text-2xl font-bold text-dark-green font-poppins">2</h3>
-                    <p class="text-nut-brown text-sm sm:text-base font-poppins">Upcoming Appointments</p>
-                </div>
-                
-                <div class="bg-gradient-to-br from-white to-nude rounded-2xl shadow-2xl p-4 sm:p-6 text-center hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="bg-gradient-to-r from-nut-brown to-dark-green p-2 sm:p-3 rounded-full w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 flex items-center justify-center shadow-lg">
-                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl sm:text-2xl font-bold text-dark-green font-poppins">15</h3>
-                    <p class="text-nut-brown text-sm sm:text-base font-poppins">Completed Visits</p>
-                </div>
-                
-                <div class="bg-gradient-to-br from-white to-nude rounded-2xl shadow-2xl p-4 sm:p-6 text-center sm:col-span-2 lg:col-span-1 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="bg-gradient-to-r from-dark-green to-nut-brown p-2 sm:p-3 rounded-full w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 flex items-center justify-center shadow-lg">
-                        <svg class="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl sm:text-2xl font-bold text-dark-green font-poppins">30</h3>
-                    <p class="text-nut-brown text-sm sm:text-base font-poppins">Days Since Last Visit</p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gradient-to-r from-dark-green to-nut-brown text-white py-8 mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex items-center justify-center mb-4">
-                <div class="bg-white bg-opacity-20 p-2 rounded-lg mr-3">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold font-poppins">HealthMate</h3>
-            </div>
-            <p class="text-sm font-poppins opacity-90">&copy; 2024 HealthMate. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
-</html> 
+                </body>
+    </html>
