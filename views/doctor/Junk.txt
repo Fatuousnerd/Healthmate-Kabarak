@@ -1,0 +1,457 @@
+
+    <div class="doctor-dash">
+
+        <!--Sidebar Start-->
+        <div class="sidebar-doctor">
+            <a href="/" class="side-logo">
+                <img src="../../assets/logo1.png" id="logo" alt="Healthmate Kabarak">
+            </a>
+            <ul class="side-ul">
+                <a href="/views/doctor/doctor.html"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
+                <a href="/views/doctor/appointments.html"><i class="material-symbols-outlined">pill</i>
+                    Prescriptions</a>
+                <a href="/views/doctor/patients.html"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
+                <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
+                    href="/views/doctor/appointments.html"><i class="material-symbols-outlined">av_timer</i>
+                    Appointments</a>
+                <a href="/views/doctor/profile.html"><i class="material-symbols-outlined">settings</i> Settings</a>
+            </ul>
+            <div class="side-logout">
+                <i class="material-symbols-outlined">logout</i>
+                Logout
+            </div>
+        </div>
+        <!--Sidebar End-->
+
+        <!--Main Section Start-->
+        <div class="main-doctor">
+
+            <!--Topbar Start-->
+            <div class="topbar-doctor">
+                <h1>Doctor Dashboard</h1>
+                <div class="topbar-doctor-right">
+                    <button class="themetoggle" id="themetoggle" onclick="toggleTheme()"><i id="themeicon"
+                            class="material-symbols-outlined">brightness_4</i></button>
+                    <p class="date-doctor" id="dateText">Monday, 27 March 2020</p>
+                </div>
+            </div>
+            <!--Topbar End-->
+
+            <!--Welcome Info Start-->
+            <div class="welcome-info">
+                <div class="welcome-text">
+                    <h1>Welcome John!</h1>
+                    <p>You have <span>10 patients</span> remaining today!</p>
+                </div>
+                <img src="../../assets/stethoscope.png" alt="">
+            </div>
+            <!--Welcome Info End-->
+
+            <!--Appointments Start-->
+            <div class="appointments-holder">
+                <h2>Today's Appointments</h2>
+                <div class="appointments-wrapper">
+
+                    <!--Appointment Container Start-->
+                    <div class="appointment-container">
+                        <img src="../../assets/logo1.jpeg" alt="">
+                        <div class="appointment-center">
+                            <p class="patient-name">Augustine Watts</p>
+                            <p class="patient-reason">Consultion</p>
+                        </div>
+                        <div class="appointment-right">
+                            <i class="material-symbols-outlined check">check_circle</i>
+                            <p class="appointment-time">14:00</p>
+                        </div>
+                    </div>
+                    <!--Appointment Container End-->
+                    <!--Appointment Container Start-->
+                    <div class="appointment-container">
+                        <img src="../../assets/logo1.jpeg" alt="">
+                        <div class="appointment-center">
+                            <p class="patient-name">Augustine Watts</p>
+                            <p class="patient-reason">Consultion</p>
+                        </div>
+                        <div class="appointment-right">
+                            <i class="material-symbols-outlined cancel">cancel</i>
+                            <p class="appointment-time">14:00</p>
+                        </div>
+                    </div>
+                    <!--Appointment Container End-->
+                    <!--Appointment Container Start-->
+                    <div class="appointment-container">
+                        <img src="../../assets/logo1.jpeg" alt="">
+                        <div class="appointment-center">
+                            <p class="patient-name">Augustine Watts</p>
+                            <p class="patient-reason">Consultion</p>
+                        </div>
+                        <div class="appointment-right">
+                            <i class="material-symbols-outlined check">check_circle</i>
+                            <p class="appointment-time">14:00</p>
+                        </div>
+                    </div>
+                    <!--Appointment Container End-->
+                    <!--Appointment Container Start-->
+                    <div class="appointment-container">
+                        <img src="../../assets/logo1.jpeg" alt="">
+                        <div class="appointment-center">
+                            <p class="patient-name">Augustine Watts</p>
+                            <p class="patient-reason">Consultion</p>
+                        </div>
+                        <div class="appointment-right">
+                            <i class="material-symbols-outlined cancel">cancel</i>
+                            <p class="appointment-time">14:00</p>
+                        </div>
+                    </div>
+                    <!--Appointment Container End-->
+
+                </div>
+            </div>
+            <!--Appointments End-->
+
+
+        </div>
+        <!--Main Section End-->
+
+        <!--Profile Start-->
+        <div class="profile-doctor">
+            <h2 style="padding-left: 25px; padding-top: 25px;">Profile</h2>
+
+            <!--Profile Top Start-->
+            <div class="profile-top">
+                <img src="../../assets/logo1.jpeg" alt="">
+                <div class="profile-name">Dr. Mary Grey</div>
+                <div class="profile-role"></div>
+            </div>
+            <!--Profile Top End-->
+
+            <!--Profile Top Start-->
+            <div class="profile-notifications">
+                <h2 style="padding-left: 25px;">Notifications</h2>
+                <div class="profile-notifications-wrapper">
+
+                    <!--Notification Container Start-->
+                    <div class="notification-container">
+                        <!-- <img src="../../assets/logo1.jpeg" alt=""> -->
+                        <div class="notification-center">
+                            <p class="notification-reason">Cancelled Appointment</p>
+                            <p class="notification-name">Augustine Watts has cancelled her appointment scheduled for
+                                14:00</p>
+                        </div>
+                        <p class="notification-time">30 Mins</p>
+                    </div>
+                    <!--Appointment Container End-->
+                    <!--Notification Container Start-->
+                    <div class="notification-container">
+                        <!-- <img src="../../assets/logo1.jpeg" alt=""> -->
+                        <div class="notification-center">
+                            <p class="notification-reason">Rescheduled Appointment</p>
+                            <p class="notification-name">John Doe has rescheduled his appointment scheduled for 14:00 to
+                                15:00</p>
+                        </div>
+                        <p class="notification-time">1 Hr</p>
+                    </div>
+                    <!--Appointment Container End-->
+
+
+                </div>
+            </div>
+
+            <!--Profile Top End-->
+
+        </div>
+        <!--Profile End-->
+    </div>
+
+    <style>
+        .doctor-dash {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+        }
+
+        .sidebar-doctor {
+            width: 300px;
+            height: 100%;
+            padding: 25px;
+            padding-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--SecBg);
+        }
+
+        .side-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* width: 100%; */
+            height: 150px;
+        }
+
+        .side-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .side-ul {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .side-ul a {
+            text-decoration: none;
+            color: var(--mainTextColor);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            gap: 25px;
+        }
+
+        .side-ul a:hover {
+            color: var(--Highlight);
+        }
+
+        .side-logout {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .main-doctor {
+            width: calc(100vw - 500px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 15px;
+        }
+
+        .topbar-doctor {
+            width: 100%;
+            flex: 1;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* background: red; */
+        }
+
+        .topbar-doctor-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .welcome-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 50px;
+            flex: 2;
+        }
+
+        .welcome-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            text-align: left;
+        }
+
+        .welcome-text h1 {
+            font-size: 4.5vw;
+            font-weight: 900;
+        }
+
+        .welcome-text p {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .welcome-info img {
+            width: 175px;
+            object-fit: contain;
+        }
+
+        .appointments-holder {
+            flex: 4;
+            background: var(--SecBg);
+            width: 95%;
+            max-height: 700px;
+            border-radius: 10px;
+            padding: 30px;
+            overflow-y: hidden;
+        }
+
+        .appointments-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            /* background: red; */
+            padding: 15px;
+            gap: 25px;
+            overflow-y: scroll;
+        }
+
+        .appointments-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .appointment-container {
+            background: var(--MainBg);
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 30px;
+            border-radius: 20px;
+        }
+
+        .appointment-container img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--Highlight);
+        }
+
+        .appointment-center {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .patient-name {
+            font-size: 2rem;
+            font-weight: 850;
+        }
+
+        .patient-reason {
+            font-size: 1.2rem;
+            font-weight: 250;
+            text-transform: uppercase;
+        }
+
+        .appointment-right {
+            display: flex;
+            gap: 25px;
+        }
+
+        .appointment-time {
+            font-size: 1.2rem;
+        }
+
+        .check {
+            color: green;
+        }
+
+        .cancel {
+            color: red;
+        }
+
+        .profile-doctor {
+            width: 400px;
+            height: 100%;
+            background: var(--SecBg);
+        }
+
+        .profile-top {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            gap: 25px;
+            padding: 15px;
+        }
+
+        .profile-top img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--MainText);
+        }
+
+        .profile-name {
+            font-size: 2.2rem;
+            font-weight: 850;
+            text-transform: capitalize;
+        }
+
+        .profile-notifications {
+            flex: 4;
+            background: var(--SecBg);
+            width: 100%;
+            max-height: 350px;
+            overflow-y: hidden;
+            /* background: red; */
+            border-radius: 10px;
+            /* padding: 30px; */
+        }
+
+        .profile-notifications-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            /* background: blue; */
+            overflow-y: scroll;
+            flex-direction: column;
+            padding: 10px;
+            gap: 10px;
+        }
+
+        .profile-notifications-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .notification-container {
+            background: var(--MainBg);
+            width: 100%;
+            min-height: 100px;
+            display: flex;
+            /* flex-direction: column; */
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-radius: 10px;
+            gap: 15px;
+        }
+
+        .notification-container img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--Highlight);
+        }
+
+        .notification-center {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .notification-name {
+            /* font-size: 1.5rem; */
+            font-weight: 250;
+        }
+
+        .notification-reason {
+            font-size: 1.2rem;
+            font-weight: 850;
+            text-transform: uppercase;
+        }
+
+        .notification-time {
+            font-size: 1rem;
+        }
+    </style>

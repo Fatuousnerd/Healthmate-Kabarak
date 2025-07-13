@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="../../assets/index.js" defer></script>
@@ -20,461 +21,279 @@
     </div>
     <!--Loader End-->
 
-
-    <div class="doctor-dash">
-
-        <!--Sidebar Start-->
-        <div class="sidebar-doctor">
-            <a href="/" class="side-logo">
-                <img src="../../assets/logo1.png" id="logo" alt="Healthmate Kabarak">
-            </a>
-            <ul class="side-ul">
-                <a href="/views/doctor/doctor.html"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
-                <a href="/views/doctor/appointments.html"><i class="material-symbols-outlined">pill</i>
-                    Prescriptions</a>
-                <a href="/views/doctor/patients.html"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
-                <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                    href="/views/doctor/appointments.html"><i class="material-symbols-outlined">av_timer</i>
-                    Appointments</a>
-                <a href="/views/doctor/profile.html"><i class="material-symbols-outlined">settings</i> Settings</a>
-            </ul>
-            <div class="side-logout">
-                <i class="material-symbols-outlined">logout</i>
-                Logout
-            </div>
+    <!--Sidebar Start-->
+    <div class="w-[300px] h-[100vh] flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] ">
+        <a href="/" class="">
+            <img src="../../assets/logo1.png" id="logo" alt="Healthmate Kabarak" class="h-[100px] object-fit ">
+        </a>
+        <ul class="flex flex-col gap-[25px] text-2xl">
+            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
+                href="/views/doctor/doctor.html"><i class="material-symbols-outlined">home_app_logo</i>
+                Dashboard</a>
+            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
+                href="/views/doctor/appointments.html"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
+            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
+                href="/views/doctor/patients.html"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
+            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
+                href="/views/doctor/appointments.html"><i class="material-symbols-outlined">av_timer</i>
+                Appointments</a>
+            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
+                href="/views/doctor/profile.html"><i class="material-symbols-outlined">settings</i> Settings</a>
+        </ul>
+        <div class="flex items-center justify-start gap-[25px]">
+            <i class="material-symbols-outlined">logout</i>
+            Logout
         </div>
-        <!--Sidebar End-->
-
-        <!--Main Section Start-->
-        <div class="main-doctor">
-
-            <!--Topbar Start-->
-            <div class="topbar-doctor">
-                <h1>Doctor Dashboard</h1>
-                <div class="topbar-doctor-right">
-                    <button class="themetoggle" id="themetoggle" onclick="toggleTheme()"><i id="themeicon"
-                            class="material-symbols-outlined">brightness_4</i></button>
-                    <p class="date-doctor" id="dateText">Monday, 27 March 2020</p>
-                </div>
-            </div>
-            <!--Topbar End-->
-
-            <!--Welcome Info Start-->
-            <div class="welcome-info">
-                <div class="welcome-text">
-                    <h1>Welcome John!</h1>
-                    <p>You have <span>10 patients</span> remaining today!</p>
-                </div>
-                <img src="../../assets/stethoscope.png" alt="">
-            </div>
-            <!--Welcome Info End-->
-
-            <!--Appointments Start-->
-            <div class="appointments-holder">
-                <h2>Today's Appointments</h2>
-                <div class="appointments-wrapper">
-
-                    <!--Appointment Container Start-->
-                    <div class="appointment-container">
-                        <img src="../../assets/logo1.jpeg" alt="">
-                        <div class="appointment-center">
-                            <p class="patient-name">Augustine Watts</p>
-                            <p class="patient-reason">Consultion</p>
-                        </div>
-                        <div class="appointment-right">
-                            <i class="material-symbols-outlined check">check_circle</i>
-                            <p class="appointment-time">14:00</p>
-                        </div>
-                    </div>
-                    <!--Appointment Container End-->
-                    <!--Appointment Container Start-->
-                    <div class="appointment-container">
-                        <img src="../../assets/logo1.jpeg" alt="">
-                        <div class="appointment-center">
-                            <p class="patient-name">Augustine Watts</p>
-                            <p class="patient-reason">Consultion</p>
-                        </div>
-                        <div class="appointment-right">
-                            <i class="material-symbols-outlined cancel">cancel</i>
-                            <p class="appointment-time">14:00</p>
-                        </div>
-                    </div>
-                    <!--Appointment Container End-->
-                    <!--Appointment Container Start-->
-                    <div class="appointment-container">
-                        <img src="../../assets/logo1.jpeg" alt="">
-                        <div class="appointment-center">
-                            <p class="patient-name">Augustine Watts</p>
-                            <p class="patient-reason">Consultion</p>
-                        </div>
-                        <div class="appointment-right">
-                            <i class="material-symbols-outlined check">check_circle</i>
-                            <p class="appointment-time">14:00</p>
-                        </div>
-                    </div>
-                    <!--Appointment Container End-->
-                    <!--Appointment Container Start-->
-                    <div class="appointment-container">
-                        <img src="../../assets/logo1.jpeg" alt="">
-                        <div class="appointment-center">
-                            <p class="patient-name">Augustine Watts</p>
-                            <p class="patient-reason">Consultion</p>
-                        </div>
-                        <div class="appointment-right">
-                            <i class="material-symbols-outlined cancel">cancel</i>
-                            <p class="appointment-time">14:00</p>
-                        </div>
-                    </div>
-                    <!--Appointment Container End-->
-
-                </div>
-            </div>
-            <!--Appointments End-->
-
-
-        </div>
-        <!--Main Section End-->
-
-        <!--Profile Start-->
-        <div class="profile-doctor">
-            <h2 style="padding-left: 25px; padding-top: 25px;">Profile</h2>
-
-            <!--Profile Top Start-->
-            <div class="profile-top">
-                <img src="../../assets/logo1.jpeg" alt="">
-                <div class="profile-name">Dr. Mary Grey</div>
-                <div class="profile-role"></div>
-            </div>
-            <!--Profile Top End-->
-
-            <!--Profile Top Start-->
-            <div class="profile-notifications">
-                <h2 style="padding-left: 25px;">Notifications</h2>
-                <div class="profile-notifications-wrapper">
-
-                    <!--Notification Container Start-->
-                    <div class="notification-container">
-                        <!-- <img src="../../assets/logo1.jpeg" alt=""> -->
-                        <div class="notification-center">
-                            <p class="notification-reason">Cancelled Appointment</p>
-                            <p class="notification-name">Augustine Watts has cancelled her appointment scheduled for
-                                14:00</p>
-                        </div>
-                        <p class="notification-time">30 Mins</p>
-                    </div>
-                    <!--Appointment Container End-->
-                    <!--Notification Container Start-->
-                    <div class="notification-container">
-                        <!-- <img src="../../assets/logo1.jpeg" alt=""> -->
-                        <div class="notification-center">
-                            <p class="notification-reason">Rescheduled Appointment</p>
-                            <p class="notification-name">John Doe has rescheduled his appointment scheduled for 14:00 to
-                                15:00</p>
-                        </div>
-                        <p class="notification-time">1 Hr</p>
-                    </div>
-                    <!--Appointment Container End-->
-
-
-                </div>
-            </div>
-
-            <!--Profile Top End-->
-
-        </div>
-        <!--Profile End-->
     </div>
+    <!--Sidebar End-->
+
+    <!--Main Section Start-->
+    <div class="w-[calc(100vw-300px)] h-screen left-[300px] relative flex flex-col gap-[25px] p-[25px]!">
+        <div class="flex flex-1 items-center justify-between gap-[25px] w-full">
+
+            <!--Container Start-->
+            <div
+                class="flex flex-col w-1/3 items-start justify-around h-full border-solid border-[2px] border-[var(--Highlight)] rounded-md p-[25px]! py-[10px]!">
+
+                <div class="flex items-center justify-between w-full">
+                    <div class="flex items-center justify-center gap-[5px]!">
+                        <i class="material-symbols-outlined">av_timer</i>
+                        <p class="text-2xl font-bold">Appointments</p>
+                    </div>
+                    <button class="flex items-center justify-center"><i
+                            class="material-symbols-outlined">more_horiz</i></button>
+                </div>
+
+                <h1 class="text-5xl font-extrabold">50</h1>
+            </div>
+            <!--Container End-->
+
+            <!--Container Start-->
+            <div
+                class="flex flex-col w-2/3 items-start justify-around h-full border-solid border-[2px] border-[var(--Highlight)] rounded-md p-[25px]! py-[10px]!">
+
+                <div class="flex items-center justify-between w-full">
+                    <div class="flex items-center justify-center gap-[5px]!">
+                        <i class="material-symbols-outlined">notifications</i>
+                        <p class="text-2xl font-bold">Notifications</p>
+                    </div>
+                    <button class="flex items-center justify-center"><i
+                            class="material-symbols-outlined">more_horiz</i></button>
+                </div>
+
+                <h1 class="text-5xl font-extrabold">50</h1>
+            </div>
+            <!--Container End-->
+
+        </div>
+        <div class="flex flex-[2] items-center gap-[25px] w-full max-h-[300px]">
+            <!--Container Start-->
+            <div
+                class="flex flex-col w-2/3 items-start h-full border-solid border-[2px] border-[var(--Highlight)] rounded-md p-[10px]! overflow-y-hidden">
+
+                <div class="flex items-center justify-between w-full">
+                    <div class="flex items-center justify-center gap-[5px]!">
+                        <i class="material-symbols-outlined">personal_injury</i>
+                        <p class="text-2xl font-bold">Patients</p>
+                    </div>
+                    <button class="flex items-center justify-center"><i
+                            class="material-symbols-outlined">more_horiz</i></button>
+                </div>
+
+                <div class="flex flex-col w-full overflow-y-auto h-[calc(100%-50px)] gap-[10px] p-[10px]!"
+                    style="scrollbar-width: none;">
+                    <div class="flex bg-[var(--SecBg)] items-center justify-between w-full p-[10px]! rounded-md">
+                        <img src="/assets/logo1.jpeg" alt="" class="w-[50px] h-[50px] rounded-full">
+                        <h1>Anita Doe</h1>
+                        <p>18:00</p>
+                    </div>
+                    <div class="flex bg-[var(--SecBg)] items-center justify-between w-full p-[10px]! rounded-md">
+                        <img src="/assets/logo1.jpeg" alt="" class="w-[50px] h-[50px] rounded-full">
+                        <h1>Anita Doe</h1>
+                        <p>18:00</p>
+                    </div>
+                    <div class="flex bg-[var(--SecBg)] items-center justify-between w-full p-[10px]! rounded-md">
+                        <img src="/assets/logo1.jpeg" alt="" class="w-[50px] h-[50px] rounded-full">
+                        <h1>Anita Doe</h1>
+                        <p>18:00</p>
+                    </div>
+                    <div class="flex bg-[var(--SecBg)] items-center justify-between w-full p-[10px]! rounded-md">
+                        <img src="/assets/logo1.jpeg" alt="" class="w-[50px] h-[50px] rounded-full">
+                        <h1>Anita Doe</h1>
+                        <p>18:00</p>
+                    </div>
+                </div>
+            </div>
+            <!--Container End-->
+            <!--Container Start-->
+            <div
+                class="flex flex-col w-1/3 items-start justify-around h-full border-solid border-[2px] border-[var(--Highlight)] rounded-md p-[10px]!">
+
+                <div class="flex items-center justify-between w-full">
+                    <div class="flex items-center justify-center gap-[5px]!">
+                        <i class="material-symbols-outlined">calendar_today</i>
+                        <p class="text-2xl font-bold">Calendar</p>
+                    </div>
+                    <button class="flex items-center justify-center"><i
+                            class="material-symbols-outlined">more_horiz</i></button>
+                </div>
+
+                <!--Calendar Start-->
+                <div id="calendar"
+                    class="w-full bg-[var(--SecBg)] shadow rounded flex flex-col items-center justify-start p-[5px]!">
+                    <div class="flex w-full items-center justify-between">
+                        <button id="prevMonth" class="font-bold hover:text-[var(--Highlight)] cursor-pointer"><i
+                                class="material-symbols-outlined">arrow_circle_left</i></button>
+                        <h2 id="monthYear" class="font-semibold"></h2>
+                        <button id="nextMonth" class="font-bold hover:text-[var(--Highlight)] cursor-pointer"><i
+                                class="material-symbols-outlined">arrow_circle_right</i></button>
+                    </div>
+                    <div class="grid grid-cols-7  w-full text-center font-bold text-gray-600">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div id="daysGrid" class="grid grid-cols-7 gap-[15px] w-full max-h-11/12 text-center"></div>
+                </div>
+                <!--Calendar End-->
+            </div>
+            <!--Container End-->
+        </div>
+        <div class="flex flex-1 items-center gap-[25px] w-full">
+            <!--Container Start-->
+            <div
+                class="flex flex-col w-2/3 items-start justify-around h-full border-solid border-[2px] border-[var(--Highlight)] rounded-md p-[25px]! py-[10px]!">
+
+            </div>
+            <!--Container End-->
+            <!--Container Start-->
+            <div
+                class="flex flex-col w-1/3 items-start justify-around h-full border-solid border-[2px] border-[var(--Highlight)] rounded-md p-[25px]! py-[10px]!">
+
+                <div class="flex items-center justify-between w-full">
+                    <div class="flex items-center justify-center gap-[5px]!">
+                        <i class="material-symbols-outlined">person</i>
+                        <p class="text-2xl font-bold">Profile</p>
+                    </div>
+                    <button class="flex items-center justify-center"><i
+                            class="material-symbols-outlined">more_horiz</i></button>
+                </div>
+
+                <div class="flex items-center justify-start gap-[25px] w-full">
+                    <img src="/assets/logo1.jpeg" alt=""
+                        class="w-[50px] h-[50px] rounded-full border-[2px] border-[var(--Highlight)]">
+                    <h1 class="text-[1.75rem] font-extrabold">Dr. Mary Doe</h1>
+                </div>
+            </div>
+            <!--Container End-->
+        </div>
+    </div>
+    <!--Main Section End-->
+
+    <script>
+        let current = new Date();
+        let appointments = {}; // store as {'YYYY-MM-DD': ['Patient A', 'Patient B']}
+
+        function renderCalendar(date = new Date()) {
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            const monthYear = document.getElementById("monthYear");
+            monthYear.textContent = `${date.toLocaleString('default', { month: 'long' })} ${year}`;
+
+            const daysGrid = document.getElementById("daysGrid");
+            daysGrid.innerHTML = '';
+
+            // Fill blanks before 1st day
+            for (let i = 0; i < firstDay; i++) {
+                daysGrid.innerHTML += `<div></div>`;
+            }
+
+            // const todayStr = new Date().toISOString().split("T")[0];
+            function formatDateLocal(d) {
+                return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+            }
+            const todayStr = formatDateLocal(new Date());
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const d = new Date(year, month, day);
+                const dayStr = formatDateLocal(d);
+                const isToday = dayStr === todayStr;
+
+                const dayDiv = document.createElement("div");
+                dayDiv.textContent = day;
+                dayDiv.className = isToday ? 'today' : '';
+                dayDiv.onclick = () => showAppointments(dayStr);
+
+                daysGrid.appendChild(dayDiv);
+            }
+        }
+
+        // function showAppointments(dateStr) {
+        //     const panel = document.getElementById("appointmentPanel");
+        //     const displayDate = document.getElementById("selectedDate");
+        //     const list = document.getElementById("appointmentsList");
+
+        //     panel.classList.add("h-[500px]");
+        //     displayDate.textContent = dateStr;
+        //     list.innerHTML = '';
+
+        //     (appointments[dateStr] || []).forEach((a, i) => {
+        //         const li = document.createElement("li");
+        //         li.textContent = a;
+        //         list.appendChild(li);
+        //     });
+
+        //     // Save selected date to window scope
+        //     window.selectedDate = dateStr;
+        // }
+
+        // function addAppointment() {
+        //     const input = document.getElementById("newAppointment");
+        //     const text = input.value.trim();
+        //     if (!text || !window.selectedDate) return;
+
+        //     if (!appointments[window.selectedDate]) appointments[window.selectedDate] = [];
+        //     appointments[window.selectedDate].push(text);
+
+        //     input.value = '';
+        //     showAppointments(window.selectedDate);
+        // }
+
+        document.getElementById("prevMonth").onclick = () => {
+            current.setMonth(current.getMonth() - 1);
+            renderCalendar(current);
+        };
+
+        document.getElementById("nextMonth").onclick = () => {
+            current.setMonth(current.getMonth() + 1);
+            renderCalendar(current);
+        };
+
+        // Init
+        renderCalendar(current);
+    </script>
 
     <style>
-        .doctor-dash {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
+        #daysGrid div {
+            /* padding: 10px; */
+            border-radius: 6px;
+            cursor: pointer;
         }
 
-        .sidebar-doctor {
-            width: 300px;
-            height: 100%;
-            padding: 25px;
-            padding-bottom: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            background: var(--SecBg);
+        #daysGrid div:hover {
+            background-color: var(--MainBg);
         }
 
-        .side-logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* width: 100%; */
-            height: 150px;
-        }
-
-        .side-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .side-ul {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .side-ul a {
-            text-decoration: none;
-            color: var(--mainTextColor);
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            gap: 25px;
-        }
-
-        .side-ul a:hover {
-            color: var(--Highlight);
-        }
-
-        .side-logout {
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-        }
-
-        .main-doctor {
-            width: calc(100vw - 500px);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 15px;
-        }
-
-        .topbar-doctor {
-            width: 100%;
-            flex: 1;
-            padding: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            /* background: red; */
-        }
-
-        .topbar-doctor-right {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-        }
-
-        .welcome-info {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: 0 50px;
-            flex: 2;
-        }
-
-        .welcome-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            text-align: left;
-        }
-
-        .welcome-text h1 {
-            font-size: 4.5vw;
-            font-weight: 900;
-        }
-
-        .welcome-text p {
-            font-size: 1.5rem;
-            font-weight: 400;
-        }
-
-        .welcome-info img {
-            width: 175px;
-            object-fit: contain;
-        }
-
-        .appointments-holder {
-            flex: 4;
-            background: var(--SecBg);
-            width: 95%;
-            max-height: 700px;
-            border-radius: 10px;
-            padding: 30px;
-            overflow-y: hidden;
-        }
-
-        .appointments-wrapper {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            /* background: red; */
-            padding: 15px;
-            gap: 25px;
-            overflow-y: scroll;
-        }
-
-        .appointments-wrapper::-webkit-scrollbar {
-            display: none;
-        }
-
-        .appointment-container {
-            background: var(--MainBg);
-            width: 100%;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 30px;
-            border-radius: 20px;
-        }
-
-        .appointment-container img {
-            width: 75px;
-            height: 75px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid var(--Highlight);
-        }
-
-        .appointment-center {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .patient-name {
-            font-size: 2rem;
-            font-weight: 850;
-        }
-
-        .patient-reason {
-            font-size: 1.2rem;
-            font-weight: 250;
-            text-transform: uppercase;
-        }
-
-        .appointment-right {
-            display: flex;
-            gap: 25px;
-        }
-
-        .appointment-time {
-            font-size: 1.2rem;
-        }
-
-        .check {
-            color: green;
-        }
-
-        .cancel {
-            color: red;
-        }
-
-        .profile-doctor {
-            width: 400px;
-            height: 100%;
-            background: var(--SecBg);
-        }
-
-        .profile-top {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            align-items: center;
-            gap: 25px;
-            padding: 15px;
-        }
-
-        .profile-top img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid var(--MainText);
-        }
-
-        .profile-name {
-            font-size: 2.2rem;
-            font-weight: 850;
-            text-transform: capitalize;
-        }
-
-        .profile-notifications {
-            flex: 4;
-            background: var(--SecBg);
-            width: 100%;
-            max-height: 350px;
-            overflow-y: hidden;
-            /* background: red; */
-            border-radius: 10px;
-            /* padding: 30px; */
-        }
-
-        .profile-notifications-wrapper {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            /* background: blue; */
-            overflow-y: scroll;
-            flex-direction: column;
-            padding: 10px;
-            gap: 10px;
-        }
-
-        .profile-notifications-wrapper::-webkit-scrollbar {
-            display: none;
-        }
-
-        .notification-container {
-            background: var(--MainBg);
-            width: 100%;
-            min-height: 100px;
-            display: flex;
-            /* flex-direction: column; */
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px;
-            border-radius: 10px;
-            gap: 15px;
-        }
-
-        .notification-container img {
-            width: 75px;
-            height: 75px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid var(--Highlight);
-        }
-
-        .notification-center {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .notification-name {
-            /* font-size: 1.5rem; */
-            font-weight: 250;
-        }
-
-        .notification-reason {
-            font-size: 1.2rem;
-            font-weight: 850;
-            text-transform: uppercase;
-        }
-
-        .notification-time {
-            font-size: 1rem;
+        .today {
+            background: var(--Highlight);
+            color: var(--MainText);
         }
     </style>
 </body>
