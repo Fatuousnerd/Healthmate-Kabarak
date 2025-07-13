@@ -30,9 +30,12 @@
             </a>
             <ul class="side-ul">
                 <a href="/"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
-                <a href="/views/doctor/appointments.html"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
+                <a href="/views/doctor/appointments.html"><i class="material-symbols-outlined">pill</i>
+                    Prescriptions</a>
                 <a href="/"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
-                <a href="/"><i class="material-symbols-outlined">av_timer</i> Schedule</a>
+                <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
+                    href="/views/doctor/appointments.html"><i class="material-symbols-outlined">av_timer</i>
+                    Appointments</a>
                 <a href="/views/doctor/profile.html"><i class="material-symbols-outlined">settings</i> Settings</a>
             </ul>
             <div class="side-logout">
@@ -154,7 +157,8 @@
                         <!-- <img src="../../assets/logo1.jpeg" alt=""> -->
                         <div class="notification-center">
                             <p class="notification-reason">Cancelled Appointment</p>
-                            <p class="notification-name">Augustine Watts has cancelled her appointment scheduled for 14:00</p>
+                            <p class="notification-name">Augustine Watts has cancelled her appointment scheduled for
+                                14:00</p>
                         </div>
                         <p class="notification-time">30 Mins</p>
                     </div>
@@ -164,12 +168,13 @@
                         <!-- <img src="../../assets/logo1.jpeg" alt=""> -->
                         <div class="notification-center">
                             <p class="notification-reason">Rescheduled Appointment</p>
-                            <p class="notification-name">John Doe has rescheduled his appointment scheduled for 14:00 to 15:00</p>
+                            <p class="notification-name">John Doe has rescheduled his appointment scheduled for 14:00 to
+                                15:00</p>
                         </div>
                         <p class="notification-time">1 Hr</p>
                     </div>
                     <!--Appointment Container End-->
-                    
+
 
                 </div>
             </div>
@@ -227,6 +232,7 @@
             justify-content: left;
             gap: 25px;
         }
+
         .side-ul a:hover {
             color: var(--Highlight);
         }

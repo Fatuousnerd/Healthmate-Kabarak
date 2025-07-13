@@ -54,8 +54,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0,0,0,.75);
     backdrop-filter: blur(15px);
+    z-index: 99;
 }
 
 .load {
