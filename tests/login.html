@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+  <form action="login.php" method="post" class="bg-white p-6 rounded shadow-md flex flex-col gap-4 w-full max-w-sm">
+    <h2 class="text-xl font-bold text-center">Login</h2>
+    <input type="email" name="email" placeholder="Email" required class="p-2 border rounded">
+    <input type="password" name="password" placeholder="Password" required class="p-2 border rounded">
+    <button type="submit" name="submit" class="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Log In</button>
+
+    <?php if (!empty($_GET['error'])) : ?>
+      <p class="text-red-600 text-sm text-center"><?= htmlspecialchars($_GET['error']) ?></p>
+    <?php endif; ?>
+  </form>
+</body>
+</html>
