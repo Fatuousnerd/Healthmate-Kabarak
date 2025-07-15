@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user']['id'])) {
     header("Location: /tests/login.php");
     exit();
 }
@@ -10,8 +10,8 @@ include 'db.php';
 
 $user = null;
 
-if (isset($_SESSION['user_id'])) {
-    $id = $_SESSION['user_id'];
+if (isset($_SESSION['user']['id'])) {
+    $id = $_SESSION['user']['id'];
 
     $stmt = $conn->prepare("SELECT id, profile_pic, name, email, role, reg_date FROM users WHERE id = ? LIMIT 1");
     $stmt->bind_param("i", $id);

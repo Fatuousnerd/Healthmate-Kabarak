@@ -42,16 +42,16 @@ include '../../includes/getuser.php';
         </a>
         <ul class="flex flex-col gap-[25px] text-2xl">
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/doctor.html"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
+                href="/views/doctor/doctor.php"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/appointments.html"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
+                href="/views/doctor/appointments.php"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/patients.html"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
+                href="/views/doctor/patients.php"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/appointments.html"><i class="material-symbols-outlined">av_timer</i>
+                href="/views/doctor/appointments.php"><i class="material-symbols-outlined">av_timer</i>
                 Appointments</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/profile.html"><i class="material-symbols-outlined">settings</i> Settings</a>
+                href="/views/doctor/profile.php"><i class="material-symbols-outlined">settings</i> Settings</a>
         </ul>
         <a href="/tests/logout.php" class="flex items-center justify-start gap-[25px]">
             <i class="material-symbols-outlined">logout</i>

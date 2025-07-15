@@ -47,6 +47,10 @@ body {
 
 }
 
+button {
+    cursor: pointer;
+}
+
 .loader {
     width: 100vw;
     height: 100vh;

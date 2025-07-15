@@ -1,3 +1,7 @@
+<!-- <?php
+// include '../../includes/fetchappointments.php';
+?> -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,17 +32,17 @@
         </a>
         <ul class="flex flex-col gap-[25px] text-2xl">
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/doctor.html"><i class="material-symbols-outlined">home_app_logo</i>
+                href="/views/doctor/doctor.php"><i class="material-symbols-outlined">home_app_logo</i>
                 Dashboard</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/appointments.html"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
-            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]" href="/views/doctor/patients.html"><i
-                    class="material-symbols-outlined">personal_injury</i> Patients</a>
+                href="/views/doctor/appointments.php"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/appointments.html"><i class="material-symbols-outlined">av_timer</i>
+                href="/views/doctor/patients.php"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
+            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
+                href="/views/doctor/appointments.php"><i class="material-symbols-outlined">av_timer</i>
                 Appointments</a>
-            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]" href="/views/doctor/profile.html"><i
-                    class="material-symbols-outlined">settings</i> Settings</a>
+            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
+                href="/views/doctor/profile.php"><i class="material-symbols-outlined">settings</i> Settings</a>
         </ul>
         <div class="flex items-center justify-start gap-[25px]">
             <i class="material-symbols-outlined">logout</i>
@@ -47,7 +51,7 @@
     </div>
     <!--Sidebar End-->
 
-<!--Topbar Start-->
+    <!--Topbar Start-->
     <div
         class="flex w-[calc(100vw-300px)] h-[70px] left-[300px] fixed items-center justify-between p-[25px]! bg-[var(--SecBg)] border-b-solid border-b-[2px] border-b-[var(--Highlight)]">
         <h1 class="text-3xl font-bold">Appointments</h1>
@@ -90,7 +94,9 @@
         <div id="appointmentPanel"
             class="flex-1 h-[500px] bg-[var(--SecBg)] rounded shadow flex flex-col justify-between p-[25px]! gap-[10px]">
             <h3 class="font-bold mb-2">Appointments on <span id="selectedDate"></span></h3>
-            <ul id="appointmentsList" class="list-disc pl-5 mb-3"></ul>
+            <ul id="appointmentsList" class="w-full h-full overflow-y-auto flex flex-col gap-[10px] items-center">
+                <li class="text-center text-xl list-none ">Click on a date to view appointments.</li>
+            </ul>
             <div class="flex gap-[10px]">
                 <input id="newAppointment" type="text" placeholder="Add new appointment"
                     class="w-full border rounded p-[5px]! placeholder:text-[var(--SecText)]">
@@ -121,7 +127,7 @@
 
     <script>
         let current = new Date();
-        let appointments = {}; // store as {'YYYY-MM-DD': ['Patient A', 'Patient B']}
+        // let appointments = {}; // store as {'YYYY-MM-DD': ['Patient A', 'Patient B']}
 
         function renderCalendar(date = new Date()) {
             const year = date.getFullYear();
@@ -169,11 +175,47 @@
             displayDate.textContent = dateStr;
             list.innerHTML = '';
 
-            (appointments[dateStr] || []).forEach((a, i) => {
-                const li = document.createElement("li");
-                li.textContent = a;
-                list.appendChild(li);
-            });
+            fetch(`../../includes/fetchappointments.php?date=${dateStr}`)
+                .then(res => res.json())
+                .then(data => {
+                    list.innerHTML = '';
+                    if (data.error) {
+                        list.innerHTML = `<li class="text-center text-xl list-none ">${data.error}</li>`;
+                    } else if (data.length === 0) {
+                        list.innerHTML = `<li class="text-center text-xl list-none ">No appointments found.</li>`;
+                    } else {
+                        data.forEach(appointment => {
+                            const card = document.createElement("div");
+                            card.className = "card w-full h-[70px] overflow-hidden flex flex-col transition-all duration-[.5s] ease-in-out";
+                            // card.id = "card";
+                            card.innerHTML = `
+                                                <div class="p-3! bg-[var(--MainBg)] rounded shadow text-sm flex w-full justify-between items-center">
+                                                    <div class="flex flex-col">
+                                                        <div class="font-bold text-2xl">${appointment.student}</div>
+                                                        <div class="text-[var(--SecText)]">${appointment.reason}</div>
+                                                    </div>
+                                                    <div class="flex items-center gap-[15px]">
+                                                        <button onclick="openEdit(this)" class="bg-[var(--Highlight)] text-[var(--MainText)] rounded p-1! cursor-pointer flex items-center justify-center"><i class="material-symbols-outlined">edit</i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="w-full h-[30px] flex items-center justify-center bg-[rgba(0,0,0,0.5)] backdrop-blur-sm">
+                                                    <form action="../../includes/updateappointments.php" method="post" class="flex gap-2">
+                                                        <input type="hidden" name="appointment_id" value="${appointment.id}">
+                                                        <button name="status" value="approved" class="bg-[var(--MainBg)] p-[5px]! flex items-center justify-center rounded"><i class="material-symbols-outlined">check</i></button>
+                                                        <button name="status" value="completed" class="bg-[var(--MainBg)] p-[5px]! flex items-center justify-center rounded"><i class="material-symbols-outlined">done_all</i></button>
+                                                        <button name="status" value="cancelled" class="bg-[var(--MainBg)] p-[5px]! flex items-center justify-center rounded"><i class="material-symbols-outlined">cancel</i></button>
+                                                    </form>
+                                                </div>
+                                            `;
+
+                            list.appendChild(card);
+                        });
+                    }
+                })
+                .catch(() => {
+                    list.innerHTML = `<li class="text-center text-xl list-none ">Error fetching appointments.</li>`;
+                });
+
 
             // Save selected date to window scope
             window.selectedDate = dateStr;
@@ -203,6 +245,11 @@
 
         // Init
         renderCalendar(current);
+
+       function openEdit(button){
+           const card = button.closest(".card");
+           card.classList.toggle("h-[120px]");
+       }
     </script>
 
 
