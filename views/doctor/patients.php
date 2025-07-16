@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,7 +74,7 @@
             <div class="flex items-center justify-between gap-[15px]">
                 <div
                     class="flex items-center justify-center border-solid border-[1.5px] border-[var(--Highlight)] rounded-[5px] ">
-                    <input type="text" name="" id=""
+                    <input type="text" name="" id="searchInput"
                         class="bg-transparent flex-1 p-[5px]! h-full placeholder:text-[var(--MainText)] border-none focus:outline-none focus:border-none"
                         placeholder="Search patients...">
                     <button
@@ -82,108 +86,148 @@
                         class="material-symbols-outlined">add</i></button>
             </div>
 
-            <div class="flex flex-col h-full gap-[5px]! overflow-y-scroll" style="scrollbar-width: none;">
-                <!--Patient Holder Start-->
-                <div
-                    class="flex items-center justify-around p-[10px]! bg-[var(--MainBg)] rounded-md cursor-pointer hover:border-[var(--Highlight)] border-transparent border-solid border-[2px] transition-all hover:duration-300">
-                    <img src="../../assets/logo1.png" alt=""
-                        class="w-[75px] h-[75px] rounded-full object-fit border-[2px] border-[var(--Highlight)] border-solid">
-                    <div class="flex flex-col justify-between items-start ml-[10px]">
-                        <h1 class="text-2xl font-semibold">William Ruto</h1>
-                        <p class="text-sm text-[var(--SecText)]">Age: 30</p>
-                        <p class="text-sm text-[var(--SecText)]">Sex: Male</p>
-                    </div>
-                </div>
-                <!--Patient Holder End-->
-                <!--Patient Holder Start-->
-                <div
-                    class="flex items-center justify-around p-[10px]! bg-[var(--MainBg)] rounded-md cursor-pointer hover:border-[var(--Highlight)] border-transparent border-solid border-[2px] transition-all hover:duration-300">
-                    <img src="../../assets/logo1.png" alt=""
-                        class="w-[75px] h-[75px] rounded-full object-fit border-[2px] border-[var(--Highlight)] border-solid">
-                    <div class="flex flex-col justify-between items-start ml-[10px]">
-                        <h1 class="text-2xl font-semibold">William Ruto</h1>
-                        <p class="text-sm text-[var(--SecText)]">Age: 30</p>
-                        <p class="text-sm text-[var(--SecText)]">Sex: Male</p>
-                    </div>
-                </div>
-                <!--Patient Holder End-->
-                <!--Patient Holder Start-->
-                <div
-                    class="flex items-center justify-around p-[10px]! bg-[var(--MainBg)] rounded-md cursor-pointer hover:border-[var(--Highlight)] border-transparent border-solid border-[2px] transition-all hover:duration-300">
-                    <img src="../../assets/logo1.png" alt=""
-                        class="w-[75px] h-[75px] rounded-full object-fit border-[2px] border-[var(--Highlight)] border-solid">
-                    <div class="flex flex-col justify-between items-start ml-[10px]">
-                        <h1 class="text-2xl font-semibold">William Ruto</h1>
-                        <p class="text-sm text-[var(--SecText)]">Age: 30</p>
-                        <p class="text-sm text-[var(--SecText)]">Sex: Male</p>
-                    </div>
-                </div>
-                <!--Patient Holder End-->
-                <!--Patient Holder Start-->
-                <div
-                    class="flex items-center justify-around p-[10px]! bg-[var(--MainBg)] rounded-md cursor-pointer hover:border-[var(--Highlight)] border-transparent border-solid border-[2px] transition-all hover:duration-300">
-                    <img src="../../assets/logo1.png" alt=""
-                        class="w-[75px] h-[75px] rounded-full object-fit border-[2px] border-[var(--Highlight)] border-solid">
-                    <div class="flex flex-col justify-between items-start ml-[10px]">
-                        <h1 class="text-2xl font-semibold">William Ruto</h1>
-                        <p class="text-sm text-[var(--SecText)]">Age: 30</p>
-                        <p class="text-sm text-[var(--SecText)]">Sex: Male</p>
-                    </div>
-                </div>
-                <!--Patient Holder End-->
-                <!--Patient Holder Start-->
-                <div
-                    class="flex items-center justify-around p-[10px]! bg-[var(--MainBg)] rounded-md cursor-pointer hover:border-[var(--Highlight)] border-transparent border-solid border-[2px] transition-all hover:duration-300">
-                    <img src="../../assets/logo1.png" alt=""
-                        class="w-[75px] h-[75px] rounded-full object-fit border-[2px] border-[var(--Highlight)] border-solid">
-                    <div class="flex flex-col justify-between items-start ml-[10px]">
-                        <h1 class="text-2xl font-semibold">William Ruto</h1>
-                        <p class="text-sm text-[var(--SecText)]">Age: 30</p>
-                        <p class="text-sm text-[var(--SecText)]">Sex: Male</p>
-                    </div>
-                </div>
-                <!--Patient Holder End-->
+            <div id="patientList" class="flex flex-col h-full gap-[5px]! overflow-y-scroll"
+                style="scrollbar-width: none;">
+
             </div>
         </div>
 
-        <div class="flex flex-col flex-[2] bg-[var(--SecBg)]">
-            <div class="flex items-center justify-center gap-[35px] p-[25px]!">
-
-                <img src="../../assets/logo1.png" alt=""
-                    class="w-[100px] h-[100px] rounded-full object-fit border-[2px] border-[var(--Highlight)] border-solid">
-                <div class="flex flex-1 flex-col gap-[15px] w-full">
-                    <div class="flex flex-col">
-                        <p class="text-gray-400 font-light ">Name</p>
-                        <p class="text-xl font-bold ">William Ruto</p>
-                        <hr>
-                    </div>
-                    <div class="flex flex-col">
-                        <p class="text-gray-400 font-light ">Age</p>
-                        <p class="text-xl font-bold ">57</p>
-                        <hr>
-                    </div>
-                    <div class="flex flex-col">
-                        <p class="text-gray-400 font-light ">Phone No.</p>
-                        <p class="text-xl font-bold ">+254 712 345 678</p>
-                        <hr>
-                    </div>
-                    <div class="flex flex-col">
-                        <p class="text-gray-400 font-light ">Address</p>
-                        <p class="text-xl font-bold ">Sugoi, Kenya</p>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-[3] flex-col gap-[15px] p-[10px]!">
-                <textarea name="" id="" placeholder="Add a note..." rows="5" class="w-full h-full p-[10px]! border-solid border-[2px] border-[var(--Highlight)] rounded-md bg-[var(--SecBg)] outline-none placeholder:text-gray-500  "></textarea>
-                <div class="flex w-full items-center justify-around gap-[15px]">
-                    <button class="bg-[var(--Highlight)] p-[10px]! flex-[3] flex items-center justify-center gap-[25px] rounded-md"><i class="material-symbols-outlined">add</i> Add Note</button>
-                    <button class="bg-[var(--Highlight)] p-[10px]! flex-1 flex items-center justify-center gap-[25px] rounded-md"><i class="material-symbols-outlined">delete</i></button>
-                </div>
-            </div>
+        <div id="patientDetail" class="flex flex-col flex-[2] bg-[var(--SecBg)]">
+            <p class="text-gray-400 text-center">Select a patient to view their details</p>
         </div>
     </div>
     <!--Main Section End-->
+
+    <script>
+        let today = new Date();
+
+        function formatDateLocal(d) {
+            return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        }
+        const todayStr = formatDateLocal(new Date());
+
+        function showPatients(todayStr) {
+            const patientList = document.getElementById('patientList');
+            patientList.innerHTML = ''; // Clear existing content
+
+            fetch(`../../includes/fetchpatients.php?date=${todayStr}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        patientList.innerHTML = `<p class="text-red-500">${data.error}</p>`;
+                    } else if (data.length === 0) {
+                        patientList.innerHTML = `<p class="text-gray-500">No patients found for today.</p>`;
+                    } else {
+                        data.forEach(patient => {
+                            const patientItem = document.createElement('button');
+                            patientItem.className = 'flex items-center justify-around p-[10px]! bg-[var(--MainBg)] rounded-md cursor-pointer hover:border-[var(--Highlight)] border-transparent border-solid border-[2px] transition-all hover:duration-300';
+                            patientItem.innerHTML = `
+                                                    <!--Patient Holder Start-->
+                                                        <img src="../../includes/uploads/${patient.profile}" alt="${patient.student} Profile Picture"
+                                                            class="w-[75px] h-[75px] rounded-full object-fit border-[2px] border-[var(--Highlight)] border-solid">
+                                                        <div class="flex flex-col justify-between items-start ml-[10px]">
+                                                            <h1 class="text-2xl font-semibold">${patient.student}</h1>
+                                                            <!--<p class="text-sm text-[var(--SecText)]">Age: ${patient.age}</p>
+                                                            <p class="text-sm text-[var(--SecText)]">Sex: ${patient.sex}</p>-->
+                                                        </div>
+                                                    <!--Patient Holder End-->
+                            `;
+                            patientItem.onclick = () => loadPatients(patient);
+                            patientList.appendChild(patientItem);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching patients:', error));
+        }
+
+        showPatients(todayStr);
+
+        function loadPatients(patient) {
+            const detail = document.getElementById('patientDetail');
+            detail.innerHTML = `
+        <div class="flex items-center justify-center gap-[35px] p-[25px]!">
+            <img src="../../includes/uploads/${patient.profile || 'default.png'}" alt="${patient.student}'s Profile Picture"
+                class="w-[100px] h-[100px] rounded-full object-fit border-[2px] border-[var(--Highlight)] border-solid">
+            <div class="flex flex-1 flex-col gap-[15px] w-full">
+                <div class="flex flex-col">
+                    <p class="text-gray-400 font-light ">Name</p>
+                    <p class="text-xl font-bold ">${patient.student}</p>
+                    <hr>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-gray-400 font-light ">Age</p>
+                    <p class="text-xl font-bold ">${patient.age ?? '--'}</p>
+                    <hr>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-gray-400 font-light ">Phone No.</p>
+                    <p class="text-xl font-bold ">${patient.phone ?? '--'}</p>
+                    <hr>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-gray-400 font-light ">Address</p>
+                    <p class="text-xl font-bold ">${patient.address ?? '--'}</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-[3] flex-col gap-[15px] p-[10px]!">
+            <textarea placeholder="Add a note..." rows="5" id="noteTextarea"
+                class="w-full h-full p-[10px]! border-solid border-[2px] border-[var(--Highlight)] rounded-md bg-[var(--SecBg)] outline-none placeholder:text-gray-500">${patient.note ?? ''}</textarea>
+            <div class="flex w-full items-center justify-around gap-[15px]">
+                <button onclick="saveNote(${patient.student_id}, document.querySelector('#noteTextarea').value)"
+                    class="bg-[var(--Highlight)] p-[10px]! flex-[3] flex items-center justify-center gap-[25px] rounded-md"><i
+                        class="material-symbols-outlined">add</i> Add Note</button>
+                <button
+                    class="bg-[var(--Highlight)] p-[10px]! flex-1 flex items-center justify-center gap-[25px] rounded-md"><i
+                        class="material-symbols-outlined">delete</i></button>
+            </div>
+        </div>
+    `;
+        }
+
+        function saveNote(studentId) {
+            const noteText = document.getElementById('noteTextarea').value;
+
+            if (!noteText.trim()) {
+                alert("Note cannot be empty.");
+                return;
+            }
+
+            fetch('../../includes/updatenote.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    student_id: studentId,
+                    note: noteText
+                })
+            })
+                .then(res => res.text())
+                .then(response => {
+                    // console.log("Note updated:", response);
+                    alert("Note updated successfully!");
+                    showPatients(todayStr);
+                    loadPatients(patient)
+                })
+                .catch(err => console.error("Failed to update note:", err));
+        }
+
+        document.getElementById('searchInput').addEventListener('keyup', function () {
+            const query = this.value.toLowerCase();
+            const patients = document.querySelectorAll('#patientList button');
+
+            patients.forEach(patient => {
+                const name = patient.querySelector('h1')?.textContent.toLowerCase();
+                if (name && name.includes(query)) {
+                    patient.style.display = 'flex';  // or 'block'
+                } else {
+                    patient.style.display = 'none';
+                }
+            });
+        });
+
+
+    </script>
 
 </body>
 

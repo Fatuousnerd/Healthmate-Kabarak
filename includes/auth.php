@@ -33,6 +33,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $stmt = $conn->prepare("INSERT INTO users (name, email, password, role, profile_pic) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("sssss", $name, $email, $hashedPassword, $role, $profilePicName);
 
+    if ($role === 'student') {
+        $studentId = $conn->insert_id;
+
+        $noteStmt = $conn->prepare("INSERT INTO notes (student_id, note) VALUES (?, '')");
+        $noteStmt->bind_param("i", $studentId);
+        $noteStmt->execute();
+        $noteStmt->close();
+    }
+
     if ($stmt->execute()) {
         echo "User registered successfully!";
     } else {

@@ -106,28 +106,10 @@ include '../../includes/getuser.php';
                             class="material-symbols-outlined">more_horiz</i></button>
                 </div>
 
-                <div class="flex flex-col w-full overflow-y-auto h-[calc(100%-50px)] gap-[10px] p-[10px]!"
+                <div id="patientsList"
+                    class="flex flex-col w-full overflow-y-auto h-[calc(100%-50px)] gap-[10px] p-[10px]!"
                     style="scrollbar-width: none;">
-                    <div class="flex bg-[var(--SecBg)] items-center justify-between w-full p-[10px]! rounded-md">
-                        <img src="/assets/logo1.jpeg" alt="" class="w-[50px] h-[50px] rounded-full">
-                        <h1>Anita Doe</h1>
-                        <p>18:00</p>
-                    </div>
-                    <div class="flex bg-[var(--SecBg)] items-center justify-between w-full p-[10px]! rounded-md">
-                        <img src="/assets/logo1.jpeg" alt="" class="w-[50px] h-[50px] rounded-full">
-                        <h1>Anita Doe</h1>
-                        <p>18:00</p>
-                    </div>
-                    <div class="flex bg-[var(--SecBg)] items-center justify-between w-full p-[10px]! rounded-md">
-                        <img src="/assets/logo1.jpeg" alt="" class="w-[50px] h-[50px] rounded-full">
-                        <h1>Anita Doe</h1>
-                        <p>18:00</p>
-                    </div>
-                    <div class="flex bg-[var(--SecBg)] items-center justify-between w-full p-[10px]! rounded-md">
-                        <img src="/assets/logo1.jpeg" alt="" class="w-[50px] h-[50px] rounded-full">
-                        <h1>Anita Doe</h1>
-                        <p>18:00</p>
-                    </div>
+
                 </div>
             </div>
             <!--Container End-->
@@ -192,7 +174,8 @@ include '../../includes/getuser.php';
                 <div class="flex items-center justify-start gap-[25px] w-full">
                     <img src="../../includes/uploads/<?= $user['profile_pic'] ?>" alt=""
                         class="w-[50px] h-[50px] rounded-full border-[2px] border-[var(--Highlight)]">
-                    <h1 class="text-[1.5rem] font-extrabold"><?= $user ? htmlspecialchars($user['name']) : 'Guest' ?></h1>
+                    <h1 class="text-[1.5rem] font-extrabold"><?= $user ? htmlspecialchars($user['name']) : 'Guest' ?>
+                    </h1>
                 </div>
             </div>
             <!--Container End-->
@@ -284,6 +267,43 @@ include '../../includes/getuser.php';
 
         // Init
         renderCalendar(current);
+
+        let today = new Date();
+
+        function formatDateLocal(d) {
+            return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        }
+        const todayStr = formatDateLocal(new Date());
+
+        function showPatients(todayStr) {
+            const patientsList = document.getElementById('patientsList');
+            patientsList.innerHTML = ''; // Clear existing content
+
+            fetch(`../../includes/fetchpatients.php?date=${todayStr}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        patientsList.innerHTML = `<p class="text-red-500">${data.error}</p>`;
+                    } else if (data.length === 0) {
+                        patientsList.innerHTML = `<p class="text-gray-500">No patients found for today.</p>`;
+                    } else {
+                        data.forEach(patient => {
+                            // console.log(data);
+
+                            const patientItem = document.createElement('div');
+                            patientItem.className = 'flex bg-[var(--SecBg)] items-center justify-between w-full p-[10px]! rounded-md';
+                            patientItem.innerHTML = `
+                                                    <img src="../../includes/uploads/${patient.profile}" alt="${patient.student} Profile Picture" class="w-[50px] h-[50px] rounded-full">
+                                                    <h1>${patient.student}</h1>
+                                                    <p>${patient.time}</p>
+                                                    `;
+                            patientsList.appendChild(patientItem);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching patients:', error));
+        }
+        showPatients(todayStr);
     </script>
 
     <style>
