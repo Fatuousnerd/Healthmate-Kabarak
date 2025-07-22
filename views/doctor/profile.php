@@ -82,7 +82,7 @@ include '../../includes/getuser.php';
                 class="flex flex-col flex-1 h-full items-center justify-between border-solid border-[var(--SecText)] border-[2px] rounded-lg p-[20px]!">
                 <h1 class="text-4xl font-bold capitalize "><?= $user ? htmlspecialchars($user['name']) : 'Guest' ?></h1>
                 <img src="../../includes/uploads/<?= $user['profile_pic'] ?>" alt=""
-                    class="w-[175px] h-[175px] rounded-full object-fit border-[5px] border-[var(--Highlight)] border-solid">
+                    class="w-[175px] h-[175px] rounded-full object-cover border-[5px] border-[var(--Highlight)] border-solid">
 
             </div>
             <div

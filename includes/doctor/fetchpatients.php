@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include '../db.php';
 
 header('Content-Type: application/json');
 
@@ -17,12 +17,14 @@ if (!$date) {
     exit;
 }
 
-$stmt = $conn->prepare("SELECT a.id, a.reason, a.status, a.doctor_id, u.name AS student_name 
+$stmt = $conn->prepare("SELECT a.id, a.reason, a.status, a.doctor_id, a.appointment_time, u.name AS student_name, u.id AS student_id, u.profile_pic, n.note, n.last_updated 
                         FROM appointments a
                         JOIN users u ON a.student_id = u.id
+                        LEFT JOIN notes n ON n.student_id = u.id
                         WHERE a.doctor_id = ? 
                         AND a.appointment_date = ? 
-                        AND a.status = 'pending'");
+                        AND a.appointment_time >= CURTIME()
+                        AND a.status = 'confirmed'");
 
 
 $stmt->bind_param("is", $doctor_id, $date);
@@ -33,13 +35,20 @@ $appointments = [];
 while ($row = $result->fetch_assoc()) {
     $appointments[] = [
         'id' => $row['id'],
+        'student_id' => $row['student_id'],
         'reason' => $row['reason'],
         'student' => $row['student_name'],
         'status' => $row['status'],
-        'doctor_id' => $row['doctor_id'] // ✅ Add this!
+        'doctor_id' => $row['doctor_id'],
+        'time' => $row['appointment_time'],
+        'profile' => $row['profile_pic'],
+        'note' => $row['note'],
+        'last_updated' => $row['last_updated']
     ];
 
 
 }
 
 echo json_encode($appointments);
+
+?>

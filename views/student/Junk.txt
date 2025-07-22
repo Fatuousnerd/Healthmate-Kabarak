@@ -1,10 +1,18 @@
+<!-- <?php
+include '../../includes/getuser.php';
+
+
+?> -->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard - HealthMate</title>
-    <!-- Use Tailwind for layout and a few colors only -->
+    <script src="../../assets/script.js" defer></script>
+    <link rel="stylesheet" href="../../assets/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Basic student-style CSS for the dashboard */
@@ -14,6 +22,7 @@
             color: #fff;
             margin: 0;
         }
+
         .sidebar {
             background: #0A0A23;
             border-right: 1px solid #333;
@@ -21,16 +30,19 @@
             min-height: 100vh;
             padding: 20px 0;
         }
+
         .sidebar h1 {
             font-size: 1.3rem;
             font-weight: bold;
             margin-bottom: 2px;
         }
+
         .sidebar p {
             color: #aaa;
             font-size: 0.9rem;
             margin-bottom: 20px;
         }
+
         .sidebar a {
             display: block;
             color: #ccc;
@@ -39,25 +51,31 @@
             text-decoration: none;
             margin-bottom: 6px;
         }
-        .sidebar a.active, .sidebar a:hover {
+
+        .sidebar a.active,
+        .sidebar a:hover {
             background: #F44336;
             color: #fff;
         }
+
         .main {
             flex: 1;
             padding: 24px;
         }
+
         .topbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
         }
+
         .stats {
             display: flex;
             gap: 16px;
             margin-bottom: 24px;
         }
+
         .stat-card {
             background: #181836;
             border: 1px solid #333;
@@ -65,9 +83,11 @@
             padding: 18px 20px;
             flex: 1;
         }
+
         .stat-card span {
             font-size: 2rem;
         }
+
         .section {
             background: #181836;
             border: 1px solid #333;
@@ -75,11 +95,13 @@
             padding: 20px;
             margin-bottom: 24px;
         }
+
         .appointments-cards {
             display: flex;
             flex-wrap: wrap;
             gap: 16px;
         }
+
         .appointment-card {
             background: #23234a;
             border: 1px solid #333;
@@ -87,44 +109,62 @@
             padding: 16px;
             width: 300px;
         }
+
         .recent-activity {
             font-size: 0.95rem;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
         }
-        th, td {
+
+        th,
+        td {
             padding: 10px;
             border-bottom: 1px solid #333;
             text-align: left;
         }
+
         th {
             background: #23234a;
             color: #F44336;
         }
+
         @media (max-width: 900px) {
-            .stats, .appointments-cards {
+
+            .stats,
+            .appointments-cards {
                 flex-direction: column;
             }
+
             .sidebar {
                 display: none;
             }
+
             .main {
                 padding: 10px;
             }
         }
     </style>
 </head>
+
 <body>
+
+    <!--Loader Start-->
+    <div class="loader" id="loader">
+        <div class="load" id="load"></div>
+    </div>
+    <!--Loader End-->
+
     <div style="display: flex; min-height: 100vh;">
         <!-- Sidebar -->
         <div class="sidebar">
             <div style="text-align: center; margin-bottom: 20px;">
-                <div style="width: 60px; height: 60px; background: #F44336; border-radius: 12px; margin: 0 auto 10px auto; display: flex; align-items: center; justify-content: center;">
-                    <span style="font-size: 2rem; color: #fff;">❤️</span>
-                </div>
+                <a href="/" class="">
+            <img src="../../assets/logo1.png" id="logo" alt="Healthmate Kabarak" class="h-[100px] object-fit ">
+        </a>
                 <h1>HealthMate</h1>
                 <p>Kabarak</p>
             </div>
@@ -144,7 +184,8 @@
                     <p style="color: #aaa;">Welcome back, John Doe</p>
                 </div>
                 <div style="display: flex; align-items: center; gap: 12px;">
-                    <span style="background: #F44336; color: #fff; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-weight: bold;">JD</span>
+                    <img src="../../assets/logo1.png" alt="Healthmate Kabarak"
+                        style="width: 40px; height: 40px; border-radius: 50%;">
                 </div>
             </div>
             <!-- Stats -->
@@ -171,11 +212,13 @@
                 <form id="book-form">
                     <div style="margin-bottom: 10px;">
                         <label>Select Date:</label><br>
-                        <input type="date" id="appointment-date" style="padding: 8px; border-radius: 6px; border: 1px solid #333; background: #23234a; color: #fff;">
+                        <input type="date" id="appointment-date"
+                            style="padding: 8px; border-radius: 6px; border: 1px solid #333; background: #23234a; color: #fff;">
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label>Select Doctor:</label><br>
-                        <select id="doctor-select" style="padding: 8px; border-radius: 6px; border: 1px solid #333; background: #23234a; color: #fff; width: 100%;">
+                        <select id="doctor-select"
+                            style="padding: 8px; border-radius: 6px; border: 1px solid #333; background: #23234a; color: #fff; width: 100%;">
                             <option>Choose a doctor...</option>
                             <option>Dr. Sarah Johnson - General Medicine</option>
                             <option>Dr. Michael Brown - Cardiology</option>
@@ -186,7 +229,8 @@
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label>Preferred Time:</label><br>
-                        <select id="time-select" style="padding: 8px; border-radius: 6px; border: 1px solid #333; background: #23234a; color: #fff; width: 100%;">
+                        <select id="time-select"
+                            style="padding: 8px; border-radius: 6px; border: 1px solid #333; background: #23234a; color: #fff; width: 100%;">
                             <option>Select time...</option>
                             <option>09:00 AM</option>
                             <option>10:00 AM</option>
@@ -198,9 +242,11 @@
                     </div>
                     <div style="margin-bottom: 10px;">
                         <label>Reason for Visit:</label><br>
-                        <textarea id="reason-input" rows="3" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #23234a; color: #fff;"></textarea>
+                        <textarea id="reason-input" rows="3"
+                            style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #23234a; color: #fff;"></textarea>
                     </div>
-                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded" style="margin-top: 8px;">Book Appointment</button>
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded"
+                        style="margin-top: 8px;">Book Appointment</button>
                 </form>
             </div>
             <!-- Upcoming Appointments Cards -->
@@ -208,21 +254,27 @@
                 <h3 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">Upcoming Appointments</h3>
                 <div class="appointments-cards" id="appointments-cards">
                     <div class="appointment-card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                            <span style="background: #F44336; color: #fff; border-radius: 8px; padding: 6px 10px;">👩‍⚕️</span>
-                            <span style="background: #2ecc40; color: #fff; border-radius: 8px; padding: 4px 10px; font-size: 0.8rem;">Confirmed</span>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span
+                                style="background: #F44336; color: #fff; border-radius: 8px; padding: 6px 10px;">👩‍⚕️</span>
+                            <span
+                                style="background: #2ecc40; color: #fff; border-radius: 8px; padding: 4px 10px; font-size: 0.8rem;">Confirmed</span>
                         </div>
                         <div style="font-weight: bold;">Dr. Sarah Johnson</div>
                         <div style="color: #aaa; font-size: 0.95rem;">General Medicine</div>
-                        <div style="color: #ccc; font-size: 0.95rem; margin: 6px 0;">📅 December 20, 2024 • 10:00 AM</div>
-                        <div style="color: #ccc; font-size: 0.95rem;">Routine health checkup and blood pressure monitoring.</div>
+                        <div style="color: #ccc; font-size: 0.95rem; margin: 6px 0;">📅 December 20, 2024 • 10:00 AM
+                        </div>
+                        <div style="color: #ccc; font-size: 0.95rem;">Routine health checkup and blood pressure
+                            monitoring.</div>
                     </div>
                 </div>
             </div>
             <!-- Recent Activity -->
             <div class="section recent-activity">
                 <h3 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">Recent Activity</h3>
-                <div>- Appointment confirmed with Dr. Johnson <span style="color: #aaa; font-size: 0.9rem;">(2 hours ago)</span></div>
+                <div>- Appointment confirmed with Dr. Johnson <span style="color: #aaa; font-size: 0.9rem;">(2 hours
+                        ago)</span></div>
                 <div>- Medical records updated <span style="color: #aaa; font-size: 0.9rem;">(1 day ago)</span></div>
                 <div>- Prescription renewed <span style="color: #aaa; font-size: 0.9rem;">(3 days ago)</span></div>
             </div>
@@ -245,22 +297,34 @@
                                 <td>Dr. Sarah Johnson</td>
                                 <td>Dec 20, 2024 • 10:00 AM</td>
                                 <td>General Checkup</td>
-                                <td><span style="background: #2ecc40; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 0.8rem;">Confirmed</span></td>
-                                <td><button style="color: #F44336; background: none; border: none; cursor: pointer;">Reschedule</button></td>
+                                <td><span
+                                        style="background: #2ecc40; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 0.8rem;">Confirmed</span>
+                                </td>
+                                <td><button
+                                        style="color: #F44336; background: none; border: none; cursor: pointer;">Reschedule</button>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Dr. Michael Brown</td>
                                 <td>Dec 22, 2024 • 2:30 PM</td>
                                 <td>Cardiology</td>
-                                <td><span style="background: #ffb300; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 0.8rem;">Pending</span></td>
-                                <td><button style="color: #F44336; background: none; border: none; cursor: pointer;">Cancel</button></td>
+                                <td><span
+                                        style="background: #ffb300; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 0.8rem;">Pending</span>
+                                </td>
+                                <td><button
+                                        style="color: #F44336; background: none; border: none; cursor: pointer;">Cancel</button>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Dr. Emily Davis</td>
                                 <td>Dec 25, 2024 • 11:00 AM</td>
                                 <td>Follow-up</td>
-                                <td><span style="background: #2ecc40; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 0.8rem;">Confirmed</span></td>
-                                <td><button style="color: #F44336; background: none; border: none; cursor: pointer;">Reschedule</button></td>
+                                <td><span
+                                        style="background: #2ecc40; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 0.8rem;">Confirmed</span>
+                                </td>
+                                <td><button
+                                        style="color: #F44336; background: none; border: none; cursor: pointer;">Reschedule</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -271,10 +335,10 @@
     <script>
         // Sidebar active link logic (student style)
         var sidebarLinks = document.querySelectorAll('.sidebar a');
-        sidebarLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
+        sidebarLinks.forEach(function (link) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
-                sidebarLinks.forEach(function(l) { l.classList.remove('active'); });
+                sidebarLinks.forEach(function (l) { l.classList.remove('active'); });
                 this.classList.add('active');
             });
         });
@@ -288,7 +352,7 @@
             dateInput.value = yyyy + '-' + mm + '-' + dd;
         }
         // Booking form logic
-        document.getElementById('book-form').addEventListener('submit', function(e) {
+        document.getElementById('book-form').addEventListener('submit', function (e) {
             e.preventDefault();
             var doctor = document.getElementById('doctor-select').value;
             var time = document.getElementById('time-select').value;
@@ -339,13 +403,14 @@
             notification.style.zIndex = 1000;
             notification.innerHTML = '✔️ Appointment booked successfully!';
             document.body.appendChild(notification);
-            setTimeout(function() {
+            setTimeout(function () {
                 notification.style.opacity = '0';
-                setTimeout(function() {
+                setTimeout(function () {
                     document.body.removeChild(notification);
                 }, 400);
             }, 2000);
         }
     </script>
 </body>
-</html> 
+
+</html>

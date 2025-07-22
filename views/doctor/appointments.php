@@ -175,7 +175,7 @@
             displayDate.textContent = dateStr;
             list.innerHTML = '';
 
-            fetch(`../../includes/fetchappointments.php?date=${dateStr}`)
+            fetch(`../../includes/doctor/fetchappointments.php?date=${dateStr}`)
                 .then(res => res.json())
                 .then(data => {
                     list.innerHTML = '';
