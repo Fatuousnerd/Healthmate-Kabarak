@@ -1,5 +1,11 @@
 <?php
+
 include '../../includes/getuser.php';
+
+if (!$user || $user['role'] !== 'admin') {
+    header("Location: ../../auth/login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

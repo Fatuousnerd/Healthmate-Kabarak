@@ -1,7 +1,11 @@
 <?php
+
 include '../../includes/getuser.php';
 
-
+if (!$user || $user['role'] !== 'doctor') {
+    header("Location: ../../auth/login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

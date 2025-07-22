@@ -1,6 +1,12 @@
-<!-- <?php
-// include '../../includes/fetchappointments.php';
-?> -->
+<?php
+
+include '../../includes/getuser.php';
+
+if (!$user || $user['role'] !== 'doctor') {
+    header("Location: ../../auth/login.php");
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">

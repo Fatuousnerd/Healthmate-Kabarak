@@ -1,14 +1,11 @@
 <?php
-// define('ROOT_PATH', __DIR__ . '/../');
 
 include '../../includes/getuser.php';
 
-
-
-// if (!$user) {
-//     header("Location: login.php");
-//     exit();
-// }
+if (!$user || $user['role'] !== 'doctor') {
+    header("Location: ../../auth/login.php");
+    exit();
+}
 ?>
 <!-- <pre><?php print_r($user); ?></pre> -->
 
