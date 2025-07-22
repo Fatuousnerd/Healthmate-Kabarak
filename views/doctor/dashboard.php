@@ -27,14 +27,21 @@ include '../../includes/getuser.php';
     </div>
     <!--Loader End-->
 
+    <!--Mobile Hamburger Menu-->
+    <button onclick="toggleSide()" id="side-btn"
+        class="fixed flex lg:hidden items-center justify-center bg-[var(--MainText)] text-[var(--SecBg)] p-[20px]! w-[50px] h-[50px] rounded-full mt-[15px]! ml-[15px]! z-[99] "><i
+            class="material-symbols-outlined">menu</i></button>
+    <!--Mobile Hamburger Menu-->
+
     <!--Sidebar Start-->
-    <div class="w-[300px] h-[100vh] flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] ">
+    <div id="sidebar"
+        class="w-[300px] h-[100vh] fixed hidden lg:flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] z-[98] duration-300 transition-all">
         <a href="/" class="">
             <img src="../../assets/logo1.png" id="logo" alt="Healthmate Kabarak" class="h-[100px] object-fit ">
         </a>
         <ul class="flex flex-col gap-[25px] text-2xl">
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/doctor.php"><i class="material-symbols-outlined">home_app_logo</i>
+                href="/views/doctor/dashboard.php"><i class="material-symbols-outlined">home_app_logo</i>
                 Dashboard</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/appointments.php"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
@@ -46,7 +53,7 @@ include '../../includes/getuser.php';
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/profile.php"><i class="material-symbols-outlined">settings</i> Settings</a>
         </ul>
-        <a href="/tests/logout.php" class="flex items-center justify-start gap-[25px]">
+        <a href="/auth/logout.php" class="flex items-center justify-start gap-[25px]">
             <i class="material-symbols-outlined">logout</i>
             Logout
         </a>
@@ -54,12 +61,13 @@ include '../../includes/getuser.php';
     <!--Sidebar End-->
 
     <!--Main Section Start-->
-    <div class="w-[calc(100vw-300px)] h-screen left-[300px] relative flex flex-col gap-[25px] p-[25px]!">
-        <div class="flex flex-1 items-center justify-between gap-[25px] w-full">
+    <div
+        class="w-full lg:w-[calc(100vw-300px)] h-[150vh] lg:h-screen lg:left-[300px] relative flex flex-col justify-around gap-[25px] p-[25px]!">
+        <div class="flex flex-col lg:flex-row lg:flex-1 items-center justify-between gap-[25px] w-full">
 
             <!--Container Start-->
             <div
-                class="flex flex-col w-1/3 items-start justify-around h-full border-solid border-[2px] border-[var(--SecBg)] rounded-md p-[25px]! py-[10px]!">
+                class="flex flex-col w-full lg:w-1/3 items-start justify-around h-[200px] lg:h-full border-solid border-[2px] border-[var(--SecBg)] rounded-md p-[25px]! py-[10px]!">
 
                 <div class="flex items-center justify-between w-full">
                     <div class="flex items-center justify-center gap-[5px]!">
@@ -76,7 +84,7 @@ include '../../includes/getuser.php';
 
             <!--Container Start-->
             <div
-                class="flex flex-col w-2/3 items-start justify-around h-full border-solid border-[2px] border-[var(--SecBg)] rounded-md p-[25px]! py-[10px]!">
+                class="flex flex-col w-full lg:w-2/3 items-start justify-around h-[200px] lg:h-full border-solid border-[2px] border-[var(--SecBg)] rounded-md p-[25px]! py-[10px]!">
 
                 <div class="flex items-center justify-between w-full">
                     <div class="flex items-center justify-center gap-[5px]!">
@@ -92,10 +100,11 @@ include '../../includes/getuser.php';
             <!--Container End-->
 
         </div>
-        <div class="flex flex-[2] items-center gap-[25px] w-full max-h-[300px]">
+
+        <div class="flex flex-col-reverse lg:flex-row lg:flex-[2] items-center gap-[25px] w-full lg:max-h-[300px]">
             <!--Container Start-->
             <div
-                class="flex flex-col w-2/3 items-start h-full border-solid border-[2px] border-[var(--SecBg)] rounded-md p-[10px]! overflow-y-hidden">
+                class="flex flex-col w-full lg:w-2/3 items-start h-[300px] lg:h-full border-solid border-[2px] border-[var(--SecBg)] rounded-md p-[10px]! overflow-y-hidden ">
 
                 <div class="flex items-center justify-between w-full">
                     <div class="flex items-center justify-center gap-[5px]!">
@@ -107,7 +116,7 @@ include '../../includes/getuser.php';
                 </div>
 
                 <div id="patientsList"
-                    class="flex flex-col w-full overflow-y-auto h-[calc(100%-50px)] gap-[10px] p-[10px]!"
+                    class="flex flex-col w-full overflow-y-auto lg:h-[calc(100%-50px)] gap-[10px] p-[10px]!"
                     style="scrollbar-width: none;">
 
                 </div>
@@ -115,7 +124,7 @@ include '../../includes/getuser.php';
             <!--Container End-->
             <!--Container Start-->
             <div
-                class="flex flex-col w-1/3 items-start justify-around h-full border-solid border-[2px] border-[var(--SecBg)] rounded-md p-[10px]!">
+                class="flex flex-col w-full lg:w-1/3 items-start justify-around h-[300px] lg:h-full border-solid border-[2px] border-[var(--SecBg)] rounded-md p-[10px]!">
 
                 <div class="flex items-center justify-between w-full">
                     <div class="flex items-center justify-center gap-[5px]!">
@@ -151,16 +160,17 @@ include '../../includes/getuser.php';
             </div>
             <!--Container End-->
         </div>
-        <div class="flex flex-1 items-center gap-[25px] w-full">
+
+        <div class="flex lg:flex-1 items-center gap-[25px] w-full">
             <!--Container Start-->
             <div
-                class="flex flex-col w-2/3 items-start justify-around h-full border-solid border-[2px] border-[var(--SecBg)] rounded-md p-[25px]! py-[10px]!">
+                class="hidden lg:flex flex-col w-2/3 items-start justify-around h-full border-solid border-[2px] border-[var(--SecBg)] rounded-md p-[25px]! py-[10px]!">
 
             </div>
             <!--Container End-->
             <!--Container Start-->
             <div
-                class="flex flex-col w-1/3 items-start justify-around h-full border-solid border-[2px] border-[var(--SecBg)] rounded-md p-[25px]! py-[10px]!">
+                class="flex flex-col w-full lg:w-1/3 items-start justify-around h-full border-solid border-[2px] border-[var(--SecBg)] rounded-md p-[25px]! py-[10px]!">
 
                 <div class="flex items-center justify-between w-full">
                     <div class="flex items-center justify-center gap-[5px]!">
@@ -223,37 +233,6 @@ include '../../includes/getuser.php';
                 daysGrid.appendChild(dayDiv);
             }
         }
-
-        // function showAppointments(dateStr) {
-        //     const panel = document.getElementById("appointmentPanel");
-        //     const displayDate = document.getElementById("selectedDate");
-        //     const list = document.getElementById("appointmentsList");
-
-        //     panel.classList.add("h-[500px]");
-        //     displayDate.textContent = dateStr;
-        //     list.innerHTML = '';
-
-        //     (appointments[dateStr] || []).forEach((a, i) => {
-        //         const li = document.createElement("li");
-        //         li.textContent = a;
-        //         list.appendChild(li);
-        //     });
-
-        //     // Save selected date to window scope
-        //     window.selectedDate = dateStr;
-        // }
-
-        // function addAppointment() {
-        //     const input = document.getElementById("newAppointment");
-        //     const text = input.value.trim();
-        //     if (!text || !window.selectedDate) return;
-
-        //     if (!appointments[window.selectedDate]) appointments[window.selectedDate] = [];
-        //     appointments[window.selectedDate].push(text);
-
-        //     input.value = '';
-        //     showAppointments(window.selectedDate);
-        // }
 
         document.getElementById("prevMonth").onclick = () => {
             current.setMonth(current.getMonth() - 1);

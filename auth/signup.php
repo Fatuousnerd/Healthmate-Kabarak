@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
         if (in_array($fileExt, $allowed)) {
             $newName = uniqid('img_', true) . '.' . $fileExt;
-            $uploadDir = __DIR__ . '/uploads/';
+            $uploadDir = __DIR__ . '/../includes/uploads/';
 
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0755, true);
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     
     <div class="flex w-full h-screen items-center justify-center">
         <form action="signup.php" method="post" enctype="multipart/form-data"
-            class="flex flex-col p-[25px]! rounded-md bg-[var(--SecBg)] w-[500px] items-center gap-[25px] ">
+            class="flex flex-col p-[25px]! rounded-md bg-[var(--SecBg)] w-[350px] lg:w-[500px] items-center gap-[25px] ">
             <h2 class="text-[4rem] font-bold text-center">Register</h2>
 
             <input type="file" name="profile_pic" accept="image/*"

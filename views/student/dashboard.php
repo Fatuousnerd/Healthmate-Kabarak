@@ -25,8 +25,15 @@ include '../../includes/getuser.php';
     </div>
     <!--Loader End-->
 
+    <!--Mobile Hamburger Menu-->
+    <button onclick="toggleSide()" id="side-btn"
+        class="fixed flex lg:hidden items-center justify-center bg-[var(--MainText)] text-[var(--SecBg)] p-[20px]! w-[50px] h-[50px] rounded-full mt-[15px]! ml-[15px]! z-[99] "><i
+            class="material-symbols-outlined">menu</i></button>
+    <!--Mobile Hamburger Menu-->
+
     <!--Sidebar Start-->
-    <div class="w-[300px] h-[100vh] flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] ">
+    <div id="sidebar"
+        class="w-[300px] h-[100vh] hidden lg:flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] z-[98] ">
         <a href="/" class="">
             <img src="../../assets/logo1.png" id="logo" alt="Healthmate Kabarak" class="h-[100px] object-fit ">
         </a>
@@ -34,9 +41,10 @@ include '../../includes/getuser.php';
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/student/dashboard.php"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/appointments.php"><i class="material-symbols-outlined">notifications</i> Notifications</a>
+                href="/views/doctor/appointments.php"><i class="material-symbols-outlined">notifications</i>
+                Notifications</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/profile.php"><i class="material-symbols-outlined">settings</i> Settings</a>
+                href="/views/student/profile.php"><i class="material-symbols-outlined">settings</i> Settings</a>
         </ul>
         <a href="/auth/logout.php" class="flex items-center justify-start gap-[25px]">
             <i class="material-symbols-outlined">logout</i>
@@ -47,8 +55,9 @@ include '../../includes/getuser.php';
 
     <!--Topbar Start-->
     <div
-        class="flex w-[calc(100vw-300px)] h-[70px] left-[300px] fixed items-center justify-between p-[25px]! bg-[var(--SecBg)] border-b-solid border-b-[2px] border-b-[var(--Highlight)] z-[99]">
-        <h1 class="text-3xl font-bold">Dashboard</h1>
+        class="flex w-full lg:w-[calc(100vw-300px)] h-[70px] lg:left-[300px] fixed items-center justify-between p-[25px]! bg-[var(--SecBg)] border-b-solid border-b-[2px] border-b-[var(--Highlight)] z-[97]">
+        <h1 class="text-3xl font-bold hidden lg:flex ">Dashboard</h1>
+        <h1 class="text-3xl font-bold lg:hidden flex "></h1>
         <div class="flex items-center justify-center gap-[25px] ">
             <p id="timeText" class="font-bold">00:00</p>
             <a class="hover:text-[var(--Highlight)] flex items-center justify-center" href=""><i
@@ -60,8 +69,8 @@ include '../../includes/getuser.php';
     <!--Topbar End-->
 
     <div
-        class="flex flex-col w-[calc(100vw-300px)] min-h-[calc(100vh-100px)] h-[125vh] relative top-[100px] left-[300px] p-[30px]! gap-[50px]">
-        <div class="flex flex-1 gap-[25px]">
+        class="flex flex-col w-full lg:w-[calc(100vw-300px)] min-h-[calc(100vh-100px)] h-[125vh] relative top-[100px] lg:left-[300px] p-[30px]! gap-[50px]">
+        <div class="flex flex-col lg:flex-row flex-1 gap-[25px]">
             <div
                 class="flex border-solid border-[2px] border-[var(--SecBg)] p-[25px]! rounded-md flex-1 items-start justify-around">
                 <div class="flex flex-col items-start justify-around">
@@ -87,9 +96,10 @@ include '../../includes/getuser.php';
                 <i class="material-symbols-outlined">more_horiz</i>
             </div>
         </div>
-        <div class="flex flex-[3] gap-[25px] ">
+
+        <div class="flex flex-[3] flex-col lg:flex-row gap-[25px] ">
             <form method="POST" action="../../includes/student/addapp.php"
-                class="bg-[var(--SecBg)] flex-1 rounded-md p-[10px]! flex flex-col items-start justify-around">
+                class="bg-[var(--SecBg)] flex-1 rounded-md p-[10px]! flex flex-col items-start justify-around gap-[25px]">
                 <h2 class="text-2xl font-semibold">Book an Appointment</h2>
 
                 <!-- <?php if (!empty($message))
@@ -130,7 +140,7 @@ include '../../includes/getuser.php';
             <!--Calendar End-->
         </div>
 
-        <div id="appHolder" class="flex flex-[2] gap-[25px]">
+        <div id="appHolder" class="flex flex-col lg:flex-row flex-[2] gap-[25px]">
 
         </div>
     </div>
@@ -212,11 +222,11 @@ include '../../includes/getuser.php';
                             // console.log(data);
 
                             const appointmentItem = document.createElement('div');
-                            appointmentItem.className = 'rounded-md bg-[var(--SecBg)] p-[10px]! w-4/12 flex flex-col items-start justify-around gap-[15px]';
+                            appointmentItem.className = 'rounded-md bg-[var(--SecBg)] p-[10px]! w-full lg:w-4/12 flex flex-col items-start justify-around gap-[15px]';
                             appointmentItem.innerHTML = `
                                                         <div class="flex w-full items-center justify-between ">
                                                             <h1 class="text-[1.75rem] font-extrabold ">${appointment.doctor_name}</h1>
-                                                            <p class="p-[5px]! rounded-md capitalize ${appointment.status === 'completed' ? 'bg-green-500' : appointment.status === 'confirmed' ? 'bg-yellow-500' : appointment.status === 'cancelled' ? 'bg-red-500' : 'bg-gray-500' }">${appointment.status}</p>
+                                                            <p class="p-[5px]! rounded-md capitalize ${appointment.status === 'completed' ? 'bg-green-500' : appointment.status === 'confirmed' ? 'bg-yellow-500' : appointment.status === 'cancelled' ? 'bg-red-500' : 'bg-gray-500'}">${appointment.status}</p>
 
                                                         </div>
                                                         <div class="flex flex-col w-full h-full items-start justify-around">

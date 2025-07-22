@@ -35,14 +35,20 @@ include '../../includes/getuser.php';
     </div>
     <!--Loader End-->
 
+    <!--Mobile Hamburger Menu-->
+    <button onclick="toggleSide()" id="side-btn"
+        class="fixed flex lg:hidden items-center justify-center bg-[var(--MainText)] text-[var(--SecBg)] p-[20px]! w-[50px] h-[50px] rounded-full mt-[15px]! ml-[15px]! z-[99] "><i
+            class="material-symbols-outlined">menu</i></button>
+    <!--Mobile Hamburger Menu-->
+
     <!--Sidebar Start-->
-    <div class="w-[300px] h-[100vh] flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] ">
+    <div id="sidebar" class="w-[300px] h-[100vh] hidden lg:flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] z-[98] ">
         <a href="/" class="">
             <img src="../../assets/logo1.png" id="logo" alt="Healthmate Kabarak" class="h-[100px] object-fit ">
         </a>
         <ul class="flex flex-col gap-[25px] text-2xl">
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/doctor.php"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
+                href="/views/doctor/dashboard.php"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/appointments.php"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
@@ -53,7 +59,7 @@ include '../../includes/getuser.php';
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/profile.php"><i class="material-symbols-outlined">settings</i> Settings</a>
         </ul>
-        <a href="/tests/logout.php" class="flex items-center justify-start gap-[25px]">
+        <a href="/auth/logout.php" class="flex items-center justify-start gap-[25px]">
             <i class="material-symbols-outlined">logout</i>
             Logout
         </a>
@@ -62,8 +68,9 @@ include '../../includes/getuser.php';
 
     <!--Topbar Start-->
     <div
-        class="flex w-[calc(100vw-300px)] h-[70px] left-[300px] fixed items-center justify-between p-[25px]! bg-[var(--SecBg)] border-b-solid border-b-[2px] border-b-[var(--Highlight)]">
-        <h1 class="text-3xl font-bold">Profile</h1>
+        class="flex w-full lg:w-[calc(100vw-300px)] h-[70px] lg:left-[300px] fixed items-center justify-between p-[25px]! bg-[var(--SecBg)] border-b-solid border-b-[2px] border-b-[var(--Highlight)]">
+        <h1 class="text-3xl font-bold hidden lg:flex ">Profile</h1>
+        <h1 class="text-3xl font-bold lg:hidden flex "></h1>
         <div class="flex items-center justify-center gap-[25px] ">
             <p id="timeText" class="font-bold">00:00</p>
             <a class="hover:text-[var(--Highlight)] flex items-center justify-center" href=""><i
@@ -76,17 +83,17 @@ include '../../includes/getuser.php';
 
     <!--Main Profile Section Start-->
     <div
-        class="flex flex-col w-[calc(100vw-300px)] h-[calc(100vh-100px)] relative top-[100px] left-[300px] p-[50px]! gap-[50px]">
-        <div class="flex flex-[4] flex-row items-center justify-around gap-[50px]">
+        class="flex flex-col w-full lg:w-[calc(100vw-300px)] h-[calc(100vh-100px)] relative top-[100px] lg:left-[300px] p-[25px]! lg:p-[50px]! gap-[50px]">
+        <div class="flex flex-[4] flex-col lg:flex-row items-center justify-around gap-[50px]">
             <div
-                class="flex flex-col flex-1 h-full items-center justify-between border-solid border-[var(--SecText)] border-[2px] rounded-lg p-[20px]!">
+                class="flex flex-col flex-1 w-full h-full items-center justify-between border-solid border-[var(--SecText)] border-[2px] rounded-lg p-[20px]! gap-[25px]">
                 <h1 class="text-4xl font-bold capitalize "><?= $user ? htmlspecialchars($user['name']) : 'Guest' ?></h1>
                 <img src="../../includes/uploads/<?= $user['profile_pic'] ?>" alt=""
                     class="w-[175px] h-[175px] rounded-full object-cover border-[5px] border-[var(--Highlight)] border-solid">
 
             </div>
             <div
-                class="flex flex-col flex-[2] h-full items-center justify-around border-solid border-[var(--SecText)] border-[2px] rounded-lg p-[15px]! pr-[25px]! pl-[25px]!">
+                class="flex flex-col flex-[2] w-full h-full items-center justify-around border-solid border-[var(--SecText)] border-[2px] rounded-lg p-[15px]! pr-[25px]! pl-[25px]!">
                 <div class="flex w-full items-center justify-between">
                     <h1>Profile Details</h1>
                     <button onclick="openEditModal()" class="hover:text-[var(--Highlight)] hover:scale-[1.2] cursor-pointer"><i

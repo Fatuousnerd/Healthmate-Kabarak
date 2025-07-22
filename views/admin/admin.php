@@ -25,8 +25,15 @@ include '../../includes/getuser.php';
     </div>
     <!--Loader End-->
 
+    <!--Mobile Hamburger Menu-->
+    <button onclick="toggleSide()" id="side-btn"
+        class="fixed flex lg:hidden items-center justify-center bg-[var(--MainText)] text-[var(--SecBg)] p-[20px]! w-[50px] h-[50px] rounded-full mt-[15px]! ml-[15px]! z-[99] "><i
+            class="material-symbols-outlined">menu</i></button>
+    <!--Mobile Hamburger Menu-->
+
     <!--Sidebar Start-->
-    <div class="w-[300px] h-[100vh] flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] ">
+    <div id="sidebar"
+        class="w-[300px] h-[100vh] hidden lg:flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] z-[98] ">
         <a href="/" class="">
             <img src="../../assets/logo1.png" id="logo" alt="Healthmate Kabarak" class="h-[100px] object-fit ">
         </a>
@@ -45,8 +52,9 @@ include '../../includes/getuser.php';
 
     <!--Topbar Start-->
     <div
-        class="flex w-[calc(100vw-300px)] h-[70px] left-[300px] fixed items-center justify-between p-[25px]! bg-[var(--SecBg)] border-b-solid border-b-[2px] border-b-[var(--Highlight)] z-[99]">
-        <h1 class="text-3xl font-bold">Dashboard</h1>
+        class="flex w-full lg:w-[calc(100vw-300px)] h-[70px] lg:left-[300px] fixed items-center justify-between p-[25px]! bg-[var(--SecBg)] border-b-solid border-b-[2px] border-b-[var(--Highlight)] z-[97]">
+        <h1 class="text-3xl font-bold hidden lg:flex ">Admin Dashboard</h1>
+        <h1 class="text-3xl font-bold lg:hidden flex "></h1>
         <div class="flex items-center justify-center gap-[25px] ">
             <p id="timeText" class="font-bold">00:00</p>
             <button class="themetoggle" id="themetoggle" onclick="toggleTheme()"><i id="themeicon"
@@ -56,8 +64,8 @@ include '../../includes/getuser.php';
     <!--Topbar End-->
 
     <div
-        class="flex flex-col items-center w-[calc(100vw-300px)] h-[calc(100vh-70px)] relative top-[70px] left-[300px] p-[30px]! gap-[25px] overflow-y-hidden">
-        <div class="w-full flex items-center justify-start gap-[100px]">
+        class="flex flex-col items-center w-full lg:w-[calc(100vw-300px)] h-[calc(100vh-70px)] relative top-[70px] lg:left-[300px] p-[10px] lg:p-[30px]! gap-[25px] overflow-y-hidden">
+        <div class="w-full flex items-center justify-around lg:justify-start lg:gap-[100px]">
 
             <div
                 class="flex items-center justify-center border-solid border-[1.5px] border-[var(--Highlight)] rounded-[5px] ">
@@ -94,7 +102,7 @@ include '../../includes/getuser.php';
 
         </div>
 
-        <div class="flex items-center w-full pl-[25px]!">
+        <div class="hidden lg:flex items-center w-full pl-[25px]!">
             <div class="flex-1">ID</div>
             <div class="flex-[2]">Profile Pic</div>
             <div class="flex-[2]">Name</div>
@@ -103,7 +111,7 @@ include '../../includes/getuser.php';
             <div class="flex-1">Edit</div>
         </div>
 
-        <div id="holder" class="flex flex-col w-full max-h-[400px] gap-[25px] overflow-y-scroll"
+        <div id="holder" class="flex flex-col w-full lg:max-h-[400px] gap-[25px] overflow-y-scroll"
             style="scrollbar-width: none;">
 
         </div>
@@ -118,9 +126,15 @@ include '../../includes/getuser.php';
                 <input type="hidden" name="user_id" id="user_id">
                 <label for="role" class="block font-semibold mb-1!">Role:</label>
                 <select name="role" id="role" class="w-full border border-gray-300 rounded p-2! mb-4!">
-                    <option class=" appearance-none p-[5px]! bg-[var(--SecBg)] text-[var(--MainText)] outline-none border-none " value="student">Student</option>
-                    <option class=" appearance-none p-[5px]! bg-[var(--SecBg)] text-[var(--MainText)] outline-none border-none " value="admin">Admin</option>
-                    <option class=" appearance-none p-[5px]! bg-[var(--SecBg)] text-[var(--MainText)] outline-none border-none " value="doctor">Doctor</option>
+                    <option
+                        class=" appearance-none p-[5px]! bg-[var(--SecBg)] text-[var(--MainText)] outline-none border-none "
+                        value="student">Student</option>
+                    <option
+                        class=" appearance-none p-[5px]! bg-[var(--SecBg)] text-[var(--MainText)] outline-none border-none "
+                        value="admin">Admin</option>
+                    <option
+                        class=" appearance-none p-[5px]! bg-[var(--SecBg)] text-[var(--MainText)] outline-none border-none "
+                        value="doctor">Doctor</option>
                 </select>
 
                 <div class="flex justify-between">
@@ -149,9 +163,9 @@ include '../../includes/getuser.php';
 
                 users.forEach(user => {
                     const wrapper = document.createElement('div');
-                    wrapper.className = "card pl-[25px]! rounded-md bg-[var(--SecBg)] w-full h-[100px] flex items-center justify-between";
+                    wrapper.className = "card p-[25px]! lg:pl-[25px]! rounded-md bg-[var(--SecBg)] w-full h-auto lg:h-[100px] flex flex-col lg:flex-row items-start lg:items-center justify-between";
                     wrapper.innerHTML = `
-                                        <p class="flex-1 ">${user.id}</p>
+                                        <p class="flex-1 hidden lg:flex ">${user.id}</p>
                                         <div class="flex-[2] flex items-center justify-start">
                                             <img src="../../includes/uploads/${user.profile_pic}" alt=""
                                                 class="h-[75px] w-[75px] rounded-full border-solid border-[2px] border-[var(--Highlight)] object-cover">
@@ -230,49 +244,49 @@ include '../../includes/getuser.php';
             document.getElementById("editModal").classList.add("hidden");
         }
 
-        document.getElementById("editForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+        document.getElementById("editForm").addEventListener("submit", function (e) {
+            e.preventDefault();
 
-    const userId = document.getElementById("user_id").value;
-    const role = document.getElementById("role").value;
+            const userId = document.getElementById("user_id").value;
+            const role = document.getElementById("role").value;
 
-    const formData = new FormData();
-    formData.append("action", "update");
-    formData.append("user_id", userId);
-    formData.append("role", role);
+            const formData = new FormData();
+            formData.append("action", "update");
+            formData.append("user_id", userId);
+            formData.append("role", role);
 
-    fetch("../../includes/admin/updateuser.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(res => res.text())
-    .then(response => {
-        closeModal();
-        fetchUsers(); // refresh list
-        alert("Role updated!");
-    });
-});
+            fetch("../../includes/admin/updateuser.php", {
+                method: "POST",
+                body: formData
+            })
+                .then(res => res.text())
+                .then(response => {
+                    closeModal();
+                    fetchUsers(); // refresh list
+                    alert("Role updated!");
+                });
+        });
 
-function deleteUser() {
-    const userId = document.getElementById("user_id").value;
+        function deleteUser() {
+            const userId = document.getElementById("user_id").value;
 
-    if (!confirm("Are you sure you want to delete this user?")) return;
+            if (!confirm("Are you sure you want to delete this user?")) return;
 
-    const formData = new FormData();
-    formData.append("action", "delete");
-    formData.append("user_id", userId);
+            const formData = new FormData();
+            formData.append("action", "delete");
+            formData.append("user_id", userId);
 
-    fetch("../../includes/admin/updateuser.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(res => res.text())
-    .then(response => {
-        closeModal();
-        fetchUsers(); // refresh list
-        alert("User deleted!");
-    });
-}
+            fetch("../../includes/admin/updateuser.php", {
+                method: "POST",
+                body: formData
+            })
+                .then(res => res.text())
+                .then(response => {
+                    closeModal();
+                    fetchUsers(); // refresh list
+                    alert("User deleted!");
+                });
+        }
 
 
 

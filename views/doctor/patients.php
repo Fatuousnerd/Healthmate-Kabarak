@@ -25,36 +25,42 @@
     </div>
     <!--Loader End-->
 
+    <!--Mobile Hamburger Menu-->
+    <button onclick="toggleSide()" id="side-btn"
+        class="fixed flex lg:hidden items-center justify-center bg-[var(--MainText)] text-[var(--SecBg)] p-[20px]! w-[50px] h-[50px] rounded-full mt-[15px]! ml-[15px]! z-[99] "><i
+            class="material-symbols-outlined">menu</i></button>
+    <!--Mobile Hamburger Menu-->
+
     <!--Sidebar Start-->
-    <div class="w-[300px] h-[100vh] flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] ">
+    <div id="sidebar" class="w-[300px] h-[100vh] hidden lg:flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] z-[98] ">
         <a href="/" class="">
             <img src="../../assets/logo1.png" id="logo" alt="Healthmate Kabarak" class="h-[100px] object-fit ">
         </a>
         <ul class="flex flex-col gap-[25px] text-2xl">
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/appointments.php"><i class="material-symbols-outlined">home_app_logo</i>
-                Dashboard</a>
+                href="/views/doctor/dashboard.php"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/appointments.php"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
-            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]" href="/"><i
-                    class="material-symbols-outlined">personal_injury</i> Patients</a>
+            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
+                href="/views/doctor/patients.php"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/appointments.php"><i class="material-symbols-outlined">av_timer</i>
                 Appointments</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/profile.php"><i class="material-symbols-outlined">settings</i> Settings</a>
         </ul>
-        <div class="flex items-center justify-start gap-[25px]">
+        <a href="/auth/logout.php" class="flex items-center justify-start gap-[25px]">
             <i class="material-symbols-outlined">logout</i>
             Logout
-        </div>
+        </a>
     </div>
     <!--Sidebar End-->
 
     <!--Topbar Start-->
     <div
-        class="flex w-[calc(100vw-300px)] h-[70px] left-[300px] fixed items-center justify-between p-[25px]! bg-[var(--SecBg)] border-b-solid border-b-[2px] border-b-[var(--Highlight)]">
-        <h1 class="text-3xl font-bold">Patients</h1>
+        class="flex w-full lg:w-[calc(100vw-300px)] h-[70px] lg:left-[300px] fixed items-center justify-between p-[25px]! bg-[var(--SecBg)] border-b-solid border-b-[2px] border-b-[var(--Highlight)]">
+        <h1 class="text-3xl font-bold hidden lg:flex ">Patients</h1>
+        <h1 class="text-3xl font-bold lg:hidden flex "></h1>
         <div class="flex items-center justify-center gap-[25px] ">
             <p id="timeText" class="font-bold">00:00</p>
             <a class="hover:text-[var(--Highlight)] flex items-center justify-center" href=""><i
@@ -66,7 +72,7 @@
     <!--Topbar End-->
 
     <!--Main Section Start-->
-    <div class="flex gap-[5px] w-[calc(100vw-300px)] h-[calc(100vh-70px)] left-[300px] top-[70px] p-[15px]! relative">
+    <div class="flex flex-col lg:flex-row gap-[5px] lg:w-[calc(100vw-300px)] h-[calc(100vh-70px)] lg:left-[300px] top-[70px] p-[15px]! relative">
         <div
             class="flex flex-col justify-around flex-1 bg-[var(--SecBg)] px-[25px]! py-[15px]! gap-[15px] overflow-y-hidden">
             <h1 class="text-2xl font-bold">Patient List</h1>

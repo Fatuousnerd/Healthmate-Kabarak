@@ -85,3 +85,15 @@ updateTime();
 setInterval(updateTime, 1000);
 
 // Date End
+
+function toggleSide() {
+    const sidebar = document.getElementById("sidebar");
+    const sidebtn = document.getElementById("side-btn");
+    sidebar.classList.toggle("hidden")
+    sidebar.classList.toggle("flex")
+    if (sidebar.classList.contains("hidden")) {
+        sidebtn.innerHTML = `<i class="material-symbols-outlined">menu</i>`;
+    } else {
+        sidebtn.innerHTML = `<i class="material-symbols-outlined">close</i>`;
+    }
+}

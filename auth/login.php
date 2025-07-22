@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             header("Location: /views/admin/admin.php");
             break;
           case 'doctor':
-            header("Location: /views/doctor/doctor.php");
+            header("Location: /views/doctor/dashboard.php");
             break;
           case 'student':
             header("Location: /views/student/dashboard.php");
@@ -79,10 +79,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     <div class="load" id="load"></div>
   </div>
   <!--Loader End-->
+
   <div class="flex w-full h-screen items-center justify-center">
 
     <form action="login.php" method="post"
-      class="flex flex-col p-[25px]! rounded-md bg-[var(--SecBg)] w-[500px] items-center gap-[25px] ">
+      class="flex flex-col p-[25px]! rounded-md bg-[var(--SecBg)] w-[350px] lg:w-[500px] items-center gap-[25px] ">
       <h2 class="text-[4rem] font-bold text-center">Log In</h2>
 
       <input type="email" name="email" placeholder="Email" required class="p-[5px]! border-solid border-[2px] border-[var(--SecText)] rounded-md w-full placeholder:text-[var(--SecText)] outline-none">

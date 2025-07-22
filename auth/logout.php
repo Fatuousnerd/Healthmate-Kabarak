@@ -48,7 +48,7 @@ if (!isset($_SESSION['user'])) {
 
     <div class="flex w-full h-screen items-center justify-center ">
         <div
-            class="flex flex-col items-center justify-around p-[25px]! bg-[var(--SecBg)] rounded-lg w-[500px] h-[400px] ">
+            class="flex flex-col items-center justify-around p-[25px]! bg-[var(--SecBg)] rounded-lg w-[350px] lg:w-[500px] h-[400px] ">
             <i class="material-symbols-outlined flex items-center justify-center text-[50rem]">logout</i>
             <h1 class="text-[2rem] font-bold text-center">Oh no! You're leaving... </br> Are you sure you want to
                 logout?</h1>
