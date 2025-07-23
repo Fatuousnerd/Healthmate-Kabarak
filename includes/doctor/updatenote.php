@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include '../db.php';
 
 // Make sure only doctors can update notes
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'doctor') {

@@ -6,10 +6,13 @@ $user = "root";            // default for local dev (XAMPP, etc.)
 $password = "";            // empty for local usually
 $database = "healthmate";   // name of your database
 
-$conn = new mysqli($host, $user, $password, $database);
+if (!isset($conn)) {
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    $conn = new mysqli($host, $user, $password, $database);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 }
 ?>

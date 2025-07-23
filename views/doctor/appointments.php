@@ -44,9 +44,8 @@ if (!$user || $user['role'] !== 'doctor') {
         </a>
         <ul class="flex flex-col gap-[25px] text-2xl">
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/dashboard.php"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
-            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/appointments.php"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
+                href="/views/doctor/dashboard.php"><i class="material-symbols-outlined">home_app_logo</i>
+                Dashboard</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/patients.php"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
@@ -69,8 +68,6 @@ if (!$user || $user['role'] !== 'doctor') {
         <h1 class="text-3xl font-bold lg:hidden flex "></h1>
         <div class="flex items-center justify-center gap-[25px] ">
             <p id="timeText" class="font-bold">00:00</p>
-            <a class="hover:text-[var(--Highlight)] flex items-center justify-center" href=""><i
-                    class="material-symbols-outlined">notifications</i></a>
             <button class="themetoggle" id="themetoggle" onclick="toggleTheme()"><i id="themeicon"
                     class="material-symbols-outlined">brightness_4</i></button>
         </div>
@@ -211,7 +208,7 @@ if (!$user || $user['role'] !== 'doctor') {
                                                     </div>
                                                 </div>
                                                 <div class="w-full h-[30px] flex items-center justify-center bg-[rgba(0,0,0,0.5)] backdrop-blur-sm">
-                                                    <form action="../../includes/updateappointments.php" method="post" class="flex gap-2">
+                                                    <form action="../../includes/doctor/updateappointments.php" method="post" class="flex gap-2">
                                                         <input type="hidden" name="appointment_id" value="${appointment.id}">
                                                         <button name="status" value="approved" class="bg-[var(--MainBg)] p-[5px]! flex items-center justify-center rounded"><i class="material-symbols-outlined">check</i></button>
                                                         <button name="status" value="completed" class="bg-[var(--MainBg)] p-[5px]! flex items-center justify-center rounded"><i class="material-symbols-outlined">done_all</i></button>

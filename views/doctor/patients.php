@@ -44,9 +44,8 @@ if (!$user || $user['role'] !== 'doctor') {
         </a>
         <ul class="flex flex-col gap-[25px] text-2xl">
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/dashboard.php"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
-            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/appointments.php"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
+                href="/views/doctor/dashboard.php"><i class="material-symbols-outlined">home_app_logo</i>
+                Dashboard</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/patients.php"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
@@ -69,8 +68,6 @@ if (!$user || $user['role'] !== 'doctor') {
         <h1 class="text-3xl font-bold lg:hidden flex "></h1>
         <div class="flex items-center justify-center gap-[25px] ">
             <p id="timeText" class="font-bold">00:00</p>
-            <a class="hover:text-[var(--Highlight)] flex items-center justify-center" href=""><i
-                    class="material-symbols-outlined">notifications</i></a>
             <button class="themetoggle" id="themetoggle" onclick="toggleTheme()"><i id="themeicon"
                     class="material-symbols-outlined">brightness_4</i></button>
         </div>
@@ -93,9 +90,9 @@ if (!$user || $user['role'] !== 'doctor') {
                         class=" text-[var(--MainText)] rounded-[2.5px] p-[5px]! flex items-center justify-center h-full p-[5px]! cursor-pointer"><i
                             class="material-symbols-outlined">search</i></button>
                 </div>
-                <button
+                <!-- <button
                     class="rounded-[5px] p-[5px]! flex items-center justify-center h-full p-[5px]! cursor-pointer bg-[var(--Highlight)]"><i
-                        class="material-symbols-outlined">add</i></button>
+                        class="material-symbols-outlined">add</i></button> -->
             </div>
 
             <div id="patientList" class="flex flex-col h-full gap-[5px]! overflow-y-scroll"
@@ -122,7 +119,7 @@ if (!$user || $user['role'] !== 'doctor') {
             const patientList = document.getElementById('patientList');
             patientList.innerHTML = ''; // Clear existing content
 
-            fetch(`../../includes/fetchpatients.php?date=${todayStr}`)
+            fetch(`../../includes/doctor/fetchpatients.php?date=${todayStr}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {
@@ -167,11 +164,11 @@ if (!$user || $user['role'] !== 'doctor') {
                     <hr>
                 </div>
                 <div class="flex flex-col">
-                    <p class="text-gray-400 font-light ">Age</p>
-                    <p class="text-xl font-bold ">${patient.age ?? '--'}</p>
+                    <p class="text-gray-400 font-light ">Email</p>
+                    <p class="text-xl font-bold ">${patient.email ?? '--'}</p>
                     <hr>
                 </div>
-                <div class="flex flex-col">
+                <!--<div class="flex flex-col">
                     <p class="text-gray-400 font-light ">Phone No.</p>
                     <p class="text-xl font-bold ">${patient.phone ?? '--'}</p>
                     <hr>
@@ -180,7 +177,7 @@ if (!$user || $user['role'] !== 'doctor') {
                     <p class="text-gray-400 font-light ">Address</p>
                     <p class="text-xl font-bold ">${patient.address ?? '--'}</p>
                     <hr>
-                </div>
+                </div>-->
             </div>
         </div>
         <div class="flex flex-[3] flex-col gap-[15px] p-[10px]!">
@@ -190,9 +187,9 @@ if (!$user || $user['role'] !== 'doctor') {
                 <button onclick="saveNote(${patient.student_id}, document.querySelector('#noteTextarea').value)"
                     class="bg-[var(--Highlight)] p-[10px]! flex-[3] flex items-center justify-center gap-[25px] rounded-md"><i
                         class="material-symbols-outlined">add</i> Add Note</button>
-                <button
+                <!--<button
                     class="bg-[var(--Highlight)] p-[10px]! flex-1 flex items-center justify-center gap-[25px] rounded-md"><i
-                        class="material-symbols-outlined">delete</i></button>
+                        class="material-symbols-outlined">delete</i></button>-->
             </div>
         </div>
     `;
@@ -206,7 +203,7 @@ if (!$user || $user['role'] !== 'doctor') {
                 return;
             }
 
-            fetch('../../includes/updatenote.php', {
+            fetch('../../includes/doctor/updatenote.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

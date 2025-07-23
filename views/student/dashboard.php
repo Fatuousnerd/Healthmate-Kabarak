@@ -1,11 +1,51 @@
 <?php
+include_once '../../includes/db.php';
+include_once '../../includes/getuser.php';
 
-include '../../includes/getuser.php';
+if (!isset($conn)) {
+    die("No valid MySQL connection!");
+}
 
 if (!$user || $user['role'] !== 'student') {
     header("Location: ../../auth/login.php");
     exit();
 }
+
+$userId = $user['id'];
+$today = date('Y-m-d');
+
+$sql = "SELECT * FROM appointments 
+        WHERE (student_id = ? OR doctor_id = ?) 
+        AND DATE(appointment_time) = ?";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("iis", $userId, $userId, $today);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$now = new DateTime();
+$showedReminder = false;
+
+while ($appointment = $result->fetch_assoc()) {
+    $datetimeString = $appointment['appointment_time']; // ✅ fixed
+    $apptTime = new DateTime($datetimeString);
+    $minutesDiff = ($apptTime->getTimestamp() - $now->getTimestamp()) / 3600;
+    
+    // echo $minutesDiff;
+    // exit();
+
+    if ($minutesDiff <= 30 && $minutesDiff > 0) {
+        echo "<script>
+            alert('⏰ Reminder: You have an appointment at " . $apptTime->format('h:i A') . " today.');
+        </script>";
+        $showedReminder = true;
+        break;
+    }
+}
+
+
+$stmt->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -46,9 +86,9 @@ if (!$user || $user['role'] !== 'student') {
         <ul class="flex flex-col gap-[25px] text-2xl">
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/student/dashboard.php"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
-            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
+            <!-- <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/appointments.php"><i class="material-symbols-outlined">notifications</i>
-                Notifications</a>
+                Notifications</a> -->
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/student/profile.php"><i class="material-symbols-outlined">settings</i> Settings</a>
         </ul>
@@ -66,8 +106,6 @@ if (!$user || $user['role'] !== 'student') {
         <h1 class="text-3xl font-bold lg:hidden flex "></h1>
         <div class="flex items-center justify-center gap-[25px] ">
             <p id="timeText" class="font-bold">00:00</p>
-            <a class="hover:text-[var(--Highlight)] flex items-center justify-center" href=""><i
-                    class="material-symbols-outlined">notifications</i></a>
             <button class="themetoggle" id="themetoggle" onclick="toggleTheme()"><i id="themeicon"
                     class="material-symbols-outlined">brightness_4</i></button>
         </div>
@@ -75,35 +113,9 @@ if (!$user || $user['role'] !== 'student') {
     <!--Topbar End-->
 
     <div
-        class="flex flex-col w-full lg:w-[calc(100vw-300px)] min-h-[calc(100vh-100px)] h-[125vh] relative top-[100px] lg:left-[300px] p-[30px]! gap-[50px]">
-        <div class="flex flex-col lg:flex-row flex-1 gap-[25px]">
-            <div
-                class="flex border-solid border-[2px] border-[var(--SecBg)] p-[25px]! rounded-md flex-1 items-start justify-around">
-                <div class="flex flex-col items-start justify-around">
-                    <p class="text-[3rem] ">10</p>
-                    <p class="text-[1.5rem] ">Appointments</p>
-                </div>
-                <i class="material-symbols-outlined">more_horiz</i>
-            </div>
-            <div
-                class="flex border-solid border-[2px] border-[var(--SecBg)] p-[25px]! rounded-md flex-1 items-start justify-around">
-                <div class="flex flex-col items-start justify-around">
-                    <p class="text-[3rem] ">10</p>
-                    <p class="text-[1.5rem] ">Appointments</p>
-                </div>
-                <i class="material-symbols-outlined">more_horiz</i>
-            </div>
-            <div
-                class="flex border-solid border-[2px] border-[var(--SecBg)] p-[25px]! rounded-md flex-1 items-start justify-around">
-                <div class="flex flex-col items-start justify-around">
-                    <p class="text-[3rem] ">10</p>
-                    <p class="text-[1.5rem] ">Appointments</p>
-                </div>
-                <i class="material-symbols-outlined">more_horiz</i>
-            </div>
-        </div>
+        class="flex flex-col w-full lg:w-[calc(100vw-300px)] min-h-[calc(100vh-100px)] relative top-[100px] lg:left-[300px] p-[30px]! gap-[50px]">
 
-        <div class="flex flex-[3] flex-col lg:flex-row gap-[25px] ">
+        <div class="flex flex-[2] flex-col lg:flex-row gap-[25px] ">
             <form method="POST" action="../../includes/student/addapp.php"
                 class="bg-[var(--SecBg)] flex-1 rounded-md p-[10px]! flex flex-col items-start justify-around gap-[25px]">
                 <h2 class="text-2xl font-semibold">Book an Appointment</h2>
@@ -116,9 +128,9 @@ if (!$user || $user['role'] !== 'student') {
                 <input type="date" name="date" required
                     class="w-full p-[5px]! border rounded-md placeholder:text-[var(--MainText)]">
                 <input type="time" name="time" required
-                    class="w-full p-[5px]! border rounded-md placeholder:text-[var(--MainText)]">
+                    class="w-full p-[5px]! border rounded-md placeholder:text-[var(--MainText)] text-[var(--MainText)]">
                 <button name="submit"
-                    class="w-full bg-[var(--Highlight)] text-white p-[5px]! rounded-md placeholder:text-[var(--MainText)]">Book
+                    class="w-full bg-[var(--Highlight)] p-[5px]! rounded-md placeholder:text-[var(--MainText)]">Book
                     Appointment</button>
             </form>
 
@@ -146,7 +158,7 @@ if (!$user || $user['role'] !== 'student') {
             <!--Calendar End-->
         </div>
 
-        <div id="appHolder" class="flex flex-col lg:flex-row flex-[2] gap-[25px]">
+        <div id="appHolder" class="no-bar flex flex-col lg:flex-row flex-[2] gap-[25px] overflow-x-scroll" style="scrollbar-width:0px;">
 
         </div>
     </div>
@@ -228,7 +240,7 @@ if (!$user || $user['role'] !== 'student') {
                             // console.log(data);
 
                             const appointmentItem = document.createElement('div');
-                            appointmentItem.className = 'rounded-md bg-[var(--SecBg)] p-[10px]! w-full lg:w-4/12 flex flex-col items-start justify-around gap-[15px]';
+                            appointmentItem.className = 'rounded-md bg-[var(--SecBg)] p-[10px]! w-full lg:min-w-4/12 flex flex-col items-start justify-around gap-[15px]';
                             appointmentItem.innerHTML = `
                                                         <div class="flex w-full items-center justify-between ">
                                                             <h1 class="text-[1.75rem] font-extrabold ">${appointment.doctor_name}</h1>

@@ -1,12 +1,15 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 
 if (!isset($_SESSION['user']['id'])) {
     header("Location: /tests/login.php");
     exit();
 }
 
-include 'db.php';
+include_once 'db.php';
 
 $user = null;
 
@@ -23,5 +26,5 @@ if (isset($_SESSION['user']['id'])) {
     }
 
     $stmt->close();
-    $conn->close();
+    // $conn->close();
 }

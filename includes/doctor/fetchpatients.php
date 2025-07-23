@@ -17,7 +17,7 @@ if (!$date) {
     exit;
 }
 
-$stmt = $conn->prepare("SELECT a.id, a.reason, a.status, a.doctor_id, a.appointment_time, u.name AS student_name, u.id AS student_id, u.profile_pic, n.note, n.last_updated 
+$stmt = $conn->prepare("SELECT a.id, a.reason, a.status, a.doctor_id, a.appointment_time, u.name AS student_name, u.id AS student_id, u.profile_pic, u.email, n.note, n.last_updated 
                         FROM appointments a
                         JOIN users u ON a.student_id = u.id
                         LEFT JOIN notes n ON n.student_id = u.id
@@ -35,6 +35,7 @@ $appointments = [];
 while ($row = $result->fetch_assoc()) {
     $appointments[] = [
         'id' => $row['id'],
+        'email' => $row['email'],
         'student_id' => $row['student_id'],
         'reason' => $row['reason'],
         'student' => $row['student_name'],

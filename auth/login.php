@@ -26,7 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         $_SESSION['user'] = [
           'id' => $user['id'],
           'name' => $user['name'],
-          'role' => $user['role']
+          'role' => $user['role'],
+          'email' => $user['email'],
         ];
 
 
@@ -86,13 +87,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
       class="flex flex-col p-[25px]! rounded-md bg-[var(--SecBg)] w-[350px] lg:w-[500px] items-center gap-[25px] ">
       <h2 class="text-[4rem] font-bold text-center">Log In</h2>
 
-      <input type="email" name="email" placeholder="Email" required class="p-[5px]! border-solid border-[2px] border-[var(--SecText)] rounded-md w-full placeholder:text-[var(--SecText)] outline-none">
-      <input type="password" name="password" placeholder="Password" required class="p-[5px]! border-solid border-[2px] border-[var(--SecText)] rounded-md w-full placeholder:text-[var(--SecText)] outline-none">
+      <input type="email" name="email" placeholder="Email" required
+        class="p-[5px]! border-solid border-[2px] border-[var(--SecText)] rounded-md w-full placeholder:text-[var(--SecText)] outline-none">
+      <input type="password" name="password" placeholder="Password" required
+        class="p-[5px]! border-solid border-[2px] border-[var(--SecText)] rounded-md w-full placeholder:text-[var(--SecText)] outline-none">
 
-      <button type="submit" name="submit" class="p-[10px]! px-[20px]! font-bold uppercase text-[1rem] rounded-md bg-transparent border-solid border-[2px] border-[var(--MainText)] hover:bg-[var(--MainText)] hover:text-[var(--MainBg)] duration-300 transition-all ">
+      <button type="submit" name="submit"
+        class="p-[10px]! px-[20px]! font-bold uppercase text-[1rem] rounded-md bg-transparent border-solid border-[2px] border-[var(--MainText)] hover:bg-[var(--MainText)] hover:text-[var(--MainBg)] duration-300 transition-all ">
         Sign In
       </button>
-      <p>Don't have an account? <a href="./signup.php" class="underline hover:text-[var(--Highlight)] ">Create one</a></p>
+      <div class="flex flex-col items-start justify-around">
+        <p>Forgot password? <a href="./forgotpass.php" class="underline hover:text-[var(--Highlight)] ">Reset here</a>
+        </p>
+        <p>Don't have an account? <a href="./signup.php" class="underline hover:text-[var(--Highlight)] ">Create one</a>
+        </p>
+      </div>
 
       <?php if (!empty($message)): ?>
         <p class="text-red-600 text-sm text-center"><?= htmlspecialchars($message) ?></p>

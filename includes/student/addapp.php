@@ -20,6 +20,9 @@ $studentName = $_SESSION['user']['name'];
 $studentEmail = $_SESSION['user']['email'];
 $message = "";
 
+// print_r($_SESSION['user']);
+// exit();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $reason = htmlspecialchars(trim($_POST['reason']));
     $date = $_POST['date'];
@@ -69,16 +72,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             // 3. Send email
             $mail = new PHPMailer(true);
             try {
+                $mail->SMTPDebug = 2; // Or 3 for more detail
+                $mail->Debugoutput = 'html'; // Optional
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
                 $mail->Username = 'calvinkmwaura@gmail.com';
-                $mail->Password = 'mmfb qyud btuw iltx';
+                $mail->Password = 'mmfb qyud btuw iltx'; // DOUBLE-CHECK THIS PASSWORD
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
                 $mail->setFrom('calvinkmwaura@gmail.com', 'Healthmate Notifications');
-                $mail->addAddress($_SESSION['user']['email'], $_SESSION['user']['name']); // Student email
+                $mail->addAddress($studentEmail, $studentName); // safer way
+                // $mail->addAddress("anonymousguruplay@gmail.com", "Sudo Student"); // safer way
 
                 $mail->isHTML(true);
                 $mail->Subject = 'Appointment Booked';
@@ -88,10 +94,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         <p>Reason: $reason</p>
     ";
 
-                $mail->send();
+                if ($mail->send()) {
+                    echo "Email sent successfully!";
+                } else {
+                    echo "Email failed: " . $mail->ErrorInfo;
+                }
+
             } catch (Exception $e) {
-                error_log("Email error: " . $mail->ErrorInfo); // log if needed
+                echo "Exception caught: " . $mail->ErrorInfo;
             }
+
 
             header("Location: ../../views/student/dashboard.php");
             exit();

@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require '../includes/db.php';
 
 $token = $_GET['token'] ?? '';
 $valid = false;
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit']) && $valid) 
       <input type="password" name="confirm" placeholder="Confirm Password" required class="w-full p-2 mb-4 border rounded">
       <button type="submit" name="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Reset</button>
     <?php else: ?>
-      <a href="tests/login.php" class="text-blue-600 underline">Go to Login</a>
+      <a href="login.php" class="text-blue-600 underline">Go to Login</a>
     <?php endif; ?>
   </form>
 </body>

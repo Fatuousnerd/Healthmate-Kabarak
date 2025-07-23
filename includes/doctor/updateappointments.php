@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include '../db.php';
 
 // Load PHPMailer classes manually (no Composer)
 use PHPMailer\PHPMailer\PHPMailer;
@@ -18,8 +18,16 @@ if (!isset($_SESSION['user']['id']) || $_SESSION['user']['role'] !== 'doctor') {
 $doctorId = $_SESSION['user']['id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_POST['appointment_id'], $_POST['status'])) {
+        die("Invalid request.");
+    }
+
     $appointmentId = intval($_POST['appointment_id']);
-    $newStatus = $_POST['status'];
+    $newStatus = trim($_POST['status']); // sanitize
+
+    if ($newStatus === '') {
+        die("Status cannot be empty.");
+    }
 
     // Check if doctor owns the appointment
     $checkStmt = $conn->prepare("SELECT * FROM appointments WHERE id = ? AND doctor_id = ?");
@@ -40,22 +48,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $studentQ->execute();
     $studentRes = $studentQ->get_result();
     $student = $studentRes->fetch_assoc();
+
     $studentEmail = $student['email'];
     $studentName = $student['name'];
 
     $mail = new PHPMailer(true);
     try {
-        // SMTP Settings (change to your actual config)
         $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';
-            $mail->SMTPAuth   = true;
-            $mail->Username   = 'calvinkmwaura@gmail.com'; // replace
-            $mail->Password   = 'mmfb qyud btuw iltx';    // replace
-            $mail->SMTPSecure = 'tls';
-            $mail->Port       = 587;
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'calvinkmwaura@gmail.com';
+        $mail->Password = 'mmfb qyud btuw iltx';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
 
         $mail->setFrom('calvinkmwaura@gmail.com', 'Appointment System');
         $mail->addAddress($studentEmail, $studentName);
+        $mail->isHTML(true); // use HTML formatting
 
         if ($newStatus === 'cancelled') {
             // Reassign appointment
@@ -81,27 +90,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $update->bind_param("ii", $newDoctorId, $appointmentId);
                 $update->execute();
 
-                // Email: Appointment Cancelled + Reassigned
-                $mail->Subject = "Your appointment has been reassigned";
-                $mail->Body = "Hello $studentName,\n\nYour appointment with Dr. {$_SESSION['user']['name']} was cancelled and has been reassigned to Dr. $newDoctorName. It is now pending confirmation.\n\nRegards,\nAppointment System";
+                // Email: Appointment reassigned
+                $mail->Subject = "Your Appointment Has Been Reassigned";
+                $mail->Body = "
+                    <p>Hi <strong>$studentName</strong>,</p>
+                    <p>Your appointment with Dr. {$_SESSION['user']['name']} was cancelled and reassigned to <strong>Dr. $newDoctorName</strong>.</p>
+                    <p>Status: <strong>Pending</strong></p>
+                    <br><p>Regards,<br>Appointment System</p>
+                ";
 
                 $mail->send();
                 echo "Appointment reassigned. Email sent.";
             } else {
                 echo "No other doctor available to reassign.";
             }
-
         } else {
-            // Update status
+            // Regular status update
             $update = $conn->prepare("UPDATE appointments SET status = ? WHERE id = ?");
             $update->bind_param("si", $newStatus, $appointmentId);
+
             if ($update->execute()) {
-                // Email: Status changed
-                $mail->Subject = "Appointment Status Update";
-                $mail->Body = "Hello $studentName,\n\nYour appointment status has been updated to: $newStatus.\n\nRegards,\nAppointment System";
+                $mail->Subject = "Appointment Status Updated";
+                $mail->Body = "
+                    <p>Hi <strong>$studentName</strong>,</p>
+                    <p>Your appointment status has been updated to: <strong>$newStatus</strong>.</p>
+                    <br><p>Regards,<br>Appointment System</p>
+                ";
 
                 $mail->send();
-                header("Location: ../views/doctor/appointments.php");
+                header("Location: ../../views/doctor/appointments.php");
                 exit;
             } else {
                 echo "Failed to update status.";

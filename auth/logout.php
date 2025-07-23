@@ -52,7 +52,7 @@ if (!isset($_SESSION['user'])) {
             <i class="material-symbols-outlined flex items-center justify-center text-[50rem]">logout</i>
             <h1 class="text-[2rem] font-bold text-center">Oh no! You're leaving... </br> Are you sure you want to
                 logout?</h1>
-            <a href="dashboard.php" class="p-[10px]! bg-[var(--Highlight)] text-[var(--MainText)] rounded-lg w-8/12 text-center ">Naah, just kidding</a>
+            <a href="logback.php" class="p-[10px]! bg-[var(--Highlight)] text-[var(--MainText)] rounded-lg w-8/12 text-center ">Naah, just kidding</a>
             <form action="logout_handler.php" method="post" class="w-full flex items-center justify-center">
                 <button class="p-[10px]! bg-[var(--SecBg)] text-[var(--Highlight)] outline-none border-solid border-[2px] border-[var(--Highlight)] rounded-lg w-8/12 ">Yes, log me out</button>
             </form>

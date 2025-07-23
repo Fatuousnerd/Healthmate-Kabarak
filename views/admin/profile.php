@@ -85,7 +85,8 @@ if (!$user || $user['role'] !== 'admin') {
                 class="flex flex-col flex-[2] w-full h-full items-center justify-around border-solid border-[var(--SecText)] border-[2px] rounded-lg p-[15px]! pr-[25px]! pl-[25px]!">
                 <div class="flex w-full items-center justify-between">
                     <h1>Profile Details</h1>
-                    <button onclick="openEditModal()" class="hover:text-[var(--Highlight)] hover:scale-[1.2] cursor-pointer"><i
+                    <button onclick="openEditModal()"
+                        class="hover:text-[var(--Highlight)] hover:scale-[1.2] cursor-pointer"><i
                             class="material-symbols-outlined">edit</i></button>
                 </div>
                 <div class="flex flex-col gap-[20px] w-full">
@@ -100,7 +101,7 @@ if (!$user || $user['role'] !== 'admin') {
                         <p class="text-gray-400 font-light ">Role</p>
                         <p class="text-2xl font-bold capitalize ">
                             <?= $user ? htmlspecialchars($user['role']) : 'Guest' ?>
-                            </p>
+                        </p>
                         <hr>
                     </div>
                     <div class="flex flex-col">
@@ -114,15 +115,10 @@ if (!$user || $user['role'] !== 'admin') {
         <div
             class="flex-1 flex flex-col items-center justify-around border-solid border-[var(--SecText)] border-[2px] rounded-lg p-[5px]!">
             <ul class="flex items-center justify-around w-full text-2xl">
-                <li><a href="" class="hover:text-[var(--Highlight)] "><i class="material-symbols-outlined">home</i></a>
+                <li><a href="/views/student/dashboard.php" class="hover:text-[var(--Highlight)] "><i
+                            class="material-symbols-outlined">home</i></a>
                 </li>
-                <li><a href="" class="hover:text-[var(--Highlight)] "><i
-                            class="material-symbols-outlined">person</i></a></li>
-                <li><a href="" class="hover:text-[var(--Highlight)] "><i
-                            class="material-symbols-outlined">settings</i></a></li>
-                <li><a href="" class="hover:text-[var(--Highlight)] "><i class="material-symbols-outlined">help</i></a>
-                </li>
-                <li><a href="" class="hover:text-[var(--Highlight)] "><i
+                <li><a href="/auth/logout.php" class="hover:text-[var(--Highlight)] "><i
                             class="material-symbols-outlined">logout</i></a></li>
             </ul>
         </div>
@@ -137,7 +133,8 @@ if (!$user || $user['role'] !== 'admin') {
                 class="close right-[20px] top-[20px] text-[var(--Highlight)] cursor-pointer absolute" id="close"><i
                     class="material-symbols-outlined">close</i></button>
             <h2 class="text-2xl font-bold text-center">Edit Profile</h2>
-            <form action="/includes/updateuser.php" method="post" enctype="multipart/form-data" class="flex flex-col h-[85%] item-start justify-between ">
+            <form action="/includes/updateuser.php" method="post" enctype="multipart/form-data"
+                class="flex flex-col h-[85%] item-start justify-between ">
                 <div class="flex flex-col gap-[5px]">
                     <label for="profile_pic" class="text-gray-400">Profile Picture</label>
                     <input type="file" id="profile_pic" name="profile_pic" class="p-[5px]! border rounded">

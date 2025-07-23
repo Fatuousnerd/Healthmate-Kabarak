@@ -2,10 +2,10 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'db.php'; // your DB connection
-require 'PHPMailer/PHPMailer.php';
-require 'PHPMailer/SMTP.php';
-require 'PHPMailer/Exception.php';
+require '../includes/db.php'; // your DB connection
+require '../includes/PHPMailer/PHPMailer.php';
+require '../includes/PHPMailer/SMTP.php';
+require '../includes/PHPMailer/Exception.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             $mail->addAddress($email);
             $mail->isHTML(true);
             $mail->Subject = 'Password Reset Request';
-            $resetLink = "http://127.0.0.1/includes/reset-password.php?token=$token";
+            $resetLink = "http://127.0.0.1/auth/resetpassword.php?token=$token";
 
             $mail->Body = "Click the link to reset your password:<br><a href='$resetLink'>$resetLink</a>";
             $mail->AltBody = "Copy this link to reset your password: $resetLink";

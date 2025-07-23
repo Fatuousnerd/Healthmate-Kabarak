@@ -1,11 +1,14 @@
 <?php
 
-include '../../includes/getuser.php';
+include_once '../../includes/getuser.php';
+include_once '../../includes/doctor/tallyapp.php';
+include_once '../../includes/doctor/tallypatients.php';
 
-if (!$user || $user['role'] !== 'doctor') {
+if (!$user || $_SESSION['user']['role'] !== 'doctor') {
     header("Location: ../../auth/login.php");
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -48,8 +51,6 @@ if (!$user || $user['role'] !== 'doctor') {
                 href="/views/doctor/dashboard.php"><i class="material-symbols-outlined">home_app_logo</i>
                 Dashboard</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/appointments.php"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
-            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/patients.php"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/appointments.php"><i class="material-symbols-outlined">av_timer</i>
@@ -82,7 +83,7 @@ if (!$user || $user['role'] !== 'doctor') {
                             class="material-symbols-outlined">more_horiz</i></button>
                 </div>
 
-                <h1 class="text-5xl font-extrabold">50</h1>
+                <h1 class="text-5xl font-extrabold"><?php echo $totalAppointments; ?></h1>
             </div>
             <!--Container End-->
 
@@ -92,14 +93,14 @@ if (!$user || $user['role'] !== 'doctor') {
 
                 <div class="flex items-center justify-between w-full">
                     <div class="flex items-center justify-center gap-[5px]!">
-                        <i class="material-symbols-outlined">notifications</i>
-                        <p class="text-2xl font-bold">Notifications</p>
+                        <i class="material-symbols-outlined">personal_injury</i>
+                        <p class="text-2xl font-bold">Patients</p>
                     </div>
                     <button class="flex items-center justify-center"><i
                             class="material-symbols-outlined">more_horiz</i></button>
                 </div>
 
-                <h1 class="text-5xl font-extrabold">50</h1>
+                <h1 class="text-5xl font-extrabold"><?php echo $totalPatients; ?></h1>
             </div>
             <!--Container End-->
 
@@ -262,7 +263,7 @@ if (!$user || $user['role'] !== 'doctor') {
             const patientsList = document.getElementById('patientsList');
             patientsList.innerHTML = ''; // Clear existing content
 
-            fetch(`../../includes/fetchpatients.php?date=${todayStr}`)
+            fetch(`../../includes/doctor/fetchpatients.php?date=${todayStr}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {

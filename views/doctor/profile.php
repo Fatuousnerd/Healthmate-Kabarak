@@ -39,15 +39,15 @@ if (!$user || $user['role'] !== 'doctor') {
     <!--Mobile Hamburger Menu-->
 
     <!--Sidebar Start-->
-    <div id="sidebar" class="w-[300px] h-[100vh] hidden lg:flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] z-[98] ">
+    <div id="sidebar"
+        class="w-[300px] h-[100vh] hidden lg:flex flex-col fixed justify-around bg-[var(--SecBg)] items-center p-[250px] z-[98] ">
         <a href="/" class="">
             <img src="../../assets/logo1.png" id="logo" alt="Healthmate Kabarak" class="h-[100px] object-fit ">
         </a>
         <ul class="flex flex-col gap-[25px] text-2xl">
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/dashboard.php"><i class="material-symbols-outlined">home_app_logo</i> Dashboard</a>
-            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
-                href="/views/doctor/appointments.php"><i class="material-symbols-outlined">pill</i> Prescriptions</a>
+                href="/views/doctor/dashboard.php"><i class="material-symbols-outlined">home_app_logo</i>
+                Dashboard</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/patients.php"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
@@ -70,8 +70,6 @@ if (!$user || $user['role'] !== 'doctor') {
         <h1 class="text-3xl font-bold lg:hidden flex "></h1>
         <div class="flex items-center justify-center gap-[25px] ">
             <p id="timeText" class="font-bold">00:00</p>
-            <a class="hover:text-[var(--Highlight)] flex items-center justify-center" href=""><i
-                    class="material-symbols-outlined">notifications</i></a>
             <button class="themetoggle" id="themetoggle" onclick="toggleTheme()"><i id="themeicon"
                     class="material-symbols-outlined">brightness_4</i></button>
         </div>
@@ -93,7 +91,8 @@ if (!$user || $user['role'] !== 'doctor') {
                 class="flex flex-col flex-[2] w-full h-full items-center justify-around border-solid border-[var(--SecText)] border-[2px] rounded-lg p-[15px]! pr-[25px]! pl-[25px]!">
                 <div class="flex w-full items-center justify-between">
                     <h1>Profile Details</h1>
-                    <button onclick="openEditModal()" class="hover:text-[var(--Highlight)] hover:scale-[1.2] cursor-pointer"><i
+                    <button onclick="openEditModal()"
+                        class="hover:text-[var(--Highlight)] hover:scale-[1.2] cursor-pointer"><i
                             class="material-symbols-outlined">edit</i></button>
                 </div>
                 <div class="flex flex-col gap-[20px] w-full">
@@ -108,7 +107,7 @@ if (!$user || $user['role'] !== 'doctor') {
                         <p class="text-gray-400 font-light ">Role</p>
                         <p class="text-2xl font-bold capitalize ">
                             <?= $user ? htmlspecialchars($user['role']) : 'Guest' ?>
-                            </p>
+                        </p>
                         <hr>
                     </div>
                     <div class="flex flex-col">
@@ -122,15 +121,10 @@ if (!$user || $user['role'] !== 'doctor') {
         <div
             class="flex-1 flex flex-col items-center justify-around border-solid border-[var(--SecText)] border-[2px] rounded-lg p-[5px]!">
             <ul class="flex items-center justify-around w-full text-2xl">
-                <li><a href="" class="hover:text-[var(--Highlight)] "><i class="material-symbols-outlined">home</i></a>
+                <li><a href="/views/student/dashboard.php" class="hover:text-[var(--Highlight)] "><i
+                            class="material-symbols-outlined">home</i></a>
                 </li>
-                <li><a href="" class="hover:text-[var(--Highlight)] "><i
-                            class="material-symbols-outlined">person</i></a></li>
-                <li><a href="" class="hover:text-[var(--Highlight)] "><i
-                            class="material-symbols-outlined">settings</i></a></li>
-                <li><a href="" class="hover:text-[var(--Highlight)] "><i class="material-symbols-outlined">help</i></a>
-                </li>
-                <li><a href="" class="hover:text-[var(--Highlight)] "><i
+                <li><a href="/auth/logout.php" class="hover:text-[var(--Highlight)] "><i
                             class="material-symbols-outlined">logout</i></a></li>
             </ul>
         </div>
@@ -145,7 +139,8 @@ if (!$user || $user['role'] !== 'doctor') {
                 class="close right-[20px] top-[20px] text-[var(--Highlight)] cursor-pointer absolute" id="close"><i
                     class="material-symbols-outlined">close</i></button>
             <h2 class="text-2xl font-bold text-center">Edit Profile</h2>
-            <form action="/includes/updateuser.php" method="post" enctype="multipart/form-data" class="flex flex-col h-[85%] item-start justify-between ">
+            <form action="/includes/updateuser.php" method="post" enctype="multipart/form-data"
+                class="flex flex-col h-[85%] item-start justify-between ">
                 <div class="flex flex-col gap-[5px]">
                     <label for="profile_pic" class="text-gray-400">Profile Picture</label>
                     <input type="file" id="profile_pic" name="profile_pic" class="p-[5px]! border rounded">

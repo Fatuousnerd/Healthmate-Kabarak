@@ -93,16 +93,16 @@ button {
 /* Style scrollbars with the highlight color */
 *::-webkit-scrollbar {
     width: 8px;
-    background: var(--SecBg) !important;
+    background: var(--SecBg);
 }
 
 *::-webkit-scrollbar-thumb {
-    background: var(--Highlight) !important;
+    background: var(--Highlight);
     border-radius: 4px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-    background: var(--Highlight) !important;
+    background: var(--Highlight);
     opacity: 0.8;
 }
 
@@ -116,4 +116,12 @@ button {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.no-bar::-webkit-scrollbar{
+    display: none !important;
+}
+
+*::webkit-calendar-picker-indicator{
+    color: var(--MainText);
 }

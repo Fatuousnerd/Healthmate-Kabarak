@@ -102,7 +102,7 @@ if (!$user || $user['role'] !== 'doctor') {
             const patientList = document.getElementById('patientList');
             patientList.innerHTML = ''; // Clear existing content
 
-            fetch(`../../includes/fetchhistory.php`)
+            fetch(`../../includes/doctor/fetchhistory.php`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.error) {

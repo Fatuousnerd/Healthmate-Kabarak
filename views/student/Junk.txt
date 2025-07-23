@@ -414,3 +414,30 @@ include '../../includes/getuser.php';
 </body>
 
 </html>
+
+<div class="flex flex-col lg:flex-row flex-1 gap-[25px]">
+            <div
+                class="flex border-solid border-[2px] border-[var(--SecBg)] p-[25px]! rounded-md flex-1 items-start justify-around">
+                <div class="flex flex-col items-start justify-around">
+                    <p class="text-[3rem] ">10</p>
+                    <p class="text-[1.5rem] ">Appointments</p>
+                </div>
+                <i class="material-symbols-outlined">more_horiz</i>
+            </div>
+            <div
+                class="flex border-solid border-[2px] border-[var(--SecBg)] p-[25px]! rounded-md flex-1 items-start justify-around">
+                <div class="flex flex-col items-start justify-around">
+                    <p class="text-[3rem] ">10</p>
+                    <p class="text-[1.5rem] ">Appointments</p>
+                </div>
+                <i class="material-symbols-outlined">more_horiz</i>
+            </div>
+            <div
+                class="flex border-solid border-[2px] border-[var(--SecBg)] p-[25px]! rounded-md flex-1 items-start justify-around">
+                <div class="flex flex-col items-start justify-around">
+                    <p class="text-[3rem] ">10</p>
+                    <p class="text-[1.5rem] ">Appointments</p>
+                </div>
+                <i class="material-symbols-outlined">more_horiz</i>
+            </div>
+        </div>
