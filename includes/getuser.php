@@ -26,5 +26,4 @@ if (isset($_SESSION['user']['id'])) {
     }
 
     $stmt->close();
-    // $conn->close();
 }

@@ -11,40 +11,40 @@ if (!$user || $user['role'] !== 'student') {
     exit();
 }
 
-$userId = $user['id'];
-$today = date('Y-m-d');
+// $userId = $user['id'];
+// $today = date('Y-m-d');
 
-$sql = "SELECT * FROM appointments 
-        WHERE (student_id = ? OR doctor_id = ?) 
-        AND DATE(appointment_time) = ?";
+// $sql = "SELECT * FROM appointments 
+//         WHERE (student_id = ? OR doctor_id = ?) 
+//         AND DATE(appointment_time) = ?";
 
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("iis", $userId, $userId, $today);
-$stmt->execute();
-$result = $stmt->get_result();
+// $stmt = $conn->prepare($sql);
+// $stmt->bind_param("iis", $userId, $userId, $today);
+// $stmt->execute();
+// $result = $stmt->get_result();
 
-$now = new DateTime();
-$showedReminder = false;
+// $now = new DateTime();
+// $showedReminder = false;
 
-while ($appointment = $result->fetch_assoc()) {
-    $datetimeString = $appointment['appointment_time']; // ✅ fixed
-    $apptTime = new DateTime($datetimeString);
-    $minutesDiff = ($apptTime->getTimestamp() - $now->getTimestamp()) / 3600;
+// while ($appointment = $result->fetch_assoc()) {
+//     $datetimeString = $appointment['appointment_time']; // ✅ fixed
+//     $apptTime = new DateTime($datetimeString);
+//     $minutesDiff = ($apptTime->getTimestamp() - $now->getTimestamp()) / 3600;
     
-    // echo $minutesDiff;
-    // exit();
+//     // echo $minutesDiff;
+//     // exit();
 
-    if ($minutesDiff <= 30 && $minutesDiff > 0) {
-        echo "<script>
-            alert('⏰ Reminder: You have an appointment at " . $apptTime->format('h:i A') . " today.');
-        </script>";
-        $showedReminder = true;
-        break;
-    }
-}
+//     if ($minutesDiff <= 30 && $minutesDiff > 0) {
+//         echo "<script>
+//             alert('⏰ Reminder: You have an appointment at " . $apptTime->format('h:i A') . " today.');
+//         </script>";
+//         $showedReminder = true;
+//         break;
+//     }
+// }
 
 
-$stmt->close();
+// $stmt->close();
 
 ?>
 
