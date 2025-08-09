@@ -53,6 +53,9 @@ if (!$user || $_SESSION['user']['role'] !== 'doctor') {
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/patients.php"><i class="material-symbols-outlined">personal_injury</i> Patients</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
+                href="/views/doctor/history.php"><i class="material-symbols-outlined">history</i>
+                History</a>
+            <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"
                 href="/views/doctor/appointments.php"><i class="material-symbols-outlined">av_timer</i>
                 Appointments</a>
             <a class="flex items-center justify-start gap-[25px] hover:text-[var(--Highlight)]"

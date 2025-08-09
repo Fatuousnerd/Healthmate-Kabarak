@@ -1,10 +1,10 @@
 <?php
 // db.php
 
-$host = "127.0.0.1";       // or 127.0.0.1
-$user = "root";            // default for local dev (XAMPP, etc.)
-$password = "";            // empty for local usually
-$database = "healthmate";   // name of your database
+$host = "127.0.0.1";       // or localhost
+$user = "root";            // default for local dev
+$password = "";            // empty for local user
+$database = "healthmate";   // name of database
 
 if (!isset($conn)) {
 

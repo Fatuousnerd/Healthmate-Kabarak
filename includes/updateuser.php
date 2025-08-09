@@ -3,7 +3,7 @@ session_start();
 include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
-    $userId = $_SESSION['user_id'];
+    $userId = $_SESSION['user']['id'];
     $name = htmlspecialchars(trim($_POST['name']));
     $email = htmlspecialchars(trim($_POST['email']));
 
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
 
     if ($stmt->execute()) {
         echo "Profile updated successfully.";
-        header("Location: /views/doctor/profile.php"); // or dashboard
+        header("Location: /views/doctor/profile.php"); 
         exit();
     } else {
         echo "Error: " . $stmt->error;

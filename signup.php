@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
         if (in_array($fileExt, $allowed)) {
             $newName = uniqid('img_', true) . '.' . $fileExt;
-            $uploadDir = __DIR__ . '/uploads/';
+            $uploadDir = __DIR__ . '/includes/uploads/';
 
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0755, true);
